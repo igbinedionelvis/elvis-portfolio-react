@@ -235,6 +235,16 @@ section {
   transform: translateY(0);
 }
 
+/* blinking cursor */
+.terminal-line::after {
+  content: "_";
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 /* =========================
    NAVBAR
 ========================= */
@@ -248,6 +258,20 @@ section {
   background: rgba(15,15,15,0.6);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 600;
 }
 
 .nav-links {
@@ -355,7 +379,74 @@ section {
 }
 
 /* =========================
-   PROJECT CARD (UPGRADED)
+   PROJECTS SECTION
+========================= */
+
+.projects-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.toggle {
+  margin-bottom: 30px;
+}
+
+.toggle button {
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Grid layout */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.toggle {
+  margin-bottom: 30px;
+}
+
+.toggle button {
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* =========================
+   PROJECT CARD (FIXED)
 ========================= */
 
 .card {
@@ -364,14 +455,24 @@ section {
   padding: 22px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.25s ease;
+
+  transition: transform 0.25s ease, border 0.25s ease, background 0.25s ease;
+
+  will-change: transform, opacity;
 }
 
+/* hover */
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.02);
   border-color: rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.05);
 }
+
+/* stagger ONLY applies when reveal activates */
+.reveal.active .card:nth-child(1) { transition-delay: 0.1s; }
+.reveal.active .card:nth-child(2) { transition-delay: 0.2s; }
+.reveal.active .card:nth-child(3) { transition-delay: 0.3s; }
+.reveal.active .card:nth-child(4) { transition-delay: 0.4s; }
 
 .card h3 {
   margin-bottom: 10px;
@@ -388,4 +489,160 @@ section {
   margin-top: 15px;
   font-size: 12px;
   color: #888;
+}
+
+/* =========================
+   LINKS / THINKING
+========================= */
+
+.links {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.links a {
+  font-size: 0.9rem;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: white;
+}
+
+.thinking {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.thinking p {
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.contact {
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.email-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 200;
+}
+
+.modal {
+  background: #111;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 600px;
+}
+
+/* =========================
+   SCROLL REVEAL (FINAL)
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.12),
+    transparent 60%
+  );
+
+  transform: translate(-50%, -50%);
+  will-change: transform;
+
+  z-index: 999; /* FIX: ensure always visible */
+}
+
+/* INTERACTIVE STATES */
+
+.cursor-glow.cursor-hover {
+  scale: 1.8;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.2),
+    transparent 60%
+  );
+}
+
+.cursor-glow.cursor-text {
+  scale: 0.6;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.08),
+    transparent 70%
+  );
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .hero-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 240px;
+    height: 240px;
+  }
 }

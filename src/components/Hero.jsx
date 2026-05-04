@@ -67,16 +67,29 @@ export default function Hero() {
         <div className="hero-content">
           <span className="badge">AVAILABLE FOR WORK</span>
 
-          <h1>
-            Hi, I'm <span>Elvis</span><br />
-            I build intelligent systems.
+          <h1 className="hero-title">
+            Hi, I’m <span>Elvis</span>
+            <br />
+            <span className="headline-strong">
+              I build AI-powered dashboards & automation systems
+            </span>
           </h1>
 
           <p className="subtext">
-            I design AI-driven tools, dashboards, and interactive web experiences.
+            From real-time analytics dashboards to intelligent automation workflows,
+            I help businesses reduce manual work, uncover insights, and scale smarter.
           </p>
 
-          <div className="cta-row">
+          {/* 🔥 TECH STACK */}
+          <div className="tech-stack">
+            <img src="/icons/react.svg" alt="React" />
+            <img src="/icons/js.svg" alt="JavaScript" />
+            <img src="/icons/css.svg" alt="CSS" />
+            <img src="/icons/node.svg" alt="Node" />
+          </div>
+
+          {/* 🔥 BUTTONS */}
+          <div className="hero-actions">
             <button className="primary-btn">View Projects</button>
             <button className="secondary-btn">Contact</button>
           </div>

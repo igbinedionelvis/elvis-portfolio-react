@@ -159,6 +159,36 @@ section {
   width: 100%;
 }
 
+/* Rotating words */
+.rotating-word {
+  display: inline-block;
+  min-width: 240px; /* prevents jumping */
+
+  color: #00ff88;
+  font-weight: 600;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 /* =========================
    HERO CONTENT
 ========================= */

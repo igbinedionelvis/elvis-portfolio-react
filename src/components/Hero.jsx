@@ -8,6 +8,36 @@ export default function Hero() {
   const hoverTimeout = useRef(null);
   const terminalTimeout = useRef(null);
 
+  /* =========================
+   🔥 ROTATING WORD SYSTEM (SMOOTH + FIXED)
+========================= */
+
+  const words = [
+    "dashboards",
+    "automation systems",
+    "data intelligence platforms"
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false); // fade out
+
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        setVisible(true); // fade in AFTER swap
+      }, 300); // smoother timing
+    }, 2600); // gives breathing room
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+     TERMINAL CONTENT
+  ========================= */
+
   const lines = [
     "ELVIS IGBINEDION",
     "FULL STACK DEVELOPER",
@@ -54,8 +84,8 @@ export default function Hero() {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     setTilt({
-      x: y * 8,   // vertical tilt
-      y: x * 10   // horizontal tilt
+      x: y * 8,
+      y: x * 10
     });
   };
 
@@ -68,10 +98,19 @@ export default function Hero() {
           <span className="badge">AVAILABLE FOR WORK</span>
 
           <h1 className="hero-title">
-            Hi, I’m <span>Elvis</span>
-            <br />
+            Hi, I’m <span className="name">Elvis</span><br />
+
             <span className="headline-strong">
-              I build AI-powered dashboards & automation systems
+              I build AI-powered{" "}
+              <span
+                className="rotating-word"
+                style={{
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(8px)"
+                }}
+              >
+                {words[index]}
+              </span>
             </span>
           </h1>
 
@@ -80,15 +119,19 @@ export default function Hero() {
             I help businesses reduce manual work, uncover insights, and scale smarter.
           </p>
 
-          {/* 🔥 TECH STACK */}
+          {/* TECH STACK */}
           <div className="tech-stack">
-            <img src="/icons/react.svg" alt="React" />
+            <img src="/icons/react2.svg" alt="React" />
             <img src="/icons/js.svg" alt="JavaScript" />
             <img src="/icons/css.svg" alt="CSS" />
-            <img src="/icons/node.svg" alt="Node" />
+            <img src="/icons/nodejs.svg" alt="Node" />
+            <img src="/icons/python.svg" alt="Node" />
+            <img src="/icons/postgresql.svg" alt="Node" />
+            <img src="/icons/docker.svg" alt="Node" />
+            <img src="/icons/git.svg" alt="Node" />
           </div>
 
-          {/* 🔥 BUTTONS */}
+          {/* BUTTONS */}
           <div className="hero-actions">
             <button className="primary-btn">View Projects</button>
             <button className="secondary-btn">Contact</button>

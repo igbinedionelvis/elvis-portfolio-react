@@ -6,55 +6,110 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState(null);
 
   const projects = [
-    {
-      title: "Movie Recommender System",
-      description: "AI system that recommends movies based on user mood.",
-      stack: "Python • ML • NLP",
-      github: "#",
-      live: "#",
-      thinking: {
-        problem: "Users struggle to find movies matching their mood.",
-        approach: "Used sentiment analysis + collaborative filtering.",
-        tradeoff: "Accuracy vs performance — optimized for speed."
-      }
-    },
-    {
-      title: "Earthquake Dashboard",
-      description: "Visualization of global seismic activity.",
-      stack: "Python • Tableau",
-      github: "#",
-      live: "#",
-      thinking: {
-        problem: "Raw earthquake data is hard to interpret.",
-        approach: "Built interactive visual dashboards.",
-        tradeoff: "Detail vs clarity — simplified visuals."
-      }
-    },
-    {
-      title: "Portfolio Website",
-      description: "Modern developer portfolio using React.",
-      stack: "React • CSS",
-      github: "#",
-      live: "#",
-      thinking: {
-        problem: "Most portfolios look generic.",
-        approach: "Focused on storytelling + UX.",
-        tradeoff: "Minimalism vs expressiveness."
-      }
-    },
-    {
-      title: "Upcoming Project",
-      description: "Something innovative is coming.",
-      stack: "TBD",
-      github: "#",
-      live: "#",
-      thinking: {
-        problem: "Exploring new ideas.",
-        approach: "Experimentation phase.",
-        tradeoff: "Speed vs perfection."
-      }
+  {
+    title: "Lead Intelligence SaaS Platform",
+
+    image: "/projects/workforce-dashboard.png",
+
+    description:
+      "Modern SaaS platform designed to help startups manage lead intelligence, outreach workflows, and sales pipeline visibility through interactive analytics and scalable dashboard architecture.",
+
+    stack:
+      "React • TypeScript • Supabase • TailwindCSS • Recharts • Framer Motion",
+
+    github: "https://github.com/igbinedionelvis/leadpilot-saas-dashboard",
+
+    live: "https://leadpilot-saas-dashboard.vercel.app/",
+
+    thinking: {
+      problem:
+        "Startups often struggle to centralize outreach tracking, lead intelligence, and operational visibility into one scalable workflow system.",
+
+      approach:
+        "Designed a scalable SaaS-style dashboard with lead management workflows, analytics visualization, and modular frontend architecture optimized for growth.",
+
+      tradeoff:
+        "Prioritized frontend scalability, responsiveness, and product architecture before implementing deeper automation layers."
     }
-  ];
+  },
+
+  {
+    title: "Workforce Intelligence Dashboard",
+
+    image: "/projects/lead-intelligence-platform.png",
+
+    description:
+      "AI-powered workforce analytics platform designed to help organizations monitor employee performance, hiring operations, and workforce trends through real-time KPI tracking and interactive data visualization.",
+
+    stack:
+      "React • TailwindCSS • Vite • Recharts",
+
+    github: "https://github.com/igbinedionelvis/workforce-intelligence-dashboard",
+
+    live: "https://workforce-intelligence-dashboard.vercel.app/",
+
+    thinking: {
+      problem:
+        "Organizations often struggle to centralize workforce metrics, hiring visibility, and operational insights into a single actionable system.",
+
+      approach:
+        "Built a scalable SaaS-inspired analytics dashboard with KPI tracking, interactive charts, hiring pipeline visualization, and AI-driven workforce insights simulation.",
+
+      tradeoff:
+        "Focused on frontend scalability, responsive UX, and business intelligence workflows before introducing deeper backend automation layers."
+    }
+  },
+
+  {
+    title: "Interactive Portfolio Experience",
+
+    description:
+      "Modern developer portfolio focused on immersive UI interactions, motion design, and systems-oriented storytelling to showcase product-focused engineering work.",
+
+    stack:
+      "React • CSS • Framer Motion",
+
+    github: "#",
+
+    live: "https://elvis-portfolio-react.vercel.app/",
+
+    thinking: {
+      problem:
+        "Most developer portfolios feel static, generic, and fail to communicate technical identity effectively.",
+
+      approach:
+        "Focused on cinematic UI interactions, animation systems, and storytelling-driven layout design to create a memorable user experience.",
+
+      tradeoff:
+        "Balanced advanced visual interaction with usability and responsive layout considerations."
+    }
+  },
+
+  {
+    title: "AI Automation System (In Progress)",
+
+    description:
+      "Currently building a scalable automation-focused platform centered around AI workflows, operational efficiency, and intelligent data processing.",
+
+    stack:
+      "React • Node.js • AI APIs",
+
+    github: "#",
+
+    live: "#",
+
+    thinking: {
+      problem:
+        "Modern businesses lose significant time through repetitive manual operational processes.",
+
+      approach:
+        "Exploring AI-assisted workflow automation systems focused on scalability and operational efficiency.",
+
+      tradeoff:
+        "Prioritizing flexible architecture and experimentation before production-level optimization."
+    }
+  }
+];
 
   return (
     <section className="projects" id="projects">

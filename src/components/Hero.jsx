@@ -39,16 +39,26 @@ export default function Hero() {
   ========================= */
 
   const lines = [
-    "ELVIS IGBINEDION",
-    "FULL STACK DEVELOPER",
-    "AI • DATA SCIENCE • SYSTEMS",
-    "GITHUB: igbinedionelvis",
-    "LINKEDIN: igbinedion-elvis",
-    "TWITTER: @IamFame88",
-    "EMAIL: eligbinosa@gmail.com",
-    "STATUS: ACTIVE",
-    "OBJECTIVE: BUILDING INTELLIGENT SYSTEMS..."
-  ];
+  "[BOOT_SEQUENCE_INITIALIZED]",
+
+  "",
+  "> IDENTITY: ELVIS IGBINEDION",
+  "> ROLE: FULL STACK DEVELOPER",
+
+  "",
+  "> SPECIALIZATION: AI • ANALYTICS • SYSTEMS",
+  "> FOCUS: SCALABLE SaaS APPLICATIONS",
+
+  "",
+  "> STACK: REACT • PYTHON • TYPESCRIPT",
+  "> STACK: SUPABASE • NODE • POSTGRESQL",
+
+  "",
+  "> OBJECTIVE: BUILDING INTELLIGENT DIGITAL SYSTEMS...",
+
+  "",
+  "> STATUS: AVAILABLE FOR OPPORTUNITIES"
+];
 
   /* =========================
      HOVER HANDLERS

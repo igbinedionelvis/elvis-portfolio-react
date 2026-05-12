@@ -39,26 +39,26 @@ export default function Hero() {
   ========================= */
 
   const lines = [
-  "[BOOT_SEQUENCE_INITIALIZED]",
+    "[BOOT_SEQUENCE_INITIALIZED]",
 
-  "",
-  "> IDENTITY: ELVIS IGBINEDION",
-  "> ROLE: FULL STACK DEVELOPER",
+    "",
+    "> IDENTITY: ELVIS IGBINEDION",
+    "> ROLE: FULL STACK DEVELOPER",
 
-  "",
-  "> SPECIALIZATION: AI • ANALYTICS • SYSTEMS",
-  "> FOCUS: SCALABLE SaaS APPLICATIONS",
+    "",
+    "> SPECIALIZATION: AI • ANALYTICS • SYSTEMS",
+    "> FOCUS: SCALABLE SaaS APPLICATIONS",
 
-  "",
-  "> STACK: REACT • PYTHON • TYPESCRIPT",
-  "> STACK: SUPABASE • NODE • POSTGRESQL",
+    "",
+    "> STACK: REACT • PYTHON • TYPESCRIPT",
+    "> STACK: SUPABASE • NODE • POSTGRESQL",
 
-  "",
-  "> OBJECTIVE: BUILDING INTELLIGENT DIGITAL SYSTEMS...",
+    "",
+    "> OBJECTIVE: BUILDING INTELLIGENT DIGITAL SYSTEMS...",
 
-  "",
-  "> STATUS: AVAILABLE FOR OPPORTUNITIES"
-];
+    "",
+    "> STATUS: OPEN TO HIGH-IMPACT OPPORTUNITIES"
+  ];
 
   /* =========================
      HOVER HANDLERS
@@ -186,7 +186,7 @@ export default function Hero() {
    TYPEWRITER
 ========================= */
 
-function Typing({ text, delay }) {
+function Typing({ text, delay, isLast }) {
   const [output, setOutput] = useState("");
 
   useEffect(() => {
@@ -207,5 +207,18 @@ function Typing({ text, delay }) {
     };
   }, [text, delay]);
 
-  return <p className="terminal-line">{output}</p>;
+  const highlight =
+    text.includes("STATUS") ||
+    text.includes("OBJECTIVE") ||
+    text.includes("CURRENT_BUILD");
+
+  return (
+    <p
+      className={`terminal-line 
+  ${highlight ? "highlight" : ""} 
+  ${isLast ? "cursor" : ""}`}
+    >
+      {output}
+    </p>
+  );
 }

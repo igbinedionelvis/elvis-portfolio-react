@@ -10,7 +10,11 @@ export default function Projects() {
     {
       title: "Lead Intelligence SaaS Platform",
 
-      image: "/projects/lead-intelligence-platform.png",
+      images: [
+        "/projects/lead-1.png",
+        "/projects/lead-2.png",
+        "/projects/lead-3.png"
+      ],
 
       description:
         "Modern SaaS platform designed to help startups manage lead intelligence, outreach workflows, and sales pipeline visibility through interactive analytics and scalable dashboard architecture.",
@@ -39,7 +43,11 @@ export default function Projects() {
     {
       title: "Workforce Intelligence Dashboard",
 
-      image: "/projects/workforce-dashboard.png",
+      images: [
+        "/projects/workforce-1.png",
+        "/projects/workforce-2.png",
+        "/projects/workforce-3.png"
+      ],
 
       description:
         "AI-powered workforce analytics platform designed to help organizations monitor employee performance, hiring operations, and workforce trends through real-time KPI tracking and interactive data visualization.",
@@ -68,7 +76,11 @@ export default function Projects() {
     {
       title: "Interactive Portfolio Experience",
 
-      image: "/projects/portfolio-preview.png",
+      images: [
+        "/projects/portfolio-1.png",
+        "/projects/portfolio-2.png",
+        "/projects/portfolio-3.png"
+      ],
 
       description:
         "Modern developer portfolio focused on immersive UI interactions, motion design, and systems-oriented storytelling to showcase product-focused engineering work.",
@@ -96,7 +108,11 @@ export default function Projects() {
     {
       title: "AI Automation System (In Progress)",
 
-      image: "/projects/ai-automation-preview.png",
+      images: [
+        "/projects/ai-automation-1.png",
+        "/projects/ai-automation-2.png",
+        "/projects/ai-automation-3.png"
+      ],
 
       description:
         "Currently building a scalable automation-focused platform centered around AI workflows, operational efficiency, and intelligent data processing.",

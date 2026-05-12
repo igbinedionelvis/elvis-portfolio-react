@@ -1,21 +1,62 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function ProjectCard({
   project,
   thinkingMode,
   onClick
 }) {
+
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  /* =========================
+     IMAGE CYCLING
+  ========================= */
+
+  useEffect(() => {
+
+    if (!isHovered) return;
+
+    const interval = setInterval(() => {
+
+      setImageIndex((prev) =>
+        (prev + 1) % project.images.length
+      );
+
+    }, 4500);
+
+    return () => clearInterval(interval);
+
+  }, [isHovered, project.images.length]);
+
   return (
     <motion.div
       className="card"
       onClick={onClick}
+
+      onHoverStart={() => setIsHovered(true)}
+
+      onHoverEnd={() => {
+        setIsHovered(false);
+        setImageIndex(0);
+      }}
+
       initial={{ opacity: 0, y: 50 }}
+
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+
+      viewport={{
+        once: true,
+        amount: 0.15
+      }}
+
       transition={{
-        duration: 0.7,
+        duration: 1.6,
         ease: [0.22, 1, 0.36, 1]
       }}
+
       whileHover={{
         y: -10,
         rotateX: -2,
@@ -24,16 +65,38 @@ export default function ProjectCard({
       }}
     >
 
-      {/* 🔥 GLOW LAYER */}
+      {/* 🔥 GLOW */}
       <div className="card-glow"></div>
 
-      {/* 🔥 PROJECT IMAGE */}
+      {/* 🔥 IMAGE */}
       <div className="card-image">
-        <img
-          src={project.image}
+
+        <motion.img
+          key={imageIndex}
+
+          src={project.images[imageIndex]}
+
           alt={project.title}
+
           loading="lazy"
+
+          initial={{
+            opacity: 0,
+            scale: 1.30
+          }}
+
+          animate={{
+            opacity: 1,
+            scale: 1,
+            filter: "brightness(1.03)"
+          }}
+
+          transition={{
+            duration: 1.6,
+            ease: [0.22, 1, 0.36, 1]
+          }}
         />
+
       </div>
 
       {/* 🔥 CONTENT */}
@@ -93,6 +156,7 @@ export default function ProjectCard({
         )}
 
       </div>
+
     </motion.div>
   );
 }

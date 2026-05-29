@@ -171,7 +171,12 @@ export default function Hero() {
             <div className="terminal">
               {showTerminal &&
                 lines.map((line, i) => (
-                  <Typing key={i} text={line} delay={i * 450} />
+                  <Typing
+                    key={i}
+                    text={line}
+                    delay={i * 450}
+                    isLast={i === lines.length - 1}
+                  />
                 ))}
             </div>
           </div>

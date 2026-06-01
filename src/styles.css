@@ -72,7 +72,7 @@ p {
   /* Layout */
   --content-sm: 600px;
   --content-md: 680px;
-  --content-lg: 1280px;
+  --content-lg: 1440px;
 }
 
 /* =========================
@@ -211,9 +211,10 @@ p {
   gap: clamp(10px, 2vw, 24px);
 
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--content-lg);
 
   margin: 0 auto;
+
 }
 
 /* Rotating words */
@@ -296,7 +297,7 @@ p {
 }
 
 .profile.active {
-  width: clamp(1000px, 78vw, 1250px);
+  width: clamp(1000px, 78vw, 950px);
 
   transform: perspective(1200px) rotateY(-4deg);
 }
@@ -637,6 +638,7 @@ p {
   max-width: var(--content-lg);
 
   margin: auto;
+
 }
 
 /* =========================
@@ -928,11 +930,12 @@ p {
 }
 
 .contact-container {
-  max-width: var(--content-md);
+  max-width: 1000px;
 
   margin: 0 auto;
 
   text-align: center;
+
 }
 
 .contact-tag {
@@ -1148,6 +1151,7 @@ p {
     text-align: center;
 
     gap: 60px;
+
   }
 
   .profile-image {
@@ -1294,6 +1298,7 @@ p {
     text-align: center;
 
     gap: 60px;
+
   }
 
   .hero-content {

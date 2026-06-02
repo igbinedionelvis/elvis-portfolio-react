@@ -1533,6 +1533,11 @@ p {
     margin: 0 auto;
   }
 
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .profile {
     flex-direction: column;
 
@@ -1578,6 +1583,10 @@ p {
     grid-template-columns: repeat(2, 1fr);
 
     gap: 16px;
+  }
+
+  .tech-stack {
+    justify-content: center;
   }
 }
 

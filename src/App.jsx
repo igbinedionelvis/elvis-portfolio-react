@@ -4,6 +4,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Reveal from "./components/Reveal";
 import Cursor from "./components/Cursor";
+import About from "./components/About";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
       <main>
         <Reveal>
           <Hero />
+        </Reveal>
+
+        <Reveal>
+          <About />
         </Reveal>
 
         <Reveal>

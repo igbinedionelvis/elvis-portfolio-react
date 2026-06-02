@@ -143,9 +143,24 @@ export default function Hero() {
 
           {/* BUTTONS */}
           <div className="hero-actions">
-            <button className="primary-btn">View Projects</button>
-            <button className="secondary-btn">Contact</button>
+
+            <a href="#projects" className="primary-btn">
+              View Projects
+            </a>
+
+            <a href="#contact" className="secondary-btn">
+              Contact
+            </a>
+
+            <a
+              href="/Elvis-Igbinedion-CV.pdf"
+              download
+              className="secondary-btn"
+            >
+              Download CV
+            </a>
           </div>
+
         </div>
 
         {/* RIGHT */}
@@ -160,8 +175,14 @@ export default function Hero() {
         >
           {/* IMAGE */}
           <div className="profile-image">
-            <img src="/me1.jpg" className="img1" />
-            <img src="/me2.jpg" className="img2" />
+
+            <img src="/me1.jpg" className="img1" alt="Elvis portrait" />
+            <img src="/me2.jpg" className="img2" alt="Elvis profile terminal view" />
+
+            <div className="profile-hint">
+              ACCESS PROFILE
+            </div>
+
           </div>
 
           {/* PANEL */}

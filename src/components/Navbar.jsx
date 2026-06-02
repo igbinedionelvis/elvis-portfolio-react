@@ -42,6 +42,7 @@ export default function Navbar() {
 
         <div className="nav-links">
           {navItem("home", "Home")}
+          {navItem("about", "About")}
           {navItem("projects", "Projects")}
           {navItem("contact", "Contact")}
         </div>

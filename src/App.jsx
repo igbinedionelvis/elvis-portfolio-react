@@ -5,6 +5,7 @@ import Contact from "./components/Contact";
 import Reveal from "./components/Reveal";
 import Cursor from "./components/Cursor";
 import About from "./components/About";
+import Skills from "./components/Skills";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
 
         <Reveal>
           <Projects />
+        </Reveal>
+
+        <Reveal>
+          <Skills />
         </Reveal>
 
         <Reveal>

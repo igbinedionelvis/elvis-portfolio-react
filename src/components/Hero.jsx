@@ -105,7 +105,10 @@ export default function Hero() {
 
         {/* LEFT */}
         <div className="hero-content">
-          <span className="badge">AVAILABLE FOR WORK</span>
+          <div className="hero-status">
+            <span className="status-dot"></span>
+            Available for freelance • Remote • Full-time
+          </div>
 
           <h1 className="hero-title">
             Hi, I’m <span className="name">Elvis</span><br />
@@ -178,16 +181,24 @@ export default function Hero() {
             transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
           }}
         >
+
           {/* IMAGE */}
           <div className="profile-image">
 
-            <img src="/me1.jpg" className="img1" alt="Elvis portrait" />
-            <img src="/me2.jpg" className="img2" alt="Elvis profile terminal view" />
-
-            <div className="profile-hint">
-              ACCESS PROFILE
+            <div className="portrait-wrapper">
+              <img src="/me1.jpg" className="img1" alt="" />
             </div>
 
+            <img src="/me2.jpg" className="img2" alt="" />
+
+          </div>
+
+          <div className="profile-hint">
+            <span className="hint-dot"></span>
+
+            <span className="hint-text">
+              CLICK TO INITIALIZE
+            </span>
           </div>
 
           {/* PANEL */}

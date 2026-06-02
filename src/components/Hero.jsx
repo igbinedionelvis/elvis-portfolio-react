@@ -13,9 +13,9 @@ export default function Hero() {
 ========================= */
 
   const words = [
-    "dashboards",
     "automation systems",
-    "data intelligence platforms"
+    "analytics platforms",
+    "intelligent workflows"
   ];
 
   const [index, setIndex] = useState(0);
@@ -111,12 +111,17 @@ export default function Hero() {
             Hi, I’m <span className="name">Elvis</span><br />
 
             <span className="headline-strong">
-              I build AI-powered{" "}
+              I build AI-powered
+            </span>
+
+            <span className="rotating-word-slot">
               <span
                 className="rotating-word"
                 style={{
                   opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(8px)"
+                  transform: visible
+                    ? "translateY(0)"
+                    : "translateY(8px)"
                 }}
               >
                 {words[index]}

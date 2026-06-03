@@ -1539,30 +1539,65 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
+  position: relative;
 }
 
 .category {
-  background: transparent;
+  position: relative;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, .03);
 
   border: 1px solid rgba(255, 255, 255, .08);
 
-  color: white;
+  color: #bdbdbd;
 
-  padding: 10px 16px;
+  padding: 12px 18px;
 
   border-radius: 999px;
 
   cursor: pointer;
 
-  transition: .3s ease;
+  isolation: isolate;
+
+  position: relative;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  transition:
+    color .35s ease,
+    border-color .35s ease,
+    transform .25s ease;
+}
+
+.category-highlight {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 999px;
+
+  background: rgba(0, 255, 136, 0.15);
+
+  border: 1px solid rgba(0, 255, 136, 0.35);
+
+  box-shadow:
+    0 0 20px rgba(0, 255, 136, .12);
+
+  z-index: 0;
+}
+
+.category-label {
+  position: relative;
+  z-index: 1;
 }
 
 .category.active {
-  border-color: #00ff88;
-
   color: #00ff88;
-
-  background: rgba(0, 255, 136, .08);
 }
 
 .category:hover {
@@ -1595,9 +1630,7 @@ p {
   gap: 10px;
 
   font-size: 15px;
-}
 
-.send-btn {
   transition:
     transform .25s ease,
     box-shadow .25s ease;
@@ -1607,7 +1640,7 @@ p {
   transform: translateY(-2px);
 
   box-shadow:
-    0 10px 30px rgba(0, 255, 136, .18);
+    0 12px 30px rgba(0, 255, 136, .2);
 }
 
 .message-right {
@@ -1628,6 +1661,7 @@ p {
 }
 
 .info-card,
+.connect-card,
 .resume-card,
 .conversation-card {
   background: rgba(255, 255, 255, .03);
@@ -1637,6 +1671,54 @@ p {
   border-radius: 24px;
 
   padding: 14px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.info-card::before,
+.connect-card::before,
+.resume-card::before,
+.conversation-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(0, 255, 136, .08),
+      transparent 70%);
+
+  opacity: 0;
+
+  transition: opacity .4s ease;
+
+  pointer-events: none;
+}
+
+.info-card:hover,
+.resume-card:hover,
+.conversation-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(0, 255, 136, .2);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, .25);
+}
+
+.info-card:hover::before,
+.resume-card:hover::before,
+.conversation-card:hover::before {
+  opacity: 1;
 }
 
 .resume-card {
@@ -1656,7 +1738,7 @@ p {
 .resume-card p,
 .conversation-card h4 {
   margin-bottom: 6px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -1666,7 +1748,7 @@ p {
   display: flex;
   flex-direction: column;
 
-  gap: 18px;
+  gap: 14px;
 
   margin-top: 18px;
 }
@@ -1800,6 +1882,19 @@ p {
   border: 1px solid rgba(0, 255, 136, .12);
 
   flex-shrink: 0;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.info-card:hover .icon-circle,
+.resume-card:hover .icon-circle,
+.conversation-card:hover .icon-circle {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 18px rgba(0, 255, 136, .18);
 }
 
 .input-wrapper,
@@ -1845,6 +1940,107 @@ p {
   color: #00ff88;
 
   flex-shrink: 0;
+}
+
+.info-card:hover .icon-circle {
+  transform:
+    scale(1.08) rotate(8deg);
+}
+
+.resume-card:hover .icon-circle {
+  transform:
+    scale(1.08) rotate(-8deg);
+}
+
+.conversation-card:hover .icon-circle {
+  transform:
+    scale(1.08) rotate(8deg);
+}
+
+.connect-card {
+  background: rgba(255, 255, 255, .03);
+
+  border: 1px solid rgba(255, 255, 255, .08);
+
+  border-radius: 24px;
+
+  padding: 14px;
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.connect-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(0, 255, 136, .2);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, .25);
+}
+
+.quick-connect-icons {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 0 28px;
+
+  margin: 8px 0;
+}
+
+.quick-connect-icons a {
+  width: auto;
+  height: auto;
+
+  background: transparent;
+  border: none;
+
+  font-size: 24px;
+
+  color: #8a8a8a;
+}
+
+.quick-connect-icons a:hover {
+  color: #00ff88;
+
+  border-color: rgba(0, 255, 136, .25);
+
+  transform: translateY(-3px);
+}
+
+.quick-connect-icons {
+  position: relative;
+}
+
+.quick-connect-icons::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, .05);
+
+  z-index: 0;
+}
+
+.quick-connect-icons a {
+  position: relative;
+  z-index: 1;
+
+  background: #111;
+  padding: 8px;
 }
 
 /* =========================

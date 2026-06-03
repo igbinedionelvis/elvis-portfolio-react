@@ -9,8 +9,14 @@ import {
     Send,
     User,
     Mail,
-    Pencil
+    Pencil,
 } from "lucide-react";
+
+import {
+    FaGithub,
+    FaLinkedin,
+    FaXTwitter
+} from "react-icons/fa6";
 
 const categories = [
     "Freelance Project",
@@ -48,9 +54,22 @@ export default function MessageSection() {
 
                 <motion.div
                     className="message-left"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{
+                        opacity: 0,
+                        y: 50,
+                        scale: 0.97
+                    }}
+
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1
+                    }}
                     viewport={{ once: true }}
+                    transition={{
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
                 >
 
                     <div className="message-label">
@@ -102,7 +121,21 @@ export default function MessageSection() {
                                     }
                                     onClick={() => setSelected(item)}
                                 >
-                                    {item}
+                                    {selected === item && (
+                                        <motion.span
+                                            layoutId="activeCategory"
+                                            className="category-highlight"
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 300,
+                                                damping: 30
+                                            }}
+                                        />
+                                    )}
+
+                                    <span className="category-label">
+                                        {item}
+                                    </span>
                                 </button>
                             ))}
 
@@ -136,7 +169,24 @@ export default function MessageSection() {
                     viewport={{ once: true }}
                 >
 
-                    <div className="info-card">
+                    <motion.div
+                        className="info-card"
+                        initial={{
+                            opacity: 0,
+                            x: -100,
+                            rotate: -2
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            rotate: 0
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.85,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
 
                         <div className="card-header">
                             <div className="icon-circle">
@@ -146,29 +196,80 @@ export default function MessageSection() {
                             <h3>Working With Me</h3>
                         </div>
 
-                        <li>
-                            <Check size={16} className="feature-check" />
-                            Usually replies within 24 hours
-                        </li>
+                        <ul>
+                            <li>
+                                <Check size={16} className="feature-check" />
+                                Usually replies within 24 hours
+                            </li>
 
-                        <li>
-                            <Check size={16} className="feature-check" />
-                            Available for freelance projects
-                        </li>
+                            <li>
+                                <Check size={16} className="feature-check" />
+                                Available for freelance projects
+                            </li>
 
-                        <li>
-                            <Check size={16} className="feature-check" />
-                            Open to remote opportunities
-                        </li>
+                            <li>
+                                <Check size={16} className="feature-check" />
+                                Open to remote opportunities
+                            </li>
 
-                        <li>
-                            <Check size={16} className="feature-check" />
-                            Focused on AI & modern web products
-                        </li>
+                            <li>
+                                <Check size={16} className="feature-check" />
+                                Focused on AI & modern web products
+                            </li>
+                        </ul>
+                    </motion.div>
 
-                    </div>
+                        <div className="quick-connect-icons">
 
-                    <div className="resume-card">
+                            <a
+                                href="YOUR_GITHUB"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FaGithub size={18} />
+                            </a>
+
+                            <a
+                                href="YOUR_LINKEDIN"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FaLinkedin size={18} />
+                            </a>
+
+                            <a
+                                href="YOUR_X"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FaXTwitter size={18} />
+                            </a>
+
+                            <a
+                                href="mailto:YOUR_EMAIL"
+                            >
+                                <Mail size={18} />
+                            </a>
+
+                        </div>
+
+                    <motion.div
+                        className="resume-card"
+                        initial={{
+                            opacity: 0,
+                            scale: 0.9
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            scale: 1
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.85,
+                            delay: 0.1,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
 
                         <div className="card-header">
                             <div className="icon-circle">
@@ -189,9 +290,27 @@ export default function MessageSection() {
                             Download CV
                         </a>
 
-                    </div>
+                    </motion.div>
 
-                    <div className="conversation-card">
+                    <motion.div
+                        className="conversation-card"
+                        initial={{
+                            opacity: 0,
+                            x: 100,
+                            rotate: 2
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                            rotate: 0
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.85,
+                            delay: 0.2,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
 
                         <div className="card-header">
                             <div className="icon-circle">
@@ -230,11 +349,11 @@ export default function MessageSection() {
 
                         </AnimatePresence>
 
-                    </div>
+                    </motion.div>
 
                 </motion.div>
 
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }

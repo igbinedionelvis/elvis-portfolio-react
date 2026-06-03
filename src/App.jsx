@@ -1,11 +1,13 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import MessageSection from "./components/MessageSection";
 import Reveal from "./components/Reveal";
 import Cursor from "./components/Cursor";
-import About from "./components/About";
-import Skills from "./components/Skills";
+
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
 
         <Reveal>
           <Skills />
+        </Reveal>
+
+        <Reveal>
+          <MessageSection />
         </Reveal>
 
         <Reveal>

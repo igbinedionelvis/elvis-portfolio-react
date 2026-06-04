@@ -1,121 +1,177 @@
 import { motion } from "framer-motion";
+import {
+  FaHammer,
+  FaChartLine,
+  FaCode,
+  FaCube,
+  FaBullseye,
+  FaShieldAlt,
+  FaRegFileAlt
+} from "react-icons/fa";
 
 export default function About() {
   return (
     <section className="about" id="about">
 
-      <div className="about-container"></div><div className="about-story">
+      <div className="about-container">
 
-        <div className="timeline-column">
+        <div className="about-story">
 
-          <div className="timeline-line"></div>
+          <div className="timeline-column">
 
-          <div className="timeline-node active">
+            <div className="timeline-line"></div>
 
-            <div className="timeline-icon">
-              ⚒
+            <div className="timeline-node active">
+
+              <div className="timeline-icon">
+                <FaHammer />
+              </div>
+
+              <div>
+                <h4>Precision Welding</h4>
+                <p>Foundations of craftsmanship</p>
+              </div>
+
             </div>
 
-            <div>
+            <div className="timeline-node">
 
-              <h4>Precision Welding</h4>
+              <div className="timeline-icon">
+                <FaChartLine />
+              </div>
 
-              <p>
-                Foundations of craftsmanship
-              </p>
+              <div>
+                <h4>Data Science</h4>
+                <p>Analytical thinking and insight</p>
+              </div>
+
+            </div>
+
+            <div className="timeline-node">
+
+              <div className="timeline-icon">
+                <FaCode />
+              </div>
+
+              <div>
+                <h4>Full-Stack Development</h4>
+                <p>Building modern applications</p>
+              </div>
+
+            </div>
+
+            <div className="timeline-node">
+
+              <div className="timeline-icon">
+                <FaCube />
+              </div>
+
+              <div>
+                <h4>Digital Infrastructure</h4>
+                <p>Systems designed to scale</p>
+              </div>
 
             </div>
 
           </div>
 
-          <div className="timeline-node">
-            <span>02</span>
-            <h4>Data Science</h4>
-          </div>
+          <div className="story-content">
 
-          <div className="timeline-node">
-            <span>03</span>
-            <h4>Full-Stack Development</h4>
-          </div>
+            <span className="about-tag">
+              Building Systems Designed To Last
+            </span>
 
-          <div className="timeline-node">
-            <span>04</span>
-            <h4>Digital Infrastructure</h4>
-          </div>
+            <h2>
+              FROM IRON TO{" "}
+              <span className="infrastructure-highlight">
+                INFRASTRUCTURE
+              </span>
+            </h2>
 
-        </div>
+            <p className="mission-statement">
+              — I DON'T JUST WRITE CODE —
+              <span> I BUILD SYSTEMS DESIGNED TO LAST.</span>
+            </p>
 
-        <div className="story-content">
+            <p>
+              My journey into technology began in a precision welding bay,
+              where success was measured in millimeters and structural integrity.
+              That same discipline, attention to detail, and problem-solving mindset
+              now drive my work as a self-taught{" "}
+              <span className="story-highlight">
+                Full-Stack Developer
+              </span>.
+            </p>
 
-          <span className="about-tag">
-            Building Systems Designed To Last
-          </span>
+            <p>
+              I transitioned into software engineering through an intensive
+              <span className="story-highlight">
+                Data Science
+              </span>{" "}
+              bootcamp, developing a strong foundation in analytics,
+              data-driven decision-making, and technical problem solving.
+              From there, I taught myself modern web development, mastering the
+              tools and architectures required to build scalable, user-focused
+              applications.
+            </p>
 
-          <h2>
-            FROM IRON TO INFRASTRUCTURE
-          </h2>
+            <p>
+              Today, I combine analytical thinking with full-stack engineering
+              to transform complex ideas into intuitive digital products.
+              Whether designing front-end experiences, building backend systems,
+              or architecting complete applications, I approach every challenge
+              with the same commitment to precision, reliability, and craftsmanship
+              that defined my work before tech.
+            </p>
 
-          <p>
-            I don’t just write code—I build systems designed to last.
-          </p>
+            <p>
+              My path into software may be unconventional, but it has forged
+              the qualities that matter most: adaptability, resilience,
+              continuous learning, and the determination to solve difficult
+              problems. I don't just adapt to new technologies—I leverage them
+              to build meaningful products that create <span className="story-highlight">
+                real impact
+              </span>.
+            </p>
 
-          <p>
-            My journey into technology began in a precision welding bay,
-            where success was measured in millimeters and structural integrity.
-            That same discipline, attention to detail, and problem-solving mindset
-            now drive my work as a self-taught Full-Stack Developer.
-          </p>
+            <div className="principles-panel">
 
-          <p>
-            I transitioned into software engineering through an intensive
-            Data Science bootcamp, developing a strong foundation in analytics,
-            data-driven decision-making, and technical problem solving.
-            From there, I taught myself modern web development, mastering the
-            tools and architectures required to build scalable, user-focused
-            applications.
-          </p>
+              <h3>
+                ENGINEERING PRINCIPLES I BRING TO EVERY PROJECT
+              </h3>
 
-          <p>
-            Today, I combine analytical thinking with full-stack engineering
-            to transform complex ideas into intuitive digital products.
-            Whether designing front-end experiences, building backend systems,
-            or architecting complete applications, I approach every challenge
-            with the same commitment to precision, reliability, and craftsmanship
-            that defined my work before tech.
-          </p>
+              <div className="principles-row">
 
-          <p>
-            My path into software may be unconventional, but it has forged
-            the qualities that matter most: adaptability, resilience,
-            continuous learning, and the determination to solve difficult
-            problems. I don't just adapt to new technologies—I leverage them
-            to build meaningful products that create real impact.
-          </p>
+                <div className="principle-item">
+                  <FaBullseye />
+                  <span>Precision Welding</span>
+                  <div className="principle-arrow">↓</div>
+                  <strong>Code Quality</strong>
+                </div>
 
-          <div className="principles-panel">
+                <div className="principle-item">
+                  <FaShieldAlt />
+                  <span>Structural Integrity</span>
+                  <div className="principle-arrow">↓</div>
+                  <strong>Scalable Architecture</strong>
+                </div>
 
-            <h3>
-              Engineering Principles
-            </h3>
+                <div className="principle-item">
+                  <FaRegFileAlt />
+                  <span>Blueprint Reading</span>
+                  <div className="principle-arrow">↓</div>
+                  <strong>System Design</strong>
+                </div>
 
-            <div className="principle">
-              <span>Precision Welding</span>
-              <span>Code Quality</span>
-            </div>
+                <div className="principle-item">
+                  <FaChartLine />
+                  <span>Continuous Improvement</span>
+                  <div className="principle-arrow">↓</div>
+                  <strong>Lifelong Learning</strong>
+                </div>
 
-            <div className="principle">
-              <span>Structural Integrity</span>
-              <span>Scalable Architecture</span>
-            </div>
+              </div>
 
-            <div className="principle">
-              <span>Blueprint Reading</span>
-              <span>System Design</span>
-            </div>
-
-            <div className="principle">
-              <span>Continuous Improvement</span>
-              <span>Lifelong Learning</span>
             </div>
 
           </div>
@@ -124,7 +180,7 @@ export default function About() {
 
       </div>
 
-    </section>
+    </section >
   );
 }
 

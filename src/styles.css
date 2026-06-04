@@ -944,6 +944,100 @@ p {
 }
 
 /* =========================
+
+========================= */
+
+.about-story {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.timeline-column {
+  position: sticky;
+  top: 140px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background:
+    linear-gradient(to bottom,
+      #00ff88,
+      rgba(0, 255, 136, .2));
+}
+
+.timeline-node {
+  position: relative;
+
+  padding-left: 60px;
+
+  margin-bottom: 80px;
+}
+
+.timeline-node::before {
+  content: "";
+
+  position: absolute;
+
+  left: 12px;
+  top: 8px;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: #111;
+
+  border: 2px solid #00ff88;
+
+  transition: .4s ease;
+}
+
+.timeline-node.active::before {
+
+  background: #00ff88;
+
+  box-shadow:
+    0 0 10px rgba(0, 255, 136, .9),
+    0 0 25px rgba(0, 255, 136, .5);
+}
+
+.story-content {
+  max-width: 800px;
+}
+
+.story-content p {
+  margin-bottom: 24px;
+}
+
+.story-content h2 {
+  margin-bottom: 30px;
+}
+
+.principles-panel {
+
+  margin-top: 60px;
+
+  padding: 32px;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255, 255, 255, .03);
+
+  border:
+    1px solid rgba(0, 255, 136, .15);
+}
+
+/* =========================
    PROJECTS
 ========================= */
 
@@ -2486,6 +2580,20 @@ p {
 
   .card-image {
     height: 220px;
+  }
+
+  .about-story {
+
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .timeline-column {
+
+    position: relative;
+
+    top: auto;
   }
 }
 

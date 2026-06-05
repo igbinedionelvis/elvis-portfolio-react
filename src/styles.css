@@ -1357,6 +1357,16 @@ p {
     0 0 20px rgba(0, 255, 136, .25);
 }
 
+.desktop-rail {
+  display: none;
+}
+
+.mobile-only {
+  display: flex;
+}
+
+
+
 /* =========================
    PROJECTS
 ========================= */
@@ -2681,6 +2691,18 @@ p {
 /* =========================
    RESPONSIVE
 ========================= */
+
+@media (min-width: 1024px) {
+
+  .desktop-rail {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+}
 
 @media (max-width: 900px) {
   .hero {

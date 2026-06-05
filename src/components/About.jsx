@@ -21,9 +21,13 @@ export default function About() {
 
             <div className="timeline-line"></div>
 
+            <div className="desktop-rail">
+              <div className="desktop-rail-line"></div>
+            </div>
+
             <div className="timeline-node active">
 
-              <div className="timeline-icon">
+              <div className="timeline-icon mobile-only">
                 <FaHammer />
               </div>
 
@@ -45,7 +49,7 @@ export default function About() {
 
             <div className="timeline-node">
 
-              <div className="timeline-icon">
+              <div className="timeline-icon mobile-only">
                 <FaChartLine />
               </div>
 
@@ -67,7 +71,7 @@ export default function About() {
 
             <div className="timeline-node">
 
-              <div className="timeline-icon">
+              <div className="timeline-icon mobile-only">
                 <FaCode />
               </div>
 
@@ -89,7 +93,7 @@ export default function About() {
 
             <div className="timeline-node">
 
-              <div className="timeline-icon">
+              <div className="timeline-icon mobile-only">
                 <FaCube />
               </div>
 

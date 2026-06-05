@@ -2895,6 +2895,71 @@ p {
   }
 }
 
+/* =========================
+   ABOUT TABLET
+========================= */
+
+@media (max-width: 1100px) and (min-width: 769px) {
+
+  .about-story {
+    grid-template-columns: 220px 1fr;
+    gap: 60px;
+  }
+
+  .timeline-column {
+    width: 220px;
+  }
+
+  .timeline-node {
+    margin-bottom: 70px;
+  }
+
+  .timeline-node h4 {
+    font-size: 1rem;
+  }
+
+  .timeline-node p {
+    font-size: 0.95rem;
+    max-width: 180px;
+  }
+
+  .story-content h2 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .mission-statement {
+    font-size: 1.15rem;
+  }
+
+  .principles-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .principles-panel {
+    max-width: 760px;
+    padding: 18px 20px;
+  }
+
+  .principle-item {
+    padding: 8px 6px;
+  }
+
+  .principle-item svg {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .principle-item span {
+    font-size: 11px;
+  }
+
+  .principle-item strong {
+    font-size: 12px;
+  }
+
+}
+
 @media (max-width: 768px) {
 
   section {

@@ -968,11 +968,11 @@ p {
 
 .timeline-line {
   position: absolute;
-  left: 20px;
+  left: 19px;
   top: 0;
   bottom: 0;
 
-  width: 2px;
+  width: 3px;
 
   background:
     linear-gradient(to bottom,

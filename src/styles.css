@@ -3005,6 +3005,67 @@ p {
 
     gap: 20px;
   }
+
+  .message-container {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .message-left h2 {
+    font-size: 2.2rem;
+
+    max-width: 100%;
+  }
+
+  .message-description {
+    max-width: 100%;
+  }
+
+  .info-card ul {
+    gap: 12px;
+  }
+
+  .info-card li {
+    font-size: 15px;
+  }
+
+  .quick-connect-icons {
+    padding: 0;
+
+    justify-content: center;
+
+    gap: 24px;
+  }
+
+  .resume-card {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 14px;
+  }
+
+  .resume-btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .categories {
+    justify-content: center;
+  }
+
+  .category {
+    flex: 1 1 calc(50% - 10px);
+
+    text-align: center;
+  }
+
+  .message-form textarea {
+    min-height: 120px;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -3030,5 +3091,23 @@ p {
 
   .profile-panel {
     display: none !important;
+  }
+
+  .message-left h2 {
+    font-size: 1.9rem;
+  }
+
+  .message-label {
+    font-size: 12px;
+  }
+
+  .info-card h3,
+  .resume-card p,
+  .conversation-card h4 {
+    font-size: 17px;
+  }
+
+  .quick-connect-icons a {
+    font-size: 20px;
   }
 }

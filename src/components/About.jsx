@@ -27,9 +27,18 @@ export default function About() {
                 <FaHammer />
               </div>
 
-              <div>
+              <div className="timeline-content">
+
+                <span className="timeline-number">
+                  01
+                </span>
+
                 <h4>Precision Welding</h4>
-                <p>Foundations of craftsmanship</p>
+
+                <p>
+                  Foundations of craftsmanship
+                </p>
+
               </div>
 
             </div>
@@ -40,9 +49,18 @@ export default function About() {
                 <FaChartLine />
               </div>
 
-              <div>
+              <div className="timeline-content">
+
+                <span className="timeline-number">
+                  02
+                </span>
+
                 <h4>Data Science</h4>
-                <p>Analytical thinking and insight</p>
+
+                <p>
+                  Analytical thinking and insight
+                </p>
+
               </div>
 
             </div>
@@ -53,9 +71,18 @@ export default function About() {
                 <FaCode />
               </div>
 
-              <div>
+              <div className="timeline-content">
+
+                <span className="timeline-number">
+                  03
+                </span>
+
                 <h4>Full-Stack Development</h4>
-                <p>Building modern applications</p>
+
+                <p>
+                  Building modern applications
+                </p>
+
               </div>
 
             </div>
@@ -66,9 +93,18 @@ export default function About() {
                 <FaCube />
               </div>
 
-              <div>
+              <div className="timeline-content">
+
+                <span className="timeline-number">
+                  04
+                </span>
+
                 <h4>Digital Infrastructure</h4>
-                <p>Systems designed to scale</p>
+
+                <p>
+                  Systems designed to scale
+                </p>
+
               </div>
 
             </div>

@@ -1017,6 +1017,26 @@ p {
   transition: .4s ease;
 }
 
+.timeline-number {
+
+  display: block;
+
+  font-family: var(--font-tech);
+
+  color: rgba(0, 255, 136, .85);
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 8px;
+
+  text-shadow:
+    0 0 8px rgba(0, 255, 136, .15);
+}
+
 .timeline-node.active::before {
 
   background: #00ff88;
@@ -1306,6 +1326,15 @@ p {
     transform .3s ease,
     box-shadow .3s ease,
     border-color .3s ease;
+}
+
+.timeline-node p {
+
+  color: rgba(255, 255, 255, .78);
+
+  line-height: 1.6;
+
+  max-width: 220px;
 }
 
 .timeline-node:hover .timeline-icon {

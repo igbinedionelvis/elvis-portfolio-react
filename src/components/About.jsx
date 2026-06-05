@@ -141,7 +141,7 @@ export default function About() {
 
             <p>
               I transitioned into software engineering through an intensive
-              <span className="story-highlight">
+              {" "}<span className="story-highlight">
                 Data Science
               </span>{" "}
               bootcamp, developing a strong foundation in analytics,

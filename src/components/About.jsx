@@ -45,6 +45,8 @@ export default function About() {
 
               </div>
 
+              <div className="desktop-marker"></div>
+
             </div>
 
             <div className="timeline-node">
@@ -66,6 +68,8 @@ export default function About() {
                 </p>
 
               </div>
+
+              <div className="desktop-marker"></div>
 
             </div>
 
@@ -89,6 +93,8 @@ export default function About() {
 
               </div>
 
+              <div className="desktop-marker"></div>
+
             </div>
 
             <div className="timeline-node">
@@ -110,6 +116,8 @@ export default function About() {
                 </p>
 
               </div>
+
+              <div className="desktop-marker"></div>
 
             </div>
 

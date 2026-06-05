@@ -957,18 +957,22 @@ p {
 .about-story {
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 80px;
+  gap: 110px;
   align-items: start;
 }
 
 .timeline-column {
   position: sticky;
+
+  width: 240px;
+
   top: 140px;
 }
 
 .timeline-line {
   position: absolute;
-  left: 19px;
+  left: auto;
+  right: 7px;
   top: 0;
   bottom: 0;
 
@@ -1363,6 +1367,31 @@ p {
 
 .mobile-only {
   display: flex;
+}
+
+.desktop-marker {
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: #111;
+
+  border: 2px solid #00ff88;
+
+  flex-shrink: 0;
+
+  margin-top: 18px;
+
+  transition: .4s ease;
+}
+
+.timeline-node.active .desktop-marker {
+  background: #00ff88;
+
+  box-shadow:
+    0 0 10px rgba(0, 255, 136, .9),
+    0 0 25px rgba(0, 255, 136, .5);
 }
 
 
@@ -2694,8 +2723,36 @@ p {
 
 @media (min-width: 1024px) {
 
-  .desktop-rail {
-    display: block;
+  .timeline-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-left: 0;
+  }
+
+  .timeline-column {
+    position: relative;
+
+    align-items: start;
+  }
+
+  .timeline-content {
+    flex: 1;
+  }
+
+  .timeline-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-left: 0;
+
+    margin-bottom: 90px;
+  }
+
+  .timeline-node::before {
+    display: none;
   }
 
   .mobile-only {

@@ -27,8 +27,12 @@ export default function About() {
 
             <div className="timeline-node active">
 
-              <div className="timeline-icon mobile-only">
-                <FaHammer />
+              <div className="mobile-timeline-header">
+
+                <div className="timeline-icon mobile-only">
+                  <FaHammer />
+                </div>
+
               </div>
 
               <div className="timeline-content">
@@ -49,10 +53,14 @@ export default function About() {
 
             </div>
 
-            <div className="timeline-node">
+            <div className="timeline-node active">
 
-              <div className="timeline-icon mobile-only">
-                <FaChartLine />
+              <div className="mobile-timeline-header">
+
+                <div className="timeline-icon mobile-only">
+                  <FaChartLine />
+                </div>
+
               </div>
 
               <div className="timeline-content">
@@ -73,10 +81,14 @@ export default function About() {
 
             </div>
 
-            <div className="timeline-node">
+            <div className="timeline-node active">
 
-              <div className="timeline-icon mobile-only">
-                <FaCode />
+              <div className="mobile-timeline-header">
+
+                <div className="timeline-icon mobile-only">
+                  <FaCode />
+                </div>
+
               </div>
 
               <div className="timeline-content">
@@ -97,10 +109,14 @@ export default function About() {
 
             </div>
 
-            <div className="timeline-node">
+            <div className="timeline-node active">
 
-              <div className="timeline-icon mobile-only">
-                <FaCube />
+              <div className="mobile-timeline-header">
+
+                <div className="timeline-icon mobile-only">
+                  <FaCube />
+                </div>
+
               </div>
 
               <div className="timeline-content">

@@ -3227,7 +3227,7 @@ p {
   }
 
   .timeline-node {
-    margin-bottom: 50px;
+    margin-bottom: 38px;
   }
 
   .timeline-node h4 {
@@ -3238,6 +3238,10 @@ p {
     font-size: 0.95rem;
     line-height: 1.45;
     max-width: 150px;
+  }
+
+  .timeline-content {
+    padding-left: 74px;
   }
 
   .story-content h2 {
@@ -3284,6 +3288,30 @@ p {
 
   .principle-item::after {
     display: none;
+  }
+
+  .mobile-timeline-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin-left: 34px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-timeline-header::before {
+    content: "";
+
+    width: 28px;
+    height: 2px;
+
+    background: #00ff88;
+
+    margin-right: 12px;
+
+    box-shadow:
+      0 0 8px rgba(0, 255, 136, .4);
   }
 
 }

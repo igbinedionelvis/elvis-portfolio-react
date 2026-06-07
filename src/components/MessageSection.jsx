@@ -164,8 +164,8 @@ export default function MessageSection() {
 
                 <motion.div
                     className="message-right"
-                    initial={{ opacity: 0, x: 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
 
@@ -173,7 +173,7 @@ export default function MessageSection() {
                         className="info-card"
                         initial={{
                             opacity: 0,
-                            x: -100,
+                            x: -40,
                             rotate: -2
                         }}
                         whileInView={{
@@ -219,39 +219,39 @@ export default function MessageSection() {
                         </ul>
                     </motion.div>
 
-                        <div className="quick-connect-icons">
+                    <div className="quick-connect-icons">
 
-                            <a
-                                href="YOUR_GITHUB"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <FaGithub size={18} />
-                            </a>
+                        <a
+                            href="YOUR_GITHUB"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <FaGithub size={18} />
+                        </a>
 
-                            <a
-                                href="YOUR_LINKEDIN"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <FaLinkedin size={18} />
-                            </a>
+                        <a
+                            href="YOUR_LINKEDIN"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <FaLinkedin size={18} />
+                        </a>
 
-                            <a
-                                href="YOUR_X"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <FaXTwitter size={18} />
-                            </a>
+                        <a
+                            href="YOUR_X"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <FaXTwitter size={18} />
+                        </a>
 
-                            <a
-                                href="mailto:YOUR_EMAIL"
-                            >
-                                <Mail size={18} />
-                            </a>
+                        <a
+                            href="mailto:YOUR_EMAIL"
+                        >
+                            <Mail size={18} />
+                        </a>
 
-                        </div>
+                    </div>
 
                     <motion.div
                         className="resume-card"
@@ -296,7 +296,7 @@ export default function MessageSection() {
                         className="conversation-card"
                         initial={{
                             opacity: 0,
-                            x: 100,
+                            x: 40,
                             rotate: 2
                         }}
                         whileInView={{

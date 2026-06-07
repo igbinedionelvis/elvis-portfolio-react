@@ -8,8 +8,13 @@ import {
   FaShieldAlt,
   FaRegFileAlt
 } from "react-icons/fa";
+import { useState } from "react";
 
 export default function About() {
+
+  const [journeyOpen, setJourneyOpen] = useState(false);
+  const [principlesOpen, setPrinciplesOpen] = useState(false);
+
   return (
     <section className="about" id="about">
 
@@ -259,90 +264,110 @@ export default function About() {
 
             </div>
 
-            <div className="mobile-story-header">
-              MY JOURNEY
+            <div
+              className="mobile-story-header"
+              onClick={() => setJourneyOpen(!journeyOpen)}
+            >
+              <span>MY JOURNEY</span>
+              <span>{journeyOpen ? "▲" : "▼"}</span>
             </div>
 
-            <p>
-              My journey into technology began in a precision welding bay,
-              where success was measured in millimeters and structural integrity.
-              That same discipline, attention to detail, and problem-solving mindset
-              now drive my work as a self-taught{" "}
-              <span className="story-highlight">
-                Full-Stack Developer
-              </span>.
-            </p>
+            {journeyOpen && (
+              <div className="mobile-story-copy">
+                <>
+                  <p>
+                    My journey into technology began in a precision welding bay,
+                    where success was measured in millimeters and structural integrity.
+                    That same discipline, attention to detail, and problem-solving mindset
+                    now drive my work as a self-taught{" "}
+                    <span className="story-highlight">
+                      Full-Stack Developer
+                    </span>.
+                  </p>
 
-            <p>
-              I transitioned into software engineering through an intensive
-              {" "}<span className="story-highlight">
-                Data Science
-              </span>{" "}
-              bootcamp, developing a strong foundation in analytics,
-              data-driven decision-making, and technical problem solving.
-              From there, I taught myself modern web development, mastering the
-              tools and architectures required to build scalable, user-focused
-              applications.
-            </p>
+                  <p>
+                    I transitioned into software engineering through an intensive
+                    {" "}<span className="story-highlight">
+                      Data Science
+                    </span>{" "}
+                    bootcamp, developing a strong foundation in analytics,
+                    data-driven decision-making, and technical problem solving.
+                    From there, I taught myself modern web development, mastering the
+                    tools and architectures required to build scalable, user-focused
+                    applications.
+                  </p>
 
-            <p>
-              Today, I combine analytical thinking with full-stack engineering
-              to transform complex ideas into intuitive digital products.
-              Whether designing front-end experiences, building backend systems,
-              or architecting complete applications, I approach every challenge
-              with the same commitment to precision, reliability, and craftsmanship
-              that defined my work before tech.
-            </p>
+                  <p>
+                    Today, I combine analytical thinking with full-stack engineering
+                    to transform complex ideas into intuitive digital products.
+                    Whether designing front-end experiences, building backend systems,
+                    or architecting complete applications, I approach every challenge
+                    with the same commitment to precision, reliability, and craftsmanship
+                    that defined my work before tech.
+                  </p>
 
-            <p>
-              My path into software may be unconventional, but it has forged
-              the qualities that matter most: adaptability, resilience,
-              continuous learning, and the determination to solve difficult
-              problems. I don't just adapt to new technologies—I leverage them
-              to build meaningful products that create <span className="story-highlight">
-                real impact
-              </span>.
-            </p>
+                  <p>
+                    My path into software may be unconventional, but it has forged
+                    the qualities that matter most: adaptability, resilience,
+                    continuous learning, and the determination to solve difficult
+                    problems. I don't just adapt to new technologies—I leverage them
+                    to build meaningful products that create <span className="story-highlight">
+                      real impact
+                    </span>.
+                  </p>
+                </>
+              </div>
+            )}
 
-            <div className="principles-panel">
+            <div
+              className="mobile-principles-header"
+              onClick={() => setPrinciplesOpen(!principlesOpen)}
+            >
+              <span>ENGINEERING PRINCIPLES</span>
+              <span>{principlesOpen ? "▲" : "▼"}</span>
+            </div>
 
-              <h3>
-                ENGINEERING PRINCIPLES I BRING TO EVERY PROJECT
-              </h3>
+            {principlesOpen && (
+              <div className="principles-panel">
 
-              <div className="principles-row">
+                <h3>
+                  ENGINEERING PRINCIPLES I BRING TO EVERY PROJECT
+                </h3>
 
-                <div className="principle-item">
-                  <FaBullseye />
-                  <span>Precision Welding</span>
-                  <div className="principle-arrow">↓</div>
-                  <strong>Code Quality</strong>
-                </div>
+                <div className="principles-row">
 
-                <div className="principle-item">
-                  <FaShieldAlt />
-                  <span>Structural Integrity</span>
-                  <div className="principle-arrow">↓</div>
-                  <strong>Scalable Architecture</strong>
-                </div>
+                  <div className="principle-item">
+                    <FaBullseye />
+                    <span>Precision Welding</span>
+                    <div className="principle-arrow">↓</div>
+                    <strong>Code Quality</strong>
+                  </div>
 
-                <div className="principle-item">
-                  <FaRegFileAlt />
-                  <span>Blueprint Reading</span>
-                  <div className="principle-arrow">↓</div>
-                  <strong>System Design</strong>
-                </div>
+                  <div className="principle-item">
+                    <FaShieldAlt />
+                    <span>Structural Integrity</span>
+                    <div className="principle-arrow">↓</div>
+                    <strong>Scalable Architecture</strong>
+                  </div>
 
-                <div className="principle-item">
-                  <FaChartLine />
-                  <span>Continuous Improvement</span>
-                  <div className="principle-arrow">↓</div>
-                  <strong>Lifelong Learning</strong>
+                  <div className="principle-item">
+                    <FaRegFileAlt />
+                    <span>Blueprint Reading</span>
+                    <div className="principle-arrow">↓</div>
+                    <strong>System Design</strong>
+                  </div>
+
+                  <div className="principle-item">
+                    <FaChartLine />
+                    <span>Continuous Improvement</span>
+                    <div className="principle-arrow">↓</div>
+                    <strong>Lifelong Learning</strong>
+                  </div>
+
                 </div>
 
               </div>
-
-            </div>
+            )}
 
           </div>
 

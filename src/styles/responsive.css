@@ -354,42 +354,6 @@
             0 0 16px rgba(0, 255, 136, .15);
     }
 
-    .principles-row {
-
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 16px;
-    }
-
-    .principle-item {
-        padding: 8px;
-    }
-
-    .principle-item svg {
-        font-size: 22px;
-    }
-
-    .principle-item span {
-        font-size: 11px;
-    }
-
-    .principle-item strong {
-        font-size: 12px;
-    }
-
-    .principle-item::after {
-        display: none;
-    }
-
-    .principles-panel {
-        padding: 18px 14px;
-        margin-top: 40px;
-    }
-
-    .timeline-node {
-        margin-bottom: 50px;
-    }
-
     .message-container {
         grid-template-columns: 1fr;
 
@@ -456,17 +420,18 @@
     }
 
     .timeline-number {
-        font-size: 18px;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
     }
 
     .timeline-node h4 {
         font-size: 1.1rem;
     }
 
-    .timeline-node p {
-        font-size: 0.95rem;
-        line-height: 1.45;
-        max-width: 180px;
+    .about-tag {
+        font-size: 11px;
+        letter-spacing: 3px;
     }
 
     .story-content {
@@ -474,14 +439,9 @@
     }
 
     .story-content h2 {
-        font-size: 2.8rem;
-        line-height: 0.95;
+        font-size: 2.4rem;
+        line-height: 0.9;
         margin-bottom: 20px;
-    }
-
-    .mission-statement {
-        font-size: 1rem;
-        margin-bottom: 28px;
     }
 
     .story-content p {
@@ -546,19 +506,6 @@
     .mission-statement {
         font-size: 1rem;
         margin-bottom: 28px;
-    }
-
-    .story-content p {
-        font-size: 1rem;
-        line-height: 1.8;
-    }
-
-    .mobile-story-copy {
-        display: block;
-    }
-
-    .story-content>p {
-        display: block;
     }
 
     .principles-panel {
@@ -639,7 +586,7 @@
     }
 
     .story-content>p {
-        display: none;
+        display: block;
     }
 
     .timeline-column {
@@ -654,7 +601,7 @@
 
     .mobile-rail {
         position: absolute;
-        left: 30px;
+        left: 18px;
         top: 0;
         bottom: 0;
 
@@ -677,7 +624,7 @@
 
         gap: 18px;
 
-        margin-bottom: 42px;
+        margin-bottom: 34px;
 
         padding-left: 14px;
     }
@@ -687,6 +634,10 @@
         height: 14px;
 
         border-radius: 50%;
+
+        position: relative;
+
+        left: -1px;
 
         background: #00ff88;
 
@@ -717,6 +668,26 @@
 
         box-shadow:
             0 0 24px rgba(0, 255, 136, .15);
+    }
+
+    .mobile-content .timeline-number {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+
+    .mobile-content h4 {
+        font-size: 0.9rem;
+        line-height: 1.2;
+        letter-spacing: 1.25px;
+        margin-bottom: 8px;
+    }
+
+    .mobile-content p {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        opacity: .72;
+        color: rgba(255, 255, 255, .78);
     }
 
 }

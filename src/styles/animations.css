@@ -149,3 +149,24 @@
         box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
     }
 }
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.mobile-story-copy,
+.principles-panel {
+    animation: fadeInUp .35s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

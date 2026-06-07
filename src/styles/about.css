@@ -523,6 +523,13 @@
     display: flex;
 }
 
+.mobile-timeline,
+.mobile-story-header,
+.mobile-principles-header,
+.mobile-story-copy {
+    display: none;
+}
+
 .desktop-marker {
     width: 16px;
     height: 16px;
@@ -549,7 +556,6 @@
 }
 
 .mobile-story-header {
-    display: flex;
     justify-content: space-between;
     align-items: center;
 
@@ -563,4 +569,8 @@
 
     font-family: var(--font-tech);
     color: #00ff88;
+}
+
+.desktop-principles {
+    margin-top: 60px;
 }

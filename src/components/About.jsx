@@ -157,6 +157,112 @@ export default function About() {
               <span> I BUILD SYSTEMS DESIGNED TO LAST.</span>
             </p>
 
+            <div className="mobile-timeline">
+
+              <div className="mobile-rail"></div>
+
+              <div className="mobile-node">
+
+                <div className="mobile-node-dot"></div>
+
+                <div className="mobile-icon">
+                  <FaHammer />
+                </div>
+
+                <div className="mobile-content">
+
+                  <span className="timeline-number">
+                    01
+                  </span>
+
+                  <h4>PRECISION WELDING</h4>
+
+                  <p>
+                    Foundations of craftsmanship
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div className="mobile-node">
+
+                <div className="mobile-node-dot"></div>
+
+                <div className="mobile-icon">
+                  <FaChartLine />
+                </div>
+
+                <div className="mobile-content">
+
+                  <span className="timeline-number">
+                    02
+                  </span>
+
+                  <h4>DATA SCIENCE</h4>
+
+                  <p>
+                    Analytical thinking and insight
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div className="mobile-node">
+
+                <div className="mobile-node-dot"></div>
+
+                <div className="mobile-icon">
+                  <FaCode />
+                </div>
+
+                <div className="mobile-content">
+
+                  <span className="timeline-number">
+                    03
+                  </span>
+
+                  <h4>FULL-STACK DEVELOPMENT</h4>
+
+                  <p>
+                    Building modern applications
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div className="mobile-node">
+
+                <div className="mobile-node-dot"></div>
+
+                <div className="mobile-icon">
+                  <FaCube />
+                </div>
+
+                <div className="mobile-content">
+
+                  <span className="timeline-number">
+                    04
+                  </span>
+
+                  <h4>DIGITAL INFRASTRUCTURE</h4>
+
+                  <p>
+                    Systems designed to scale
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div className="mobile-story-header">
+              MY JOURNEY
+            </div>
+
             <p>
               My journey into technology began in a precision welding bay,
               where success was measured in millimeters and structural integrity.

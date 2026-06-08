@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import {
-  FaHammer,
   FaChartLine,
   FaCode,
   FaCube,
@@ -9,6 +8,9 @@ import {
   FaRegFileAlt
 } from "react-icons/fa";
 import { useState } from "react";
+import WeldingTorch from "../assets/icons/WeldingTorch.svg";
+import AnalyticsGrid from "../assets/icons/AnalyticsGrid.svg";
+import InfrastructureGrid from "../assets/icons/InfrastructureGrid.svg"
 
 export default function About() {
 
@@ -32,14 +34,6 @@ export default function About() {
 
             <div className="timeline-node active">
 
-              <div className="mobile-timeline-header">
-
-                <div className="timeline-icon mobile-only">
-                  <FaHammer />
-                </div>
-
-              </div>
-
               <div className="timeline-content">
 
                 <span className="timeline-number">
@@ -59,14 +53,6 @@ export default function About() {
             </div>
 
             <div className="timeline-node active">
-
-              <div className="mobile-timeline-header">
-
-                <div className="timeline-icon mobile-only">
-                  <FaChartLine />
-                </div>
-
-              </div>
 
               <div className="timeline-content">
 
@@ -88,14 +74,6 @@ export default function About() {
 
             <div className="timeline-node active">
 
-              <div className="mobile-timeline-header">
-
-                <div className="timeline-icon mobile-only">
-                  <FaCode />
-                </div>
-
-              </div>
-
               <div className="timeline-content">
 
                 <span className="timeline-number">
@@ -115,14 +93,6 @@ export default function About() {
             </div>
 
             <div className="timeline-node active">
-
-              <div className="mobile-timeline-header">
-
-                <div className="timeline-icon mobile-only">
-                  <FaCube />
-                </div>
-
-              </div>
 
               <div className="timeline-content">
 
@@ -262,7 +232,7 @@ export default function About() {
               <div className="mobile-node-dot"></div>
 
               <div className="mobile-icon">
-                <FaHammer />
+                <img src={WeldingTorch} alt="" />
               </div>
 
               <div className="mobile-content">
@@ -286,7 +256,7 @@ export default function About() {
               <div className="mobile-node-dot"></div>
 
               <div className="mobile-icon">
-                <FaChartLine />
+                <img src={AnalyticsGrid} alt="" />
               </div>
 
               <div className="mobile-content">
@@ -334,7 +304,7 @@ export default function About() {
               <div className="mobile-node-dot"></div>
 
               <div className="mobile-icon">
-                <FaCube />
+                <img src={InfrastructureGrid} alt="" />
               </div>
 
               <div className="mobile-content">
@@ -356,7 +326,7 @@ export default function About() {
           </div>
 
           <div
-            className="mobile-story-header"
+            className="mobile-accordion-header mobile-story-header"
             onClick={() => setJourneyOpen(!journeyOpen)}
           >
             <span>MY JOURNEY</span>
@@ -412,7 +382,7 @@ export default function About() {
           )}
 
           <div
-            className="mobile-principles-header"
+            className="mobile-accordion-header mobile-principles-header"
             onClick={() => setPrinciplesOpen(!principlesOpen)}
           >
             <span>ENGINEERING PRINCIPLES</span>

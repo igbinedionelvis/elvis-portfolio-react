@@ -705,14 +705,6 @@
         display: none !important;
     }
 
-    .mobile-accordion-arrow {
-        transition: transform .3s ease;
-    }
-
-    .mobile-accordion-header.active .mobile-accordion-arrow {
-        transform: rotate(180deg);
-    }
-
 }
 
 @media (max-width: 480px) {

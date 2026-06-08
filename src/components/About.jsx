@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import {
   FaChartLine,
   FaCode,
@@ -16,6 +17,46 @@ export default function About() {
 
   const [journeyOpen, setJourneyOpen] = useState(false);
   const [principlesOpen, setPrinciplesOpen] = useState(false);
+
+  useEffect(() => {
+
+    const nodes =
+      document.querySelectorAll(
+        ".mobile-node"
+      );
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "reveal-visible"
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.2
+        }
+
+      );
+
+    nodes.forEach(node =>
+      observer.observe(node)
+    );
+
+    return () => observer.disconnect();
+
+  }, []);
 
   return (
     <section className="about" id="about">
@@ -114,7 +155,7 @@ export default function About() {
 
           </div>
 
-          <div className="story-content">
+          <div className="story-content fade-in-up">
 
             <span className="about-tag">
               Building Systems Designed To Last
@@ -330,7 +371,12 @@ export default function About() {
             onClick={() => setJourneyOpen(!journeyOpen)}
           >
             <span>MY JOURNEY</span>
-            <span>{journeyOpen ? "▲" : "▼"}</span>
+            <span
+              className={`mobile-accordion-arrow ${journeyOpen ? "active" : ""
+                }`}
+            >
+              ▼
+            </span>
           </div>
 
 
@@ -386,7 +432,12 @@ export default function About() {
             onClick={() => setPrinciplesOpen(!principlesOpen)}
           >
             <span>ENGINEERING PRINCIPLES</span>
-            <span>{principlesOpen ? "▲" : "▼"}</span>
+            <span
+              className={`mobile-accordion-arrow ${principlesOpen ? "active" : ""
+                }`}
+            >
+              ▼
+            </span>
           </div>
 
           {principlesOpen && (

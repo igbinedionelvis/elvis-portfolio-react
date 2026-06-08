@@ -154,19 +154,30 @@
    ABOUT SECTION
 ========================= */
 
+.fade-in-up {
+    opacity: 0;
+
+    transform: translateY(24px);
+
+    animation:
+        fadeInUp .6s ease forwards;
+}
+
 .mobile-story-copy,
 .principles-panel {
     animation: fadeInUp .35s ease;
 }
 
 @keyframes fadeInUp {
+
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(24px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
     }
+
 }

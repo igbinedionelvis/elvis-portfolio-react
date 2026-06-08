@@ -1,30 +1,43 @@
 import { motion } from "framer-motion";
 
-const languages = [
-    "JavaScript",
-    "TypeScript",
-    "Python",
-    "SQL"
-];
+import {
+    Code2,
+    Server,
+    Sparkles,
+    Wrench
+} from "lucide-react";
 
-const core = [
+const frontend = [
     "React",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Framer Motion",
+    "Responsive Design"
+];
+
+const backend = [
     "Node.js",
-    "PostgreSQL"
+    "Express.js",
+    "REST APIs",
+    "MongoDB",
+    "Authentication"
 ];
 
-const infrastructure = [
-    "Docker",
-    "Supabase",
+const ai = [
+    "OpenAI APIs",
+    "Prompt Engineering",
+    "AI Product Design",
+    "Workflow Automation"
+];
+
+const tools = [
     "Git",
-    "REST APIs"
-];
-
-const outcomes = [
-    "AI Systems",
-    "Analytics Platforms",
-    "Automation Workflows",
-    "SaaS Products"
+    "GitHub",
+    "VS Code",
+    "Figma",
+    "Vite",
+    "Postman"
 ];
 
 export default function Skills() {
@@ -40,50 +53,82 @@ export default function Skills() {
                     viewport={{ once: true }}
                 >
                     <span className="skills-tag">
-                        SYSTEM CAPABILITIES
+                        MY SKILL MATRIX
                     </span>
 
                     <h2>
-                        Technologies, Infrastructure
-                        & Outcomes
+                        What I Build
                     </h2>
 
                     <p>
-                        Modern digital systems are built through
-                        the combination of robust engineering,
-                        scalable infrastructure, and intelligent
-                        business outcomes.
+                        I combine modern web technologies,
+                        AI and automation to build powerful,
+                        scalable digital products.
                     </p>
                 </motion.div>
 
+                <div className="outcome-strip">
+
+                    <span>Responsive Web Apps</span>
+
+                    <span>AI Products</span>
+
+                    <span>REST APIs</span>
+
+                    <span>Automation Systems</span>
+
+                </div>
+
                 {/* CORE */}
 
-                <div className="skills-dashboard">
+                <div className="skill-matrix-grid">
 
                     <div className="dashboard-card">
-                        <h3>Languages</h3>
 
-                        <div className="languages-grid">
-                            {languages.map((skill) => (
+                        <div className="skill-card-header">
+                            <div className="skill-icon">
+                                <Code2 size={20} />
+                            </div>
+
+                            <h3>Frontend Engineering</h3>
+                        </div>
+
+                        <p className="skill-description">
+                            Building fast, responsive and intuitive interfaces.
+                        </p>
+
+                        <div className="skill-pills">
+                            {frontend.map((skill) => (
                                 <motion.div
                                     key={skill}
-                                    className="language-node"
+                                    className="skill-pill"
                                     whileHover={{ y: -4, scale: 1.05 }}
                                 >
                                     {skill}
                                 </motion.div>
                             ))}
                         </div>
+
                     </div>
 
                     <div className="dashboard-card">
-                        <h3>Core Systems</h3>
+                        <div className="skill-card-header">
+                            <div className="skill-icon">
+                                <Server size={20} />
+                            </div>
 
-                        <div className="network-grid">
-                            {core.map((skill) => (
+                            <h3>Backend Development</h3>
+                        </div>
+
+                        <p className="skill-description">
+                            Building robust APIs and scalable server-side applications.
+                        </p>
+
+                        <div className="skill-pills">
+                            {backend.map((skill) => (
                                 <motion.div
                                     key={skill}
-                                    className="core-node"
+                                    className="skill-pill"
                                     whileHover={{ scale: 1.08 }}
                                 >
                                     {skill}
@@ -93,13 +138,23 @@ export default function Skills() {
                     </div>
 
                     <div className="dashboard-card">
-                        <h3>Infrastructure</h3>
+                        <div className="skill-card-header">
+                            <div className="skill-icon">
+                                <Sparkles size={20} />
+                            </div>
 
-                        <div className="infrastructure-grid">
-                            {infrastructure.map((skill) => (
+                            <h3>AI & Automation</h3>
+                        </div>
+
+                        <p className="skill-description">
+                            Creating intelligent workflows and AI-driven solutions.
+                        </p>
+
+                        <div className="skill-pills">
+                            {ai.map((skill) => (
                                 <motion.div
                                     key={skill}
-                                    className="infra-node"
+                                    className="skill-pill"
                                     whileHover={{ y: -4 }}
                                 >
                                     {skill}
@@ -108,14 +163,24 @@ export default function Skills() {
                         </div>
                     </div>
 
-                                        <div className="dashboard-card">
-                        <h3>What I Build</h3>
+                    <div className="dashboard-card">
+                        <div className="skill-card-header">
+                            <div className="skill-icon">
+                                <Wrench size={20} />
+                            </div>
 
-                        <div className="outcomes-grid">
-                            {outcomes.map((item) => (
+                            <h3>Tools & Workflow</h3>
+                        </div>
+
+                        <p className="skill-description">
+                            Tools and practices that power my development workflow.
+                        </p>
+
+                        <div className="skill-pills">
+                            {tools.map((item) => (
                                 <motion.div
                                     key={item}
-                                    className="outcome-card"
+                                    className="skill-pill"
                                     whileHover={{ y: -6 }}
                                 >
                                     {item}

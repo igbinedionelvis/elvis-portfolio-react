@@ -705,6 +705,33 @@
         display: none !important;
     }
 
+    .skill-matrix-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 24px;
+    }
+
+    .dashboard-card h3 {
+        font-size: 1.35rem;
+    }
+
+    .skill-pill {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .skill-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skill-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
 }
 
 @media (max-width: 480px) {

@@ -655,6 +655,9 @@
         font-size: 1.1rem;
         letter-spacing: 2px;
         margin-bottom: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
     }
 
     .mobile-content h4 {
@@ -700,6 +703,14 @@
     .desktop-story,
     .desktop-principles {
         display: none !important;
+    }
+
+    .mobile-accordion-arrow {
+        transition: transform .3s ease;
+    }
+
+    .mobile-accordion-header.active .mobile-accordion-arrow {
+        transform: rotate(180deg);
     }
 
 }

@@ -732,6 +732,23 @@
         height: 18px;
     }
 
+    .learning-badge {
+        position: static;
+
+        margin: 0 auto 20px;
+
+        width: fit-content;
+    }
+
+    .skills-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .learning-badge {
+        order: -1;
+    }
+
 }
 
 @media (max-width: 480px) {

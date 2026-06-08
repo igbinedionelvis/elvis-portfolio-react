@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-
+import SkillMatrixGraphic from "./SkillMatrixGraphic";
 import {
     Code2,
     Server,
     Sparkles,
-    Wrench
+    Bot,
+    Rocket,
+    Zap
 } from "lucide-react";
 
 const frontend = [
@@ -52,9 +54,13 @@ export default function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <span className="skills-tag">
-                        MY SKILL MATRIX
-                    </span>
+                    <div className="skills-tag-wrapper">
+                        <span className="skills-tag-dot"></span>
+
+                        <span className="skills-tag">
+                            MY SKILL MATRIX
+                        </span>
+                    </div>
 
                     <h2>
                         What I Build
@@ -69,21 +75,44 @@ export default function Skills() {
 
                 <div className="outcome-strip">
 
-                    <span>Responsive Web Apps</span>
+                    <span>
+                        <Code2 size={14} />
+                        Responsive Web Apps
+                    </span>
 
-                    <span>AI Products</span>
+                    <span>
+                        <Sparkles size={14} />
+                        AI Products
+                    </span>
 
-                    <span>REST APIs</span>
+                    <span>
+                        <Server size={14} />
+                        REST APIs
+                    </span>
 
-                    <span>Automation Systems</span>
+                    <span>
+                        <Bot size={14} />
+                        Automation Systems
+                    </span>
 
+                </div>
+
+                <div className="learning-badge">
+                    <Zap size={14} />
+                    Always Learning, Always building.
                 </div>
 
                 {/* CORE */}
 
                 <div className="skill-matrix-grid">
 
-                    <div className="dashboard-card">
+                    <motion.div
+                        className="dashboard-card"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0 }}
+                    >
 
                         <div className="skill-card-header">
                             <div className="skill-icon">
@@ -104,14 +133,23 @@ export default function Skills() {
                                     className="skill-pill"
                                     whileHover={{ y: -4, scale: 1.05 }}
                                 >
-                                    {skill}
+                                    <>
+                                        <span className="pill-dot"></span>
+                                        {skill}
+                                    </>
                                 </motion.div>
                             ))}
+                            <SkillMatrixGraphic />
                         </div>
+                    </motion.div>
 
-                    </div>
-
-                    <div className="dashboard-card">
+                    <motion.div
+                        className="dashboard-card"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                    >
                         <div className="skill-card-header">
                             <div className="skill-icon">
                                 <Server size={20} />
@@ -131,16 +169,27 @@ export default function Skills() {
                                     className="skill-pill"
                                     whileHover={{ scale: 1.08 }}
                                 >
-                                    {skill}
+                                    <>
+                                        <span className="pill-dot"></span>
+                                        {skill}
+                                    </>
                                 </motion.div>
                             ))}
+                            <SkillMatrixGraphic />
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="dashboard-card">
+
+                    <motion.div
+                        className="dashboard-card"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                    >
                         <div className="skill-card-header">
                             <div className="skill-icon">
-                                <Sparkles size={20} />
+                                <Bot size={20} />
                             </div>
 
                             <h3>AI & Automation</h3>
@@ -157,16 +206,27 @@ export default function Skills() {
                                     className="skill-pill"
                                     whileHover={{ y: -4 }}
                                 >
-                                    {skill}
+                                    <>
+                                        <span className="pill-dot"></span>
+                                        {skill}
+                                    </>
                                 </motion.div>
                             ))}
+                            <SkillMatrixGraphic />
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="dashboard-card">
+
+                    <motion.div
+                        className="dashboard-card"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.45 }}
+                    >
                         <div className="skill-card-header">
                             <div className="skill-icon">
-                                <Wrench size={20} />
+                                <Bot size={20} />
                             </div>
 
                             <h3>Tools & Workflow</h3>
@@ -177,20 +237,31 @@ export default function Skills() {
                         </p>
 
                         <div className="skill-pills">
-                            {tools.map((item) => (
+                            {tools.map((skill) => (
                                 <motion.div
-                                    key={item}
+                                    key={skill}
                                     className="skill-pill"
                                     whileHover={{ y: -6 }}
                                 >
-                                    {item}
+                                    <>
+                                        <span className="pill-dot"></span>
+                                        {skill}
+                                    </>
                                 </motion.div>
                             ))}
+                            <SkillMatrixGraphic />
                         </div>
+                    </motion.div>
 
-                    </div> {/* dashboard-card */}
+                </div> {/* skill-matrix-grid */}
 
-                </div> {/* skills-dashboard */}
+                <div className="skills-mission">
+                    <Rocket size={18} />
+
+                    <span>
+                        I enjoy solving complex problems and turning ideas into real, impactful products.
+                    </span>
+                </div>
 
             </div> {/* skills-container */}
 

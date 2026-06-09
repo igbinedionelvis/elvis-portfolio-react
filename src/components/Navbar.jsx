@@ -17,7 +17,8 @@ export default function Navbar() {
         });
       },
       {
-        threshold: 0.6, // controls when section becomes active
+        rootMargin: "-100px 0px -50% 0px",
+        threshold: 0,// controls when section becomes active
       }
     );
 
@@ -44,7 +45,7 @@ export default function Navbar() {
 
         <div className="nav-links">
           {navItem("home", "Home")}
-          {navItem("about", "About")}      
+          {navItem("about", "About")}
           {navItem("projects", "Projects")}
           {navItem("skills", "Skills")}
           {navItem("message", "Message")}
@@ -69,7 +70,7 @@ export default function Navbar() {
 
         <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
           {navItem("home", "Home")}
-          {navItem("about", "About")}         
+          {navItem("about", "About")}
           {navItem("projects", "Projects")}
           {navItem("skills", "Skills")}
           {navItem("message", "Message")}

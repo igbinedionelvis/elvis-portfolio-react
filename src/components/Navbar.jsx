@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Grid2X2, X } from "lucide-react";
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -42,8 +44,35 @@ export default function Navbar() {
 
         <div className="nav-links">
           {navItem("home", "Home")}
-          {navItem("about", "About")}
+          {navItem("about", "About")}      
           {navItem("projects", "Projects")}
+          {navItem("skills", "Skills")}
+          {navItem("message", "Message")}
+          {navItem("contact", "Contact")}
+        </div>
+
+        <div className="nav-status">
+          <span className="status-dot"></span>
+          Available
+        </div>
+
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <div className={`hamburger ${menuOpen ? "active" : ""}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
+          {navItem("home", "Home")}
+          {navItem("about", "About")}         
+          {navItem("projects", "Projects")}
+          {navItem("skills", "Skills")}
+          {navItem("message", "Message")}
           {navItem("contact", "Contact")}
         </div>
       </div>

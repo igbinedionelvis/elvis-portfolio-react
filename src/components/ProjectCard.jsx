@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 export default function ProjectCard({
   project,
-  thinkingMode,
   onClick
 }) {
 
@@ -14,7 +13,6 @@ export default function ProjectCard({
   /* =========================
      IMAGE CYCLING
   ========================= */
-
   useEffect(() => {
 
     if (!isHovered) return;
@@ -132,28 +130,6 @@ export default function ProjectCard({
           </a>
 
         </div>
-
-        {/* 🔥 THINKING MODE */}
-        {thinkingMode && (
-          <div className="thinking">
-
-            <p>
-              <strong>Problem:</strong>{" "}
-              {project.thinking.problem}
-            </p>
-
-            <p>
-              <strong>Approach:</strong>{" "}
-              {project.thinking.approach}
-            </p>
-
-            <p>
-              <strong>Trade-off:</strong>{" "}
-              {project.thinking.tradeoff}
-            </p>
-
-          </div>
-        )}
 
       </div>
 

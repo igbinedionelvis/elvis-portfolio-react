@@ -7,6 +7,12 @@ import Contact from "./components/Contact";
 import MessageSection from "./components/MessageSection";
 import Reveal from "./components/Reveal";
 import Cursor from "./components/Cursor";
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+
+import ProjectDetails from "./pages/ProjectDetails";
 
 
 function App() {
@@ -15,31 +21,46 @@ function App() {
       <Cursor />
       <Navbar />
 
-      <main>
-        <Reveal>
-          <Hero />
-        </Reveal>
+      <Routes>
 
-        <Reveal>
-          <About />
-        </Reveal>
+        <Route
+          path="/"
+          element={
+            <>
+              <Reveal>
+                <Hero />
+              </Reveal>
 
-        <Reveal>
-          <Projects />
-        </Reveal>
+              <Reveal>
+                <About />
+              </Reveal>
 
-        <Reveal>
-          <Skills />
-        </Reveal>
+              <Reveal>
+                <Projects />
+              </Reveal>
 
-        <Reveal>
-          <MessageSection />
-        </Reveal>
+              <Reveal>
+                <Skills />
+              </Reveal>
 
-        <Reveal>
-          <Contact />
-        </Reveal>
-      </main>
+              <Reveal>
+                <MessageSection />
+              </Reveal>
+
+              <Reveal>
+                <Contact />
+              </Reveal>
+            </>
+          }
+        />
+
+        <Route
+          path="/projects/:slug"
+          element={<ProjectDetails />}
+        />
+
+      </Routes>
+
     </>
   );
 }

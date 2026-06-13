@@ -956,3 +956,73 @@
     }
 
 }
+
+/* =========================
+   PROJECT MAGNET
+========================= */
+
+@media (max-width: 1440px) {
+
+    .featured-layout {
+
+        grid-template-columns:
+
+            80px minmax(420px, 470px) minmax(360px, 420px);
+
+        gap: 20px;
+    }
+
+    .featured-details {
+
+        max-width: 450px;
+    }
+
+    .featured-visual {
+
+        max-width: 420px;
+
+        margin-right: 0;
+    }
+
+    .featured-visual img {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+    .floating-stack {
+
+        left: 710px;
+
+        top: 390px;
+    }
+
+    .featured-details h3 {
+
+        font-size: 3rem;
+    }
+
+    .preview-card {
+
+        width: 240px;
+    }
+}
+
+@media (max-width:1280px) {
+
+
+
+
+
+}
+
+
+@media (max-width:1024px){
+
+}
+
+
+@media (max-width:768px){
+
+}

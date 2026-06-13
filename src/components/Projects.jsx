@@ -1,181 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
-import ProjectCard from "./ProjectCard";
-import {
-  FaReact,
-  FaNodeJs,
-  FaGitAlt
-} from "react-icons/fa";
-
-import {
-  SiTypescript,
-  SiSupabase
-} from "react-icons/si";
+import { Link } from "react-router-dom";
+import { projects } from "../data/projectData";
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null);
-  const triggerRefs = useRef([]);
-
-  const projects = [
-    {
-      title: "Lead Intelligence SaaS Platform",
-      status: "DEPLOYED",
-
-      images: [
-        "/projects/lead-1.png",
-        "/projects/lead-2.png",
-        "/projects/lead-3.png"
-      ],
-
-      icons: [
-        <FaReact />,
-        <SiTypescript />,
-        <SiSupabase />,
-        <FaNodeJs />,
-        <FaGitAlt />
-      ],
-
-      description:
-        "Modern SaaS platform designed to help startups manage lead intelligence, outreach workflows, and sales pipeline visibility through interactive analytics and scalable dashboard architecture.",
-
-      stack:
-        "React • TypeScript • Supabase • TailwindCSS • Recharts • Framer Motion",
-
-      github:
-        "https://github.com/igbinedionelvis/leadpilot-saas-dashboard",
-
-      live:
-        "https://leadpilot-saas-dashboard.vercel.app/",
-
-      thinking: {
-        problem:
-          "Startups often struggle to centralize outreach tracking, lead intelligence, and operational visibility into one scalable workflow system.",
-
-        approach:
-          "Designed a scalable SaaS-style dashboard with lead management workflows, analytics visualization, and modular frontend architecture optimized for growth.",
-
-        tradeoff:
-          "Prioritized frontend scalability, responsiveness, and product architecture before implementing deeper automation layers."
-      }
-    },
-
-    {
-      title: "Workforce Intelligence Dashboard",
-      status: "DEPLOYED",
-
-      images: [
-        "/projects/workforce-1.png",
-        "/projects/workforce-2.png",
-        "/projects/workforce-3.png"
-      ],
-
-      icons: [
-        <FaReact />,
-        <FaNodeJs />,
-        <FaGitAlt />
-      ],
-
-      description:
-        "AI-powered workforce analytics platform designed to help organizations monitor employee performance, hiring operations, and workforce trends through real-time KPI tracking and interactive data visualization.",
-
-      stack:
-        "React • TailwindCSS • Vite • Recharts",
-
-      github:
-        "https://github.com/igbinedionelvis/workforce-intelligence-dashboard",
-
-      live:
-        "https://workforce-intelligence-dashboard.vercel.app/",
-
-      thinking: {
-        problem:
-          "Organizations often struggle to centralize workforce metrics, hiring visibility, and operational insights into a single actionable system.",
-
-        approach:
-          "Built a scalable SaaS-inspired analytics dashboard with KPI tracking, interactive charts, hiring pipeline visualization, and AI-driven workforce insights simulation.",
-
-        tradeoff:
-          "Focused on frontend scalability, responsive UX, and business intelligence workflows before introducing deeper backend automation layers."
-      }
-    },
-
-    {
-      title: "Interactive Portfolio Experience",
-      status: "DEPLOYED",
-
-      images: [
-        "/projects/portfolio-1.png",
-        "/projects/portfolio-2.png",
-        "/projects/portfolio-3.png"
-      ],
-
-      icons: [
-        <FaReact />,
-        <FaGitAlt />
-      ],
-
-      description:
-        "Modern developer portfolio focused on immersive UI interactions, motion design, and systems-oriented storytelling to showcase product-focused engineering work.",
-
-      stack:
-        "React • CSS • Framer Motion",
-
-      github: "#",
-
-      live:
-        "https://elvis-portfolio-react.vercel.app/",
-
-      thinking: {
-        problem:
-          "Most developer portfolios feel static, generic, and fail to communicate technical identity effectively.",
-
-        approach:
-          "Focused on cinematic UI interactions, animation systems, and storytelling-driven layout design to create a memorable user experience.",
-
-        tradeoff:
-          "Balanced advanced visual interaction with usability and responsive layout considerations."
-      }
-    },
-
-    {
-      title: "AI Automation System (In Progress)",
-      status: "IN DEVELOPMENT",
-
-      images: [
-        "/projects/ai-automation-1.png",
-        "/projects/ai-automation-2.png",
-        "/projects/ai-automation-3.png"
-      ],
-
-      icons: [
-        <FaReact />,
-        <FaNodeJs />,
-        <FaGitAlt />
-      ],
-
-      description:
-        "Currently building a scalable automation-focused platform centered around AI workflows, operational efficiency, and intelligent data processing.",
-
-      stack:
-        "React • Node.js • AI APIs",
-
-      github: "#",
-
-      live: "#",
-
-      thinking: {
-        problem:
-          "Modern businesses lose significant time through repetitive manual operational processes.",
-
-        approach:
-          "Exploring AI-assisted workflow automation systems focused on scalability and operational efficiency.",
-
-        tradeoff:
-          "Prioritizing flexible architecture and experimentation before production-level optimization."
-      }
-    }
-  ];
 
   const [activeIndex, setActiveIndex] =
     useState(0);
@@ -189,9 +17,6 @@ export default function Projects() {
 
   const previewProjects =
     nextProjects;
-
-  const systemProjects =
-    projects;
 
   return (
     <motion.section
@@ -268,13 +93,11 @@ export default function Projects() {
 
             <div className="floating-stack">
 
-              {featuredProject.icons.map(
-                (icon, index) => (
-                  <span key={index}>
-                    {icon}
-                  </span>
-                )
-              )}
+              {featuredProject.icons.map((Icon, index) => (
+                <span key={index}>
+                  <Icon />
+                </span>
+              ))}
 
             </div>
 
@@ -290,41 +113,42 @@ export default function Projects() {
 
               <div className="system-meta">
                 <span>FULL STACK</span>
+
+                <span>•</span>
+
                 <span>SAAS</span>
+
+                <span>•</span>
+
                 <span>ANALYTICS</span>
+              </div>
+
+              <div className="project-stack">
+                {featuredProject.stack.split(" • ").map((tech) => (
+                  <span key={tech}>{tech}</span>
+                ))}
               </div>
 
               <p>{featuredProject.description}</p>
 
               <div className="mission-block">
                 <span>MISSION</span>
-                <p>
-                  Centralize lead intelligence,
-                  outreach workflows and
-                  sales visibility.
-                </p>
+                <p>{featuredProject.mission}</p>
               </div>
 
               <div className="impact-block">
                 <span>IMPACT</span>
-                <p>
-                  Streamlines lead discovery,
-                  outreach visibility and sales
-                  pipeline management through
-                  scalable SaaS architecture.
-                </p>
+                <p>{featuredProject.impact}</p>
               </div>
 
               <div className="system-actions">
 
-                <a
-                  href={featuredProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/projects/${featuredProject.slug}`}
                   className="view-system-btn"
                 >
                   View Project →
-                </a>
+                </Link>
 
               </div>
 
@@ -359,15 +183,27 @@ export default function Projects() {
 
                 <div className="preview-content">
 
-                  <span className="preview-number">
-                    {String(
-                      projects.findIndex(
-                        p => p.title === project.title
-                      ) + 1
-                    ).padStart(2, "0")}
-                  </span>
+                  <div className="preview-top">
+
+                    <span className="preview-number">
+                      {String(
+                        projects.findIndex(
+                          p => p.title === project.title
+                        ) + 1
+                      ).padStart(2, "0")}
+                    </span>
+
+                    <span className="preview-status">
+                      {project.status}
+                    </span>
+
+                  </div>
 
                   <h4>{project.title}</h4>
+
+                  <span className="preview-category">
+                    {project.category}
+                  </span>
 
                 </div>
 
@@ -378,76 +214,6 @@ export default function Projects() {
           </div>
 
         </div>
-
-        {/* 🔥 MODAL OVERLAY */}
-        {activeProject && (
-          <div
-            className="overlay"
-            onClick={() =>
-              setActiveProject(null)
-            }
-          >
-
-            <div
-              className="modal"
-              onClick={(e) =>
-                e.stopPropagation()
-              }
-            >
-
-              <h2>{activeProject.title}</h2>
-
-              <p>
-                {activeProject.description}
-              </p>
-
-              <span className="stack">
-                {activeProject.stack}
-              </span>
-
-              <div className="thinking">
-
-                <p>
-                  <strong>Problem:</strong>{" "}
-                  {activeProject.thinking.problem}
-                </p>
-
-                <p>
-                  <strong>Approach:</strong>{" "}
-                  {activeProject.thinking.approach}
-                </p>
-
-                <p>
-                  <strong>Trade-off:</strong>{" "}
-                  {activeProject.thinking.tradeoff}
-                </p>
-
-              </div>
-
-              <div className="links">
-
-                <a
-                  href={activeProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-
-                <a
-                  href={activeProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Demo
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
-        )}
 
       </motion.div>
 

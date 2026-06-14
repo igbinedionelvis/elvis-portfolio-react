@@ -1,15 +1,41 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projectData";
+import {
+  useState,
+  useEffect
+}
+  from "react";
 
 export default function Projects() {
 
   const [activeIndex, setActiveIndex] =
     useState(0);
 
-  const featuredProject =
-    projects[activeIndex];
+  const [imageIndex, setImageIndex] =
+    useState(0);
+
+  const featuredProject = projects[activeIndex] ?? projects[0];
+
+  useEffect(() => {
+
+    setImageIndex(0);
+
+    const timer = setInterval(() => {
+
+      setImageIndex(prev =>
+
+        (prev + 1) %
+
+        featuredProject.images.length
+
+      );
+
+    }, 3500);
+
+    return () => clearInterval(timer);
+
+  }, [featuredProject]);
 
   const nextProjects =
     projects
@@ -102,114 +128,198 @@ export default function Projects() {
             </div>
 
             <div className="system-index">
-              <span>
+              <motion.span
+
+                key={activeIndex}
+
+                initial={{
+                  opacity: 0,
+                  y: 40
+                }}
+
+                animate={{
+                  opacity: 1,
+                  y: 0
+                }}
+
+                exit={{
+                  opacity: 0,
+                  y: -40
+                }}
+
+                transition={{
+                  duration: .35
+                }}
+              >
                 {String(activeIndex + 1).padStart(2, "0")}
-              </span>
+              </motion.span>
             </div>
 
-            <div className="featured-details">
+            <AnimatePresence mode="wait">
 
-              <h3>{featuredProject.title}</h3>
+              <motion.div
+                key={featuredProject.slug}
+                className="featured-details"
 
-              <div className="system-meta">
-                <span>FULL STACK</span>
+                initial={{
+                  opacity: 0,
+                  x: 40
+                }}
 
-                <span>•</span>
+                animate={{
+                  opacity: 1,
+                  x: 0
+                }}
 
-                <span>SAAS</span>
+                exit={{
+                  opacity: 0,
+                  x: -40
+                }}
 
-                <span>•</span>
+                transition={{
+                  duration: .45
+                }}
+              >
 
-                <span>ANALYTICS</span>
-              </div>
+                <h3>{featuredProject.title}</h3>
 
-              <div className="project-stack">
-                {featuredProject.stack.split(" • ").map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
+                <div className="system-meta">
+                  <span>FULL STACK</span>
 
-              <p>{featuredProject.description}</p>
+                  <span>•</span>
 
-              <div className="mission-block">
-                <span>MISSION</span>
-                <p>{featuredProject.mission}</p>
-              </div>
+                  <span>SAAS</span>
 
-              <div className="impact-block">
-                <span>IMPACT</span>
-                <p>{featuredProject.impact}</p>
-              </div>
+                  <span>•</span>
 
-              <div className="system-actions">
+                  <span>ANALYTICS</span>
+                </div>
 
-                <Link
-                  to={`/projects/${featuredProject.slug}`}
-                  className="view-system-btn"
-                >
-                  View Project →
-                </Link>
+                <div className="project-stack">
+                  {featuredProject.stack.split(" • ").map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
 
-              </div>
+                <p>{featuredProject.description}</p>
 
-            </div>
+                <div className="mission-block">
+                  <span>MISSION</span>
+                  <p>{featuredProject.mission}</p>
+                </div>
 
-            <div className="featured-visual">
+                <div className="impact-block">
+                  <span>IMPACT</span>
+                  <p>{featuredProject.impact}</p>
+                </div>
 
-              <img
-                src={featuredProject.images[0]}
-                alt={featuredProject.title}
-              />
+                <div className="system-actions">
 
-            </div>
+                  <Link
+                    to={`/projects/${featuredProject.slug}`}
+                    className="view-system-btn"
+                  >
+                    View Project →
+                  </Link>
+
+                </div>
+
+              </motion.div>
+
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+
+              <motion.div
+
+                className="featured-visual"
+
+                key={featuredProject.slug}
+
+                initial={{
+                  opacity: 0,
+                  scale: .95
+                }}
+
+                animate={{
+                  opacity: 1,
+                  scale: 1
+                }}
+
+                exit={{
+                  opacity: 0,
+                  scale: .95
+                }}
+
+                transition={{
+                  duration: .45
+                }}
+              >
+
+                <img
+                  src={
+                    featuredProject.images[
+                    imageIndex
+                    ]
+                  }
+                  alt={featuredProject.title}
+                />
+
+              </motion.div>
+
+            </AnimatePresence>
 
           </div>
 
-          <div className="project-preview-row">
+          <div className="preview-wrapper">
 
-            {previewProjects.map((project) => (
+            <div className="project-preview-row">
 
-              <button
-                key={project.title}
-                className="preview-card"
-                onClick={() =>
-                  setActiveIndex(
-                    projects.findIndex(
-                      p => p.title === project.title
+              {previewProjects.map((project) => (
+
+                <button
+                  key={project.title}
+                  className="preview-card"
+                  onClick={() =>
+                    setActiveIndex(
+                      projects.findIndex(
+                        p => p.title === project.title
+                      )
                     )
-                  )
-                }
-              >
+                  }
+                >
 
-                <div className="preview-content">
+                  <div className="preview-content">
 
-                  <div className="preview-top">
+                    <div className="preview-top">
 
-                    <span className="preview-number">
-                      {String(
-                        projects.findIndex(
-                          p => p.title === project.title
-                        ) + 1
-                      ).padStart(2, "0")}
-                    </span>
+                      <span className="preview-number">
+                        {String(
+                          projects.findIndex(
+                            p => p.title === project.title
+                          ) + 1
+                        ).padStart(2, "0")}
+                      </span>
 
-                    <span className="preview-status">
-                      {project.status}
+                      <span className="preview-status">
+                        {project.status}
+                      </span>
+
+                    </div>
+
+                    <h4>{project.title}</h4>
+
+                    <span className="preview-category">
+                      {project.category}
                     </span>
 
                   </div>
 
-                  <h4>{project.title}</h4>
+                </button>
 
-                  <span className="preview-category">
-                    {project.category}
-                  </span>
+              ))}
 
-                </div>
-
-              </button>
-
-            ))}
+            </div>
 
           </div>
 

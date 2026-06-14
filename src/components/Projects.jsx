@@ -90,9 +90,15 @@ export default function Projects() {
 
         <div className="featured-system">
 
-          <div className="operational-status">
+          <div
+            className={`operational-status ${featuredProject.status === "DEPLOYED"
+                ? "status-live"
+                : "status-dev"
+              }`}
+          >
             <div className="status-dot"></div>
-            DEPLOYED
+
+            {featuredProject.status}
           </div>
 
           <div className="archive-rail">

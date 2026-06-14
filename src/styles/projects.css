@@ -652,6 +652,14 @@
     letter-spacing: 1px;
 }
 
+.status-live {
+    color: #00ff88;
+}
+
+.status-dev {
+    color: #ffb84d;
+}
+
 .status-dot {
 
     width: 8px;
@@ -660,12 +668,28 @@
 
     border-radius: 50%;
 
-    background: #00ff88;
-
     animation:
 
         deployPulse 2.5s infinite;
 
+}
+
+.status-live .status-dot {
+
+    background: #00ff88;
+
+    box-shadow: 0 0 12px #00ff88;
+
+    animation: deployPulse 2.5s infinite;
+}
+
+.status-dev .status-dot {
+
+    background: #ffb84d;
+
+    box-shadow: 0 0 12px #ffb84d;
+
+    animation: none;
 }
 
 .system-actions {

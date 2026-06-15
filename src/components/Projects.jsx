@@ -92,8 +92,8 @@ export default function Projects() {
 
           <div
             className={`operational-status ${featuredProject.status === "DEPLOYED"
-                ? "status-live"
-                : "status-dev"
+              ? "status-live"
+              : "status-dev"
               }`}
           >
             <div className="status-dot"></div>
@@ -183,7 +183,8 @@ export default function Projects() {
                 }}
 
                 transition={{
-                  duration: .45
+                  duration: .65,
+                  ease: [0.22, 1, 0.36, 1]
                 }}
               >
 
@@ -244,21 +245,20 @@ export default function Projects() {
 
                 initial={{
                   opacity: 0,
-                  scale: .95
+                  scale: .88,
+                  rotateX: 6
                 }}
 
                 animate={{
                   opacity: 1,
-                  scale: 1
+                  scale: 1,
+                  rotateX: 0
                 }}
 
                 exit={{
                   opacity: 0,
-                  scale: .95
-                }}
-
-                transition={{
-                  duration: .45
+                  scale: 1.06,
+                  rotateX: -6
                 }}
               >
 
@@ -285,7 +285,12 @@ export default function Projects() {
 
                 <button
                   key={project.title}
-                  className="preview-card"
+                  className={`preview-card ${activeIndex === projects.findIndex(
+                    p => p.title === project.title
+                  )
+                    ? "active-preview"
+                    : ""
+                    }`}
                   onClick={() =>
                     setActiveIndex(
                       projects.findIndex(

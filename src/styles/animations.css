@@ -226,3 +226,47 @@
     }
 
 }
+
+@keyframes ambientGlow {
+
+    0% {
+
+        transform: scale(1);
+
+        opacity: .55;
+
+    }
+
+    50% {
+
+        transform: scale(1.12);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        opacity: .55;
+
+    }
+
+}
+
+@keyframes monitorSweep {
+
+    0% {
+
+        left: -90%;
+
+    }
+
+    100% {
+
+        left: 180%;
+
+    }
+
+}

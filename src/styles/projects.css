@@ -369,6 +369,50 @@
             rgba(255, 255, 255, .02));
 }
 
+.spotlight {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+
+    background:
+
+        radial-gradient(circle,
+
+            rgba(0, 255, 136, .14),
+
+            transparent 70%);
+
+    filter: blur(45px);
+
+    opacity: .75;
+
+    transition:
+
+        left .08s linear,
+
+        top .08s linear;
+
+    z-index: 0;
+
+}
+
+.featured-layout {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
 .featured-system::before {
 
     content: "";
@@ -446,6 +490,8 @@
     box-shadow:
 
         0 40px 80px rgba(0, 0, 0, .45);
+
+        
 }
 
 .featured-visual::after {
@@ -752,9 +798,9 @@
 .floating-stack {
     position: absolute;
 
-    left: 860px;
+    left: 800px;
 
-    top: 408px;
+    top: 350px;
 
     display: flex;
     gap: 20px;
@@ -769,11 +815,14 @@
 
 .floating-stack svg {
 
-    opacity: .7;
+    opacity: .75;
 
-    transition: all .3s ease;
+    animation:
 
-    animation: floatIcons 4s ease-in-out infinite;
+        floatIcons 4s ease-in-out infinite,
+
+        pulseGlow 4s ease infinite;
+
 }
 
 .floating-stack svg:nth-child(2) {
@@ -1037,21 +1086,58 @@
 
     position: absolute;
 
+    bottom: 0;
+
     left: 0;
 
-    top: 0;
+    height: 3px;
 
-    width: 5px;
-
-    height: 100%;
+    width: 0;
 
     background: #00ff88;
 
-    opacity: 1;
+    transition: .4s;
 
-    box-shadow:
+}
 
-        0 0 18px #00ff88;
+.active-preview::before {
+
+    width: 100%;
+
+}
+
+.particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+}
+
+.particle {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    opacity: .4;
+
+    animation:
+
+        particleFloat 8s linear infinite;
+
 }
 
 .preview-card:hover::before {

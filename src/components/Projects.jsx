@@ -9,6 +9,11 @@ import {
 
 export default function Projects() {
 
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0
+  });
+
   const [activeIndex, setActiveIndex] =
     useState(0);
 
@@ -88,7 +93,61 @@ export default function Projects() {
 
         </motion.div>
 
-        <div className="featured-system">
+        <div
+          className="featured-system"
+
+          onMouseMove={(e) => {
+
+            const rect =
+
+              e.currentTarget.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+
+            const y = e.clientY - rect.top;
+
+            setMousePosition({ x, y });
+
+          }}
+        >
+
+          <div
+
+            className="spotlight"
+
+            style={{
+
+              left: mousePosition.x,
+
+              top: mousePosition.y
+
+            }}
+
+          >
+            <div className="particles">
+
+              {[...Array(10)].map((_, i) => (
+
+                <span
+
+                  key={i}
+
+                  className="particle"
+
+                  style={{
+
+                    left: `${10 + i * 8}%`,
+
+                    animationDelay: `${i * .6}s`
+
+                  }}
+
+                ></span>
+
+              ))}
+
+            </div>
+          </div>
 
           <div
             className={`operational-status ${featuredProject.status === "DEPLOYED"

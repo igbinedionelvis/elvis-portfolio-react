@@ -405,14 +405,6 @@
 
 }
 
-.featured-layout {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
 .featured-system::before {
 
     content: "";
@@ -459,6 +451,18 @@
     font-size: .8rem;
 }
 
+.visual-stage {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 24px;
+
+}
+
 .featured-visual {
     border-radius: 28px;
 
@@ -470,28 +474,23 @@
 
     padding: 8px;
 
-    width: 100%;
-
-    max-width: 500px;
-
     margin-right: 0;
-
-    align-self: start;
-
-    justify-self: center;
 
     position: relative;
 
-    overflow: hidden;
+    width: 540px;
 
-    transform:
-        translateX(45px) translateY(-12px);
+    flex-shrink: 0;
+
+    max-width: 100%;
+
+    margin: 0;
 
     box-shadow:
 
         0 40px 80px rgba(0, 0, 0, .45);
 
-        
+
 }
 
 .featured-visual::after {
@@ -573,7 +572,7 @@
     margin-top: 24px;
 }
 
-.featured-layout {
+/*.featured-layout {
     display: grid;
 
     grid-template-columns:
@@ -584,6 +583,46 @@
 
     align-items: start;
 
+}*/
+
+.featured-core {
+
+    display: grid;
+
+    grid-template-columns:
+
+        90px 1.3fr 1fr;
+
+    gap: 36px;
+
+    align-items: start;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.content-column {
+
+    width: 100%;
+
+    min-width: 0;
+
+    display: block;
+
+}
+
+.visual-column {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-start;
+
+    min-width: 580px;
+
 }
 
 .featured-details {
@@ -591,24 +630,27 @@
 
     flex-direction: column;
 
-    gap: 2px;
+    gap: 14px;
 
-    max-width: 500px;
+    width: 100%;
 }
 
 .featured-details h3 {
 
-    font-size: clamp(2.6rem, 3.4vw, 3.5rem);
+    width: 100%;
 
-    line-height: .92;
+    max-width: none;
 
-    letter-spacing: -2px;
+    font-size: clamp(3rem, 4vw, 4rem);
 
-    max-width: 560px;
+    line-height: .9;
+
 }
 
 .featured-details>p {
-    max-width: 520px;
+    width: 100%;
+
+    max-width: none;
 
     font-size: 1rem;
 
@@ -618,16 +660,10 @@
 }
 
 .system-meta {
-    display: flex;
 
-    gap: 10px;
+    display: flex;
 
     flex-wrap: wrap;
-}
-
-.system-meta {
-
-    display: flex;
 
     align-items: center;
 
@@ -679,7 +715,9 @@
 .impact-block p {
     font-size: .88rem;
 
-    max-width: 540px;
+    width: 100%;
+
+    max-width: none;
 
     line-height: 1.6;
 
@@ -796,20 +834,26 @@
 }
 
 .floating-stack {
-    position: absolute;
 
-    left: 800px;
+    justify-content: center;
 
-    top: 350px;
+    flex-wrap: wrap;
+
+    left: 50%;
+
+    bottom: -28px;
 
     display: flex;
-    gap: 20px;
+
+    transform: none;
+
+    gap: 18px;
 
     font-size: 1.2rem;
 
     color: rgba(255, 255, 255, .75);
 
-    z-index: 10;
+    z-index: 20;
 
 }
 
@@ -912,7 +956,7 @@
 }
 
 .system-index span {
-    font-size: 5.5rem;
+    font-size: 4.8rem;
 
     opacity: .12;
 
@@ -967,13 +1011,19 @@
 
 .preview-wrapper {
 
-    position: absolute;
+    position: relative;
 
-    right: 40px;
+    margin-top: 60px;
 
-    bottom: 18px;
+    width: 100%;
 
-    width: 860px;
+    right: auto;
+
+    bottom: auto;
+
+    display: flex;
+
+    justify-content: flex-end;
 
     overflow: visible;
 
@@ -986,7 +1036,7 @@
 
     width: 275px;
 
-    height: 148px;
+    height: 180px;
 
     padding: 18px;
 
@@ -1274,4 +1324,447 @@
     border-color: rgba(0, 255, 136, .3);
 
     background: rgba(0, 255, 136, .05);
+}
+
+
+/* =========================
+   PROJECT MAGNET RESPONSIVE
+========================= */
+
+@media (max-width: 1440px) {
+
+    .featured-core {
+
+        grid-template-columns:
+
+            80px minmax(420px, 470px) minmax(360px, 420px);
+
+        gap: 20px;
+    }
+
+    .featured-details {
+
+        max-width: 450px;
+    }
+
+    .featured-visual {
+
+        max-width: 420px;
+
+        margin-right: 0;
+    }
+
+    .featured-visual img {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+    .floating-stack {
+
+        left: 710px;
+
+        top: 390px;
+    }
+
+    .featured-details h3 {
+
+        font-size: 3rem;
+    }
+
+    .preview-card {
+
+        width: 240px;
+    }
+}
+
+@media (max-width:1280px) {
+
+    .featured-system {
+
+        padding: 34px;
+
+        min-height: auto;
+
+    }
+
+    .featured-core {
+
+        grid-template-columns:
+
+            70px 1fr 420px;
+
+        gap: 30px;
+
+    }
+
+    .featured-details {
+
+        max-width: 100%;
+
+    }
+
+    .featured-details h3 {
+
+        font-size: 2.7rem;
+
+    }
+
+    .featured-visual {
+
+        max-width: 420px;
+
+        transform: none;
+
+    }
+
+    .floating-stack {
+
+        left: auto;
+
+        right: 70px;
+
+        top: 380px;
+
+    }
+
+    .preview-wrapper {
+
+        position: relative;
+
+        right: auto;
+
+        bottom: auto;
+
+        margin-top: 40px;
+
+        width: 100%;
+
+    }
+
+    .project-preview-row {
+
+        justify-content: flex-start;
+
+    }
+
+}
+
+
+@media (max-width:1024px) {
+
+    .featured-system {
+
+        padding: 32px;
+
+    }
+
+    .featured-core {
+
+        grid-template-columns: 1fr;
+
+        gap: 36px;
+
+    }
+
+    .system-index {
+
+        display: none;
+
+    }
+
+    .featured-details {
+
+        order: 1;
+
+        max-width: 100%;
+
+    }
+
+    .featured-visual {
+
+        order: 2;
+
+        max-width: 700px;
+
+        margin: auto;
+
+        transform: none;
+
+    }
+
+    .floating-stack {
+
+        position: static;
+
+        justify-content: center;
+
+        margin-top: 20px;
+
+    }
+
+    .preview-wrapper {
+
+        position: relative;
+
+        width: 100%;
+
+        margin-top: 30px;
+
+        right: auto;
+
+        bottom: auto;
+
+    }
+
+    .project-preview-row {
+
+        justify-content: flex-start;
+
+    }
+
+}
+
+
+@media (max-width:768px) {
+
+    .featured-system {
+
+        padding: 24px;
+
+    }
+
+    .featured-core {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 36px;
+
+    }
+
+    .featured-visual {
+
+        order: 1;
+
+        width: 100%;
+
+        max-width: 100%;
+
+    }
+
+    .hero-copy {
+
+        order: 1;
+        text-align: center;
+
+    }
+
+    .mission-block {
+
+        order: 2;
+
+    }
+
+    .impact-block {
+
+        order: 3;
+
+    }
+
+    .system-actions {
+
+        order: 4;
+
+    }
+
+    .floating-stack {
+
+        order: 3;
+
+        justify-content: center;
+
+        margin: 12px 0 22px;
+
+        font-size: 1.1rem;
+
+    }
+
+    .operational-status {
+
+        top: 20px;
+
+        right: 20px;
+
+        font-size: .75rem;
+
+    }
+
+    .featured-details h3 {
+
+        font-size: 2.3rem;
+
+        line-height: 1;
+
+    }
+
+    .project-stack {
+
+        justify-content: center;
+
+    }
+
+    .system-meta {
+
+        justify-content: center;
+
+    }
+
+    .system-actions {
+
+        justify-content: center;
+
+    }
+
+    .view-system-btn {
+
+        width: 100%;
+
+    }
+
+    .system-index {
+
+        display: none;
+
+    }
+
+    .content-column {
+
+        order: 1;
+
+    }
+
+    .visual-column {
+
+        order: 2;
+
+    }
+}
+
+@media(max-width:540px) {
+
+    .featured-system {
+
+        padding: 20px;
+
+        border-radius: 24px;
+
+    }
+
+    .featured-details h3 {
+
+        font-size: 2rem;
+
+    }
+
+    .featured-details>p {
+
+        font-size: .95rem;
+
+    }
+
+    .project-stack {
+
+        gap: 6px;
+
+        justify-content: center;
+
+    }
+
+    .project-stack span {
+
+        font-size: .7rem;
+
+        padding: 5px 10px;
+
+    }
+
+    .preview-card {
+
+        width: 280px;
+
+        height: 150px;
+
+    }
+
+    .preview-wrapper {
+
+        margin-top: 24px;
+
+    }
+}
+
+@media(max-width:480px) {
+
+    .featured-details h3 {
+
+        font-size: 1.8rem;
+
+    }
+
+    .mission-block p,
+
+    .impact-block p {
+
+        font-size: .85rem;
+
+    }
+
+    .system-meta {
+
+        font-size: .72rem;
+
+        justify-content: center;
+
+    }
+
+    .view-system-btn {
+
+        padding: 14px;
+
+        font-size: .9rem;
+
+    }
+
+}
+
+@media(max-width:360px) {
+
+    .featured-system {
+
+        padding: 16px;
+
+    }
+
+    .featured-details h3 {
+
+        font-size: 1.55rem;
+
+    }
+
+    .preview-card {
+
+        width: 250px;
+
+    }
+
+    .project-stack {
+
+        justify-content: flex-start;
+
+        justify-content: center;
+
+    }
 }

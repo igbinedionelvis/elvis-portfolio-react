@@ -182,16 +182,6 @@ export default function Projects() {
 
           <div className="featured-layout">
 
-            <div className="floating-stack">
-
-              {featuredProject.icons.map((Icon, index) => (
-                <span key={index}>
-                  <Icon />
-                </span>
-              ))}
-
-            </div>
-
             <div className="system-index">
               <motion.span
 
@@ -220,125 +210,156 @@ export default function Projects() {
               </motion.span>
             </div>
 
-            <AnimatePresence mode="wait">
+            <div className="content-module">
 
-              <motion.div
-                key={featuredProject.slug}
-                className="featured-details"
+              <AnimatePresence mode="wait">
 
-                initial={{
-                  opacity: 0,
-                  x: 40
-                }}
+                <motion.div
+                  key={featuredProject.slug}
+                  className="content-layout"
 
-                animate={{
-                  opacity: 1,
-                  x: 0
-                }}
+                  initial={{
+                    opacity: 0,
+                    x: 40
+                  }}
 
-                exit={{
-                  opacity: 0,
-                  x: -40
-                }}
+                  animate={{
+                    opacity: 1,
+                    x: 0
+                  }}
 
-                transition={{
-                  duration: .65,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-              >
+                  exit={{
+                    opacity: 0,
+                    x: -40
+                  }}
 
-                <h3>{featuredProject.title}</h3>
+                  transition={{
+                    duration: .65,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
 
-                <div className="system-meta">
-                  <span>FULL STACK</span>
+                  <div className="hero-copy">
 
-                  <span>•</span>
+                    <h3>{featuredProject.title}</h3>
 
-                  <span>SAAS</span>
+                    <div className="system-meta">
+                      <span>FULL STACK</span>
 
-                  <span>•</span>
+                      <span>•</span>
 
-                  <span>ANALYTICS</span>
-                </div>
+                      <span>SAAS</span>
 
-                <div className="project-stack">
-                  {featuredProject.stack.split(" • ").map((tech) => (
-                    <span key={tech}>{tech}</span>
-                  ))}
-                </div>
+                      <span>•</span>
 
-                <p>{featuredProject.description}</p>
+                      <span>ANALYTICS</span>
+                    </div>
 
-                <div className="mission-block">
-                  <span>MISSION</span>
-                  <p>{featuredProject.mission}</p>
-                </div>
+                    <div className="project-stack">
+                      {featuredProject.stack.split(" • ").map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </div>
 
-                <div className="impact-block">
-                  <span>IMPACT</span>
-                  <p>{featuredProject.impact}</p>
-                </div>
+                  </div>
 
-                <div className="system-actions">
+                  <div className="description-module">
 
-                  <Link
-                    to={`/projects/${featuredProject.slug}`}
-                    className="view-system-btn"
+                    <p>{featuredProject.description}</p>
+
+                  </div>
+
+                  <div className="mission-module">
+                    <span>MISSION</span>
+                    <p>{featuredProject.mission}</p>
+                  </div>
+
+                  <div className="impact-module">
+                    <span>IMPACT</span>
+                    <p>{featuredProject.impact}</p>
+                  </div>
+
+                  <div className="action-module">
+
+                    <Link
+                      to={`/projects/${featuredProject.slug}`}
+                      className="view-system-btn"
+                    >
+                      View Project →
+                    </Link>
+
+                  </div>
+
+                </motion.div>
+
+              </AnimatePresence>
+
+            </div>
+
+            <div className="visual-module">
+
+              <div className="visual-layout">
+
+                <AnimatePresence mode="wait">
+
+                  <motion.div
+
+                    className="monitor-module"
+
+                    key={featuredProject.slug}
+
+                    initial={{
+                      opacity: 0,
+                      scale: .88,
+                      rotateX: 6
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      rotateX: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      scale: 1.06,
+                      rotateX: -6
+                    }}
                   >
-                    View Project →
-                  </Link>
+
+                    <img
+                      src={
+                        featuredProject.images[
+                        imageIndex
+                        ]
+                      }
+                      alt={featuredProject.title}
+                    />
+
+                  </motion.div>
+
+                </AnimatePresence>
+
+                <div className="tech-stack-module">
+
+                  {featuredProject.icons.map((Icon, index) => (
+                    <span key={index}>
+                      <Icon />
+                    </span>
+                  ))}
 
                 </div>
 
-              </motion.div>
+              </div>
 
-            </AnimatePresence>
+            </div>
 
-            <AnimatePresence mode="wait">
-
-              <motion.div
-
-                className="featured-visual"
-
-                key={featuredProject.slug}
-
-                initial={{
-                  opacity: 0,
-                  scale: .88,
-                  rotateX: 6
-                }}
-
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  rotateX: 0
-                }}
-
-                exit={{
-                  opacity: 0,
-                  scale: 1.06,
-                  rotateX: -6
-                }}
-              >
-
-                <img
-                  src={
-                    featuredProject.images[
-                    imageIndex
-                    ]
-                  }
-                  alt={featuredProject.title}
-                />
-
-              </motion.div>
-
-            </AnimatePresence>
 
           </div>
 
-          <div className="preview-wrapper">
+          <div className="preview-module">
 
-            <div className="project-preview-row">
+            <div className="preview-layout">
 
               {previewProjects.map((project) => (
 

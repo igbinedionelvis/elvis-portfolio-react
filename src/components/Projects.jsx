@@ -210,91 +210,60 @@ export default function Projects() {
               </motion.span>
             </div>
 
-            <div className="content-module">
+            <AnimatePresence mode="wait">
 
-              <AnimatePresence mode="wait">
+              <motion.div
+                key={featuredProject.slug}
+                className="primary-content"
 
-                <motion.div
-                  key={featuredProject.slug}
-                  className="content-layout"
+                initial={{
+                  opacity: 0,
+                  x: 40
+                }}
 
-                  initial={{
-                    opacity: 0,
-                    x: 40
-                  }}
+                animate={{
+                  opacity: 1,
+                  x: 0
+                }}
 
-                  animate={{
-                    opacity: 1,
-                    x: 0
-                  }}
+                exit={{
+                  opacity: 0,
+                  x: -40
+                }}
 
-                  exit={{
-                    opacity: 0,
-                    x: -40
-                  }}
+                transition={{
+                  duration: .65,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
 
-                  transition={{
-                    duration: .65,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                >
+                <div className="hero-module">
 
-                  <div className="hero-copy">
+                  <h3>{featuredProject.title}</h3>
 
-                    <h3>{featuredProject.title}</h3>
+                  <div className="system-meta">
+                    <span>FULL STACK</span>
 
-                    <div className="system-meta">
-                      <span>FULL STACK</span>
+                    <span>•</span>
 
-                      <span>•</span>
+                    <span>SAAS</span>
 
-                      <span>SAAS</span>
+                    <span>•</span>
 
-                      <span>•</span>
-
-                      <span>ANALYTICS</span>
-                    </div>
-
-                    <div className="project-stack">
-                      {featuredProject.stack.split(" • ").map((tech) => (
-                        <span key={tech}>{tech}</span>
-                      ))}
-                    </div>
-
+                    <span>ANALYTICS</span>
                   </div>
 
-                  <div className="description-module">
-
-                    <p>{featuredProject.description}</p>
-
+                  <div className="project-stack">
+                    {featuredProject.stack.split(" • ").map((tech) => (
+                      <span key={tech}>{tech}</span>
+                    ))}
                   </div>
 
-                  <div className="mission-module">
-                    <span>MISSION</span>
-                    <p>{featuredProject.mission}</p>
-                  </div>
+                </div>
 
-                  <div className="impact-module">
-                    <span>IMPACT</span>
-                    <p>{featuredProject.impact}</p>
-                  </div>
+              </motion.div>
 
-                  <div className="action-module">
-
-                    <Link
-                      to={`/projects/${featuredProject.slug}`}
-                      className="view-system-btn"
-                    >
-                      View Project →
-                    </Link>
-
-                  </div>
-
-                </motion.div>
-
-              </AnimatePresence>
-
-            </div>
+            </AnimatePresence>
 
             <div className="visual-module">
 
@@ -354,6 +323,40 @@ export default function Projects() {
 
             </div>
 
+            <div className="secondary-content">
+
+              <div className="content-stack">
+
+                <motion.div className="description-module">
+
+                  <p>{featuredProject.description}</p>
+
+                </motion.div>
+
+                <motion.div className="mission-module">
+                  <span>MISSION</span>
+                  <p>{featuredProject.mission}</p>
+                </motion.div>
+
+                <motion.div className="impact-module">
+                  <span>IMPACT</span>
+                  <p>{featuredProject.impact}</p>
+                </motion.div>
+
+                <motion.div className="action-module">
+
+                  <Link
+                    to={`/projects/${featuredProject.slug}`}
+                    className="view-system-btn"
+                  >
+                    View Project →
+                  </Link>
+
+                </motion.div>
+
+              </div>
+
+            </div>
 
           </div>
 

@@ -9,11 +9,6 @@ import {
 
 export default function Projects() {
 
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
-
   const [activeIndex, setActiveIndex] =
     useState(0);
 
@@ -93,85 +88,11 @@ export default function Projects() {
 
         </motion.div>
 
-        <div
-          className="featured-system"
+        <div className="project-stage">
 
-          onMouseMove={(e) => {
+          <div className="project-showcase">
 
-            const rect =
-
-              e.currentTarget.getBoundingClientRect();
-
-            const x = e.clientX - rect.left;
-
-            const y = e.clientY - rect.top;
-
-            setMousePosition({ x, y });
-
-          }}
-        >
-
-          <div
-
-            className="spotlight"
-
-            style={{
-
-              left: mousePosition.x,
-
-              top: mousePosition.y
-
-            }}
-
-          >
-            <div className="particles">
-
-              {[...Array(10)].map((_, i) => (
-
-                <span
-
-                  key={i}
-
-                  className="particle"
-
-                  style={{
-
-                    left: `${10 + i * 8}%`,
-
-                    animationDelay: `${i * .6}s`
-
-                  }}
-
-                ></span>
-
-              ))}
-
-            </div>
-          </div>
-
-          <div className="archive-rail">
-
-            {projects
-              .filter((_, i) => i !== activeIndex)
-              .map((project) => (
-                <button
-                  key={project.title}
-                  onClick={() =>
-                    setActiveIndex(
-                      projects.indexOf(project)
-                    )
-                  }
-                >
-                  {String(
-                    projects.indexOf(project) + 1
-                  ).padStart(2, "0")}
-                </button>
-              ))}
-          </div>
-
-          <div className="featured-layout">
-
-            <div className="system-index">
+            <div className="project-number">
               <motion.span
 
                 key={activeIndex}
@@ -199,13 +120,13 @@ export default function Projects() {
               </motion.span>
             </div>
 
-            <div className="presentation-column">
+            <div className="project-left">
 
               <AnimatePresence mode="wait">
 
                 <motion.div
                   key={featuredProject.slug}
-                  className="primary-content"
+                  className="project-header"
 
                   initial={{
                     opacity: 0,
@@ -228,27 +149,67 @@ export default function Projects() {
                   }}
                 >
 
-                  <div className="hero-module">
+                  <h3>{featuredProject.title}</h3>
 
-                    <h3>{featuredProject.title}</h3>
+                  <div className="project-meta">
+                    <span>FULL STACK</span>
 
-                    <div className="system-meta">
-                      <span>FULL STACK</span>
+                    <span>•</span>
 
-                      <span>•</span>
+                    <span>SAAS</span>
 
-                      <span>SAAS</span>
+                    <span>•</span>
 
-                      <span>•</span>
+                    <span>ANALYTICS</span>
+                  </div>
 
-                      <span>ANALYTICS</span>
-                    </div>
+                  <div className="project-stack">
+                    {featuredProject.stack.split(" • ").map((tech) => (
+                      <span key={tech}>{tech}</span>
+                    ))}
+                  </div>
 
-                    <div className="project-stack">
-                      {featuredProject.stack.split(" • ").map((tech) => (
-                        <span key={tech}>{tech}</span>
-                      ))}
-                    </div>
+                </motion.div>
+
+              </AnimatePresence>
+
+              <AnimatePresence mode="wait">
+
+                <motion.div
+
+                  className="monitor-screen"
+
+                  key={featuredProject.slug}
+
+                  initial={{
+                    opacity: 0,
+                    scale: .88,
+                    rotateX: 6
+                  }}
+
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotateX: 0
+                  }}
+
+                  exit={{
+                    opacity: 0,
+                    scale: 1.06,
+                    rotateX: -6
+                  }}
+                >
+
+                  <div className="monitor-image">
+
+                    <img
+                      src={
+                        featuredProject.images[
+                        imageIndex
+                        ]
+                      }
+                      alt={featuredProject.title}
+                    />
 
                   </div>
 
@@ -256,73 +217,21 @@ export default function Projects() {
 
               </AnimatePresence>
 
-              <div className="visual-module">
+              <div className="project-icons">
 
-                <div className="visual-layout">
-
-                  <AnimatePresence mode="wait">
-
-                    <motion.div
-
-                      className="monitor-module"
-
-                      key={featuredProject.slug}
-
-                      initial={{
-                        opacity: 0,
-                        scale: .88,
-                        rotateX: 6
-                      }}
-
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                        rotateX: 0
-                      }}
-
-                      exit={{
-                        opacity: 0,
-                        scale: 1.06,
-                        rotateX: -6
-                      }}
-                    >
-
-                      <div className="monitor-frame">
-
-                        <img
-                          src={
-                            featuredProject.images[
-                            imageIndex
-                            ]
-                          }
-                          alt={featuredProject.title}
-                        />
-
-                      </div>
-
-                    </motion.div>
-
-                  </AnimatePresence>
-
-                  <div className="tech-stack-module">
-
-                    {featuredProject.icons.map((Icon, index) => (
-                      <span key={index}>
-                        <Icon />
-                      </span>
-                    ))}
-
-                  </div>
-
-                </div>
+                {featuredProject.icons.map((Icon, index) => (
+                  <span key={index}>
+                    <Icon />
+                  </span>
+                ))}
 
               </div>
 
-              <motion.div className="action-module">
+              <motion.div className="project-footer">
 
                 <Link
                   to={`/projects/${featuredProject.slug}`}
-                  className="view-system-btn"
+                  className="project-btn"
                 >
                   View Project →
                 </Link>
@@ -331,10 +240,10 @@ export default function Projects() {
 
             </div>
 
-            <div className="information-column">
+            <div className="project-right">
 
               <div
-                className={`operational-status ${featuredProject.status === "DEPLOYED"
+                className={`project-status ${featuredProject.status === "DEPLOYED"
                   ? "status-live"
                   : "status-dev"
                   }`}
@@ -344,20 +253,22 @@ export default function Projects() {
                 {featuredProject.status}
               </div>
 
-              <div className="content-stack">
+              <div className="project-sections">
 
-                <motion.div className="description-module">
+                <motion.div className="project-section">
+
+                  <span>OVERVIEW</span>
 
                   <p>{featuredProject.description}</p>
 
                 </motion.div>
 
-                <motion.div className="mission-module">
+                <motion.div className="project-section">
                   <span>MISSION</span>
                   <p>{featuredProject.mission}</p>
                 </motion.div>
 
-                <motion.div className="impact-module">
+                <motion.div className="project-section">
                   <span>IMPACT</span>
                   <p>{featuredProject.impact}</p>
                 </motion.div>
@@ -370,62 +281,81 @@ export default function Projects() {
 
         </div>
 
-        <div className="preview-section">
+        <div className="project-navigation">
 
-          <div className="preview-module">
+          <div className="project-timeline">
 
-            <div className="preview-layout">
+            {previewProjects.map((project) => (
 
-              {previewProjects.map((project) => (
+              <div
+                key={project.title}
+                className="timeline-node"
+              >
 
-                <button
-                  key={project.title}
-                  className={`preview-card ${activeIndex === projects.findIndex(
-                    p => p.title === project.title
-                  )
-                    ? "active-preview"
-                    : ""
-                    }`}
-                  onClick={() =>
-                    setActiveIndex(
-                      projects.findIndex(
-                        p => p.title === project.title
-                      )
+                <span className="timeline-number">
+                  {String(
+                    projects.findIndex(
+                      p => p.title === project.title
+                    ) + 1
+                  ).padStart(2, "0")}
+                </span>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          <div className="project-strip">
+
+            {previewProjects.map((project) => (
+
+              <button
+                key={project.title}
+                className={`project-card ${activeIndex === projects.findIndex(
+                  p => p.title === project.title
+                )
+                  ? "active"
+                  : ""
+                  }`}
+                onClick={() =>
+                  setActiveIndex(
+                    projects.findIndex(
+                      p => p.title === project.title
                     )
-                  }
-                >
+                  )
+                }
+              >
 
-                  <div className="preview-content">
+                <div className="project-card-content">
 
-                    <div className="preview-top">
+                  <div className="project-card-header">
 
-                      <span className="preview-number">
-                        {String(
-                          projects.findIndex(
-                            p => p.title === project.title
-                          ) + 1
-                        ).padStart(2, "0")}
-                      </span>
+                    <span className="project-card-number">
+                      {String(
+                        projects.findIndex(
+                          p => p.title === project.title
+                        ) + 1
+                      ).padStart(2, "0")}
+                    </span>
 
-                      <span className="preview-status">
-                        {project.status}
-                      </span>
-
-                    </div>
-
-                    <h4>{project.title}</h4>
-
-                    <span className="preview-category">
-                      {project.category}
+                    <span className="project-card-status">
+                      {project.status}
                     </span>
 
                   </div>
 
-                </button>
+                  <h4>{project.title}</h4>
 
-              ))}
+                  <span className="project-card-category">
+                    {project.category}
+                  </span>
 
-            </div>
+                </div>
+
+              </button>
+
+            ))}
 
           </div>
 

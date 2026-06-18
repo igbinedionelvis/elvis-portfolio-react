@@ -94,7 +94,7 @@
 
     width: 100%;
 
-    margin-bottom: 5rem;
+    margin-bottom: 1.5rem;
 }
 
 /* =========================
@@ -436,7 +436,7 @@
 
     margin-top: 1.8rem;
 
-    padding: 1.8rem;
+    padding: 1.5rem 1.8rem 1.8rem;
 
     border-radius: 32px;
 
@@ -452,7 +452,7 @@
 
 }
 
-.timeline-node {
+.project-timeline-node {
 
     position: relative;
 
@@ -468,7 +468,7 @@
 
 }
 
-.timeline-node::after {
+.project-timeline-node::after {
 
     content: "";
 
@@ -484,14 +484,14 @@
 
 }
 
-.timeline-number {
+.project-timeline-number {
 
     color: #d8d8d8;
-    font-size: .82rem;
+    font-size: .77rem;
     letter-spacing: .18em;
 
     margin-top: -30px;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
 }
 
@@ -509,7 +509,7 @@
 
     justify-items: center;
 
-    margin-bottom: 0;
+    margin-bottom: 10px;
 
     padding-top: 16px;
 
@@ -523,7 +523,7 @@
 
     gap: 1.5rem;
 
-    margin-top: -50px;
+    margin-top: 18px;
 
 }
 
@@ -533,13 +533,13 @@
 
     position: absolute;
 
-    left: 0;
+    left: 3%;
 
-    right: 0;
+    right: 3%;
 
-    top: 32px;
+    top: 24px;
 
-    height: 2px;
+    height: 3px;
 
     background: rgba(255, 255, 255, .08);
 

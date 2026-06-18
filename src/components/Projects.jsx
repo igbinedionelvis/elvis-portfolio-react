@@ -289,10 +289,10 @@ export default function Projects() {
 
               <div
                 key={project.title}
-                className="timeline-node"
+                className="project-timeline-node"
               >
 
-                <span className="timeline-number">
+                <span className="project-timeline-number">
                   {String(
                     projects.findIndex(
                       p => p.title === project.title

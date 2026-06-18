@@ -162,5 +162,40 @@ export const projects = [
         github: "#",
 
         live: "#"
-    }
+    },
+    {
+        slug: "Mood-flix",
+
+        title: "Ai emotional movie recomender",
+        status: "IN DEVELOPMENT",
+
+        category: "AI AUTOMATION",
+
+        images: [
+            "/projects/ai-automation-1.png",
+            "/projects/ai-automation-2.png",
+            "/projects/ai-automation-3.png"
+        ],
+
+        icons: [
+            FaReact,
+            FaNodeJs,
+            FaGitAlt
+        ],
+        description:
+            "AI-powered operations platform currently in development, focused on automating repetitive business workflows through intelligent decision support and scalable system architecture.",
+
+        mission:
+            "Reduce manual operational overhead by integrating AI into everyday business processes.",
+
+        impact:
+            "Designed to increase productivity by connecting business tools, automating decision flows, and enabling intelligent process orchestration.",
+
+        stack:
+            "React • Node.js • OpenAI API • Automation Workflows",
+
+        github: "#",
+
+        live: "#"
+    },
 ];

@@ -20,7 +20,17 @@ export default function Projects() {
 
   const cardRefs = useRef([]);
 
+  const isDragging = useRef(false);
+
+  const startX = useRef(0);
+
+  const startScrollLeft = useRef(0);
+
   const featuredProject = projects[activeIndex] ?? projects[0];
+
+  const [scrollProgress, setScrollProgress] =
+
+    useState(0);
 
   useEffect(() => {
 
@@ -91,6 +101,119 @@ export default function Projects() {
 
   }, []);
 
+  useEffect(() => {
+
+    const strip = stripRef.current;
+
+    if (!strip) return;
+
+    const handleScroll = () => {
+
+      const cards = cardRefs.current;
+
+      let nearest = 0;
+
+      let closest = Infinity;
+
+      const stripRect = strip.getBoundingClientRect();
+
+      const stripCenter =
+
+        stripRect.left +
+
+        stripRect.width / 2;
+
+      cards.forEach((card, index) => {
+
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+
+        const cardCenter =
+
+          rect.left +
+
+          rect.width / 2;
+
+        const distance = Math.abs(
+
+          stripCenter -
+
+          cardCenter
+
+        );
+
+        if (distance < closest) {
+
+          closest = distance;
+
+          nearest = index;
+
+        }
+
+      });
+
+      setActiveIndex(nearest);
+
+      const progress =
+        strip.scrollLeft /
+        (strip.scrollWidth - strip.clientWidth);
+
+      setScrollProgress(progress);
+
+    };
+
+    strip.addEventListener(
+
+      "scroll",
+
+      handleScroll
+
+    );
+
+    return () => {
+
+      strip.removeEventListener(
+
+        "scroll",
+
+        handleScroll
+
+      );
+
+    };
+
+  }, []);
+
+  const handleMouseDown = (e) => {
+
+    isDragging.current = true;
+
+    startX.current = e.pageX;
+
+    startScrollLeft.current = stripRef.current.scrollLeft;
+
+  };
+
+  const handleMouseMove = (e) => {
+
+    if (!isDragging.current) return;
+
+    e.preventDefault();
+
+    const distance = e.pageX - startX.current;
+
+    stripRef.current.scrollLeft =
+
+      startScrollLeft.current - distance;
+
+  };
+
+  const handleMouseUp = () => {
+
+    isDragging.current = false;
+
+  };
 
   const previewProjects = projects;
 
@@ -348,13 +471,45 @@ export default function Projects() {
 
             <div
               className="carousel-progress-fill"
+              style={{
+                width: `${scrollProgress * 100}%`
+              }}
             />
 
           </div>
 
+          <button
+            className="carousel-arrow left"
+            onClick={() => {
+
+              stripRef.current.scrollBy({
+
+                left: -420,
+
+                behavior: "smooth"
+
+              });
+
+            }}
+          >
+
+            ‹
+
+          </button>
+
           <div
+
             className="project-strip"
+
             ref={stripRef}
+
+            onMouseDown={handleMouseDown}
+
+            onMouseMove={handleMouseMove}
+
+            onMouseUp={handleMouseUp}
+
+            onMouseLeave={handleMouseUp}
           >
 
             {previewProjects.map((project) => {
@@ -411,6 +566,25 @@ export default function Projects() {
             })}
 
           </div>
+
+          <button
+            className="carousel-arrow right"
+            onClick={() => {
+
+              stripRef.current.scrollBy({
+
+                left: 420,
+
+                behavior: "smooth"
+
+              });
+
+            }}
+          >
+
+            ›
+
+          </button>
 
         </div>
 

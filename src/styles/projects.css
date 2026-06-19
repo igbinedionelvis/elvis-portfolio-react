@@ -662,11 +662,21 @@
 
     overscroll-behavior-y: contain;
 
+    cursor: grab;
+
+    user-select: none;
+
 }
 
 .project-strip::-webkit-scrollbar {
 
     display: none;
+
+}
+
+.project-strip:active {
+
+    cursor: grabbing;
 
 }
 
@@ -741,6 +751,10 @@
     box-shadow:
 
         0 20px 60px rgba(0, 255, 136, .12);
+
+    transform: scale(1);
+
+    filter: none;
 
 }
 
@@ -884,8 +898,6 @@
 
 .carousel-progress-fill {
 
-    width: 30%;
-
     height: 100%;
 
     background: #00ff88;
@@ -913,6 +925,68 @@
     color: #00ff88;
 
     text-transform: uppercase;
+
+}
+
+.carousel-arrow {
+
+    position: absolute;
+
+    top: 55%;
+
+    transform: translateY(-50%);
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(12, 12, 12, .9);
+
+    color: white;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    transition: .3s;
+
+    opacity: 0;
+
+}
+
+.carousel-arrow.left {
+
+    left: -18px;
+
+}
+
+.carousel-arrow.right {
+
+    right: -18px;
+
+}
+
+.project-navigation:hover .carousel-arrow {
+
+    opacity: 1;
+
+}
+
+.carousel-arrow:hover {
+
+    background: #00ff88;
+
+    color: #111;
+
+    transform:
+
+        translateY(-50%) scale(1.08);
 
 }
 

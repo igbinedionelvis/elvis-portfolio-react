@@ -33,13 +33,13 @@ export const projects = [
         ],
 
         description:
-            "Enterprise-inspired lead intelligence platform that centralizes prospect management, outreach workflows, and pipeline visibility through a scalable analytics dashboard built for growing teams.",
+            "LeadPilot is a modern lead intelligence platform that helps businesses organize, qualify, and manage prospects from first contact to conversion. It brings lead management, outreach, and analytics into one intuitive workspace for faster, data-driven sales decisions.",
 
         mission:
-            "Unify lead discovery, outreach tracking, and sales operations into one streamlined workspace that improves team productivity.",
+            "Simplify lead management by unifying prospect data, outreach, and pipeline tracking into a single workspace that helps sales teams work smarter and close deals faster.",
 
         impact:
-            "Demonstrates how scalable SaaS architecture can simplify complex sales workflows while providing actionable business intelligence.",
+            "Demonstrates the design of a scalable B2B SaaS platform with modular architecture, intuitive dashboards, and workflow automation that turns complex sales data into actionable business insights.",
 
         validation: [
 
@@ -81,10 +81,10 @@ export const projects = [
         ],
 
         description:
-            "Workforce analytics platform designed to transform employee performance, hiring operations, and organizational insights into real-time business intelligence.",
+            "Workforce Intelligence Dashboard is a modern HR analytics platform that helps organizations monitor workforce performance, hiring pipelines, and key operational metrics in one unified workspace. It transforms complex HR data into clear, real-time insights for smarter decision-making.",
 
         mission:
-            "Give decision-makers a single operational view of workforce health, hiring progress, and performance metrics.",
+            "Empower HR teams and business leaders with a centralized view of workforce health, recruitment progress, and performance metrics to support confident, data-driven decisions.",
 
         impact:
             "Converts fragmented HR data into actionable visual insights that support faster operational decisions.",
@@ -119,7 +119,8 @@ export const projects = [
         images: [
             "/projects/portfolio-1.png",
             "/projects/portfolio-2.png",
-            "/projects/portfolio-3.png"
+            "/projects/portfolio-3.png",
+            "/projects/portfolio-4.png"
         ],
 
         icons: [
@@ -128,13 +129,13 @@ export const projects = [
         ],
 
         description:
-            "Interactive developer portfolio that blends cinematic motion design, modern UI systems, and product storytelling to showcase engineering through experience rather than static content.",
+            "An interactive developer portfolio that blends cinematic motion, modern UI design, and product storytelling to showcase projects as polished digital experiences rather than static case studies.",
 
         mission:
-            "Present technical work as polished digital products that communicate design thinking alongside engineering capability.",
+            "Present technical work through immersive design that highlights problem-solving, engineering craftsmanship, and attention to user experience.",
 
         impact:
-            "Creates an engaging experience that differentiates the portfolio from traditional developer websites through immersive interaction.",
+            "Demonstrates expertise in building engaging, production-quality interfaces that combine thoughtful interaction, responsive design, and compelling storytelling to create a memorable user experience.",
 
         validation: [
 
@@ -155,13 +156,14 @@ export const projects = [
             "https://elvis-portfolio-react.vercel.app/"
     },
 
-    {
-        slug: "ai-workflow-platform",
 
-        title: "AI Workflow Automation Platform",
+    {
+        slug: "GeoSmith",
+
+        title: "GeoSmith: Storm Opportunity Intelligence",
         status: "IN DEVELOPMENT",
 
-        category: "AI AUTOMATION",
+        category: "GEOSPATIAL INTELLIGENCE",
 
         images: [
             "/projects/ai-automation-1.png",
@@ -175,23 +177,23 @@ export const projects = [
             FaGitAlt
         ],
         description:
-            "AI-powered operations platform currently in development, focused on automating repetitive business workflows through intelligent decision support and scalable system architecture.",
+            "An AI-powered geospatial intelligence platform that helps roofing businesses identify storm-affected areas, discover high-value opportunities, and prioritize outreach through real-time location-based insights.",
 
         mission:
-            "Reduce manual operational overhead by integrating AI into everyday business processes.",
+            "Turn weather events and geospatial data into actionable business intelligence that helps contractors respond faster and connect with the right customers at the right time.",
 
         impact:
-            "Designed to increase productivity by connecting business tools, automating decision flows, and enabling intelligent process orchestration.",
+            "Demonstrates the integration of geospatial analytics, AI-powered insights, and interactive mapping to transform real-world events into strategic business opportunities.",
 
         validation: [
 
-            "Interactive Charts",
+            "Geospatial Intelligence",
 
-            "HR Analytics",
+            "Interactive Maps",
 
-            "Responsive Dashboard",
+            "AI Opportunity Scoring",
 
-            "Data Visualization"
+            "Real-Time Insights"
 
         ],
 
@@ -202,7 +204,51 @@ export const projects = [
     {
         slug: "Mood-flix",
 
-        title: "Ai emotional movie recomender",
+        title: "AI Emotional Movie Recommender",
+        status: "IN DEVELOPMENT",
+
+        category: "AI EXPERIENCE",
+
+        images: [
+            "/projects/ai-automation-1.png",
+            "/projects/ai-automation-2.png",
+            "/projects/ai-automation-3.png"
+        ],
+
+        icons: [
+            FaReact,
+            FaNodeJs,
+            FaGitAlt
+        ],
+        description:
+            "An AI-powered movie discovery platform that recommends films based on a user's emotional state, combining intelligent recommendations with a modern, immersive viewing experience.",
+
+        mission:
+            "Help users discover meaningful movie recommendations by understanding mood and transforming it into personalized entertainment choices.",
+
+        impact:
+            "Demonstrates the integration of AI-driven recommendations, intuitive UX, and responsive application design to create a more human-centered discovery experience.",
+
+        validation: [
+
+            "AI Recommendations",
+
+            "Mood-Based Discovery",
+
+            "TMDB API Integration",
+
+            "Responsive Experience"
+
+        ],
+
+        github: "#",
+
+        live: "#"
+    },
+    {
+        slug: "ai-workflow-platform",
+
+        title: "AI Workflow Automation Platform",
         status: "IN DEVELOPMENT",
 
         category: "AI AUTOMATION",

@@ -92,6 +92,17 @@ export default function Projects() {
 
           <div className="project-showcase">
 
+            <div
+              className={`project-status ${featuredProject.status === "DEPLOYED"
+                ? "status-live"
+                : "status-dev"
+                }`}
+            >
+              <div className="status-dot"></div>
+
+              {featuredProject.status}
+            </div>
+
             <div className="project-number">
               <motion.span
 
@@ -151,22 +162,40 @@ export default function Projects() {
 
                   <h3>{featuredProject.title}</h3>
 
-                  <div className="project-meta">
-                    <span>FULL STACK</span>
+                  <div className="project-validation">
 
-                    <span>•</span>
+                    <div className="validation-item">
 
-                    <span>SAAS</span>
+                      <span className="validation-dot"></span>
 
-                    <span>•</span>
+                      <span>Adaptive Layout</span>
 
-                    <span>ANALYTICS</span>
-                  </div>
+                    </div>
 
-                  <div className="project-stack">
-                    {featuredProject.stack.split(" • ").map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
+                    <div className="validation-item">
+
+                      <span className="validation-dot"></span>
+
+                      <span>Modular Components</span>
+
+                    </div>
+
+                    <div className="validation-item">
+
+                      <span className="validation-dot"></span>
+
+                      <span>Scalable Architecture</span>
+
+                    </div>
+
+                    <div className="validation-item">
+
+                      <span className="validation-dot"></span>
+
+                      <span>Production Ready</span>
+
+                    </div>
+
                   </div>
 
                 </motion.div>
@@ -241,17 +270,6 @@ export default function Projects() {
             </div>
 
             <div className="project-right">
-
-              <div
-                className={`project-status ${featuredProject.status === "DEPLOYED"
-                  ? "status-live"
-                  : "status-dev"
-                  }`}
-              >
-                <div className="status-dot"></div>
-
-                {featuredProject.status}
-              </div>
 
               <div className="project-sections">
 

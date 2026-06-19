@@ -205,9 +205,11 @@
 
     justify-content: flex-start;
 
-    padding-top: .6rem;
+    padding-top: 4rem;
 
     gap: 2.4rem;
+
+    margin-left: -3.25rem;
 }
 
 .project-status {
@@ -355,7 +357,7 @@
 
     color: #fff;
 
-    margin-bottom: .8rem;
+    margin-bottom: -.3rem;
 
 }
 
@@ -363,17 +365,17 @@
 
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, max-content));
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
 
     column-gap: 2rem;
 
-    row-gap: .75rem;
-
     align-items: center;
 
-    margin-top: -.25rem;
+    min-height: 32px;
 
-    margin-bottom: 1.75rem;
+    margin-top: 0;
+
+    margin-bottom: .75rem;
 
 }
 
@@ -385,22 +387,39 @@
 
     gap: .7rem;
 
+    min-height: 24px;
+
+    white-space: nowrap;
+
+    transition:
+
+        opacity .35s ease,
+
+        transform .35s ease;
+
 }
 
 .validation-dot {
 
-    width: 7px;
+    width: 6px;
 
-    height: 7px;
+    height: 6px;
 
     border-radius: 50%;
 
     background: #00ff88;
 
     box-shadow:
+
         0 0 8px rgba(0, 255, 136, .45);
 
     flex-shrink: 0;
+
+    transition:
+
+        opacity .35s ease,
+
+        transform .35s ease;
 
 }
 
@@ -412,7 +431,7 @@
 
     font-weight: 600;
 
-    letter-spacing: .14rem;
+    letter-spacing: .10rem;
 
     text-transform: uppercase;
 
@@ -424,16 +443,35 @@
    PROJECT MONITOR
 ========================= */
 
-.monitor-screen {
+.project-preview {
 
     width: 85%;
 
-    margin-bottom: 1.5rem;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.monitor-screen {
+
+    width: 100%;
+
+    margin-top: -1.5rem;
+
+    margin-bottom: 1rem;
+
 }
 
 .monitor-image {
 
     position: relative;
+
+    aspect-ratio: 16 / 10;
+
+    width: 100%;
 
     overflow: hidden;
 
@@ -448,17 +486,19 @@
         0 30px 80px rgba(0, 0, 0, .45),
 
         0 0 0 1px rgba(255, 255, 255, .04);
+
 }
 
 .monitor-image img {
 
-    display: block;
-
     width: 100%;
 
-    height: auto;
+    height: 100%;
+
+    display: block;
 
     object-fit: cover;
+
 }
 
 /* =========================
@@ -467,13 +507,18 @@
 
 .project-icons {
 
+    width: 100%;
+
     display: flex;
+
+    justify-content: center;
 
     align-items: center;
 
     gap: 1rem;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+
 }
 
 .project-footer {

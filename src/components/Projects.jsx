@@ -164,37 +164,20 @@ export default function Projects() {
 
                   <div className="project-validation">
 
-                    <div className="validation-item">
+                    {featuredProject.validation.map((item) => (
 
-                      <span className="validation-dot"></span>
+                      <div
+                        className="validation-item"
+                        key={item}
+                      >
 
-                      <span>Adaptive Layout</span>
+                        <span className="validation-dot"></span>
 
-                    </div>
+                        <span>{item}</span>
 
-                    <div className="validation-item">
+                      </div>
 
-                      <span className="validation-dot"></span>
-
-                      <span>Modular Components</span>
-
-                    </div>
-
-                    <div className="validation-item">
-
-                      <span className="validation-dot"></span>
-
-                      <span>Scalable Architecture</span>
-
-                    </div>
-
-                    <div className="validation-item">
-
-                      <span className="validation-dot"></span>
-
-                      <span>Production Ready</span>
-
-                    </div>
+                    ))}
 
                   </div>
 
@@ -202,57 +185,61 @@ export default function Projects() {
 
               </AnimatePresence>
 
-              <AnimatePresence mode="wait">
+              <div className="project-preview">
 
-                <motion.div
+                <AnimatePresence mode="wait">
 
-                  className="monitor-screen"
+                  <motion.div
 
-                  key={featuredProject.slug}
+                    className="monitor-screen"
 
-                  initial={{
-                    opacity: 0,
-                    scale: .88,
-                    rotateX: 6
-                  }}
+                    key={featuredProject.slug}
 
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotateX: 0
-                  }}
+                    initial={{
+                      opacity: 0,
+                      scale: .88,
+                      rotateX: 6
+                    }}
 
-                  exit={{
-                    opacity: 0,
-                    scale: 1.06,
-                    rotateX: -6
-                  }}
-                >
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      rotateX: 0
+                    }}
 
-                  <div className="monitor-image">
+                    exit={{
+                      opacity: 0,
+                      scale: 1.06,
+                      rotateX: -6
+                    }}
+                  >
 
-                    <img
-                      src={
-                        featuredProject.images[
-                        imageIndex
-                        ]
-                      }
-                      alt={featuredProject.title}
-                    />
+                    <div className="monitor-image">
 
-                  </div>
+                      <img
+                        src={
+                          featuredProject.images[
+                          imageIndex
+                          ]
+                        }
+                        alt={featuredProject.title}
+                      />
 
-                </motion.div>
+                    </div>
 
-              </AnimatePresence>
+                  </motion.div>
 
-              <div className="project-icons">
+                </AnimatePresence>
 
-                {featuredProject.icons.map((Icon, index) => (
-                  <span key={index}>
-                    <Icon />
-                  </span>
-                ))}
+                <div className="project-icons">
+
+                  {featuredProject.icons.map((Icon, index) => (
+                    <span key={index}>
+                      <Icon />
+                    </span>
+                  ))}
+
+                </div>
 
               </div>
 
@@ -262,7 +249,7 @@ export default function Projects() {
                   to={`/projects/${featuredProject.slug}`}
                   className="project-btn"
                 >
-                  View Project →
+                  Open Experience →
                 </Link>
 
               </motion.div>

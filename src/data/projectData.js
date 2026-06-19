@@ -41,8 +41,17 @@ export const projects = [
         impact:
             "Demonstrates how scalable SaaS architecture can simplify complex sales workflows while providing actionable business intelligence.",
 
-        stack:
-            "React • TypeScript • Supabase • Framer Motion • Recharts",
+        validation: [
+
+            "Adaptive Layout",
+
+            "Modular Components",
+
+            "Scalable Architecture",
+
+            "Production Ready"
+
+        ],
 
         github:
             "https://github.com/igbinedionelvis/leadpilot-saas-dashboard",
@@ -80,8 +89,17 @@ export const projects = [
         impact:
             "Converts fragmented HR data into actionable visual insights that support faster operational decisions.",
 
-        stack:
-            "React • Vite • Recharts • CSS",
+        validation: [
+
+            "Interactive Charts",
+
+            "HR Analytics",
+
+            "Responsive Dashboard",
+
+            "Data Visualization"
+
+        ],
 
         github:
             "https://github.com/igbinedionelvis/workforce-intelligence-dashboard",
@@ -118,8 +136,17 @@ export const projects = [
         impact:
             "Creates an engaging experience that differentiates the portfolio from traditional developer websites through immersive interaction.",
 
-        stack:
-            "React • Framer Motion • CSS",
+        validation: [
+
+            "Interactive Charts",
+
+            "HR Analytics",
+
+            "Responsive Dashboard",
+
+            "Data Visualization"
+
+        ],
 
         github:
             "https://github.com/igbinedionelvis/elvis-portfolio-react",
@@ -156,8 +183,17 @@ export const projects = [
         impact:
             "Designed to increase productivity by connecting business tools, automating decision flows, and enabling intelligent process orchestration.",
 
-        stack:
-            "React • Node.js • OpenAI API • Automation Workflows",
+        validation: [
+
+            "Interactive Charts",
+
+            "HR Analytics",
+
+            "Responsive Dashboard",
+
+            "Data Visualization"
+
+        ],
 
         github: "#",
 
@@ -191,8 +227,17 @@ export const projects = [
         impact:
             "Designed to increase productivity by connecting business tools, automating decision flows, and enabling intelligent process orchestration.",
 
-        stack:
-            "React • Node.js • OpenAI API • Automation Workflows",
+        validation: [
+
+            "Interactive Charts",
+
+            "HR Analytics",
+
+            "Responsive Dashboard",
+
+            "Data Visualization"
+
+        ],
 
         github: "#",
 

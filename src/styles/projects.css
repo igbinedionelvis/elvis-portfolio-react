@@ -582,55 +582,55 @@
 
 }
 
-.project-timeline-node {
-
-    position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 0;
-
-    z-index: 2;
-
-}
-
-.project-timeline-node::after {
+.project-navigation::before {
 
     content: "";
 
-    width: 14px;
+    position: absolute;
 
-    height: 14px;
+    left: 0;
 
-    border-radius: 50%;
+    top: 0;
 
-    background: #7a7a7a;
+    bottom: 0;
 
-    border: 2px solid #141414;
+    width: 60px;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(to right,
+
+            #090909,
+
+            transparent);
 
 }
 
-.project-timeline-number {
+.project-navigation::after {
 
-    font-family: var(--font-tech);
+    content: "";
 
-    font-size: .72rem;
+    position: absolute;
 
-    font-weight: 700;
+    right: 0;
 
-    color: #00ff88;
+    top: 0;
 
-    letter-spacing: .28em;
+    bottom: 0;
 
-    text-transform: uppercase;
+    width: 60px;
 
-    margin-top: -24px;
+    pointer-events: none;
 
-    margin-bottom: 6px;
+    background:
+
+        linear-gradient(to left,
+
+            #090909,
+
+            transparent);
 
 }
 
@@ -638,56 +638,41 @@
    PROJECT TIMELINE
 ========================== */
 
-.project-timeline {
-
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    justify-items: center;
-
-    margin-bottom: 10px;
-
-    padding-top: 16px;
-
-}
-
 .project-strip {
 
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
 
     gap: 1.5rem;
 
     margin-top: 18px;
 
-}
+    overflow-x: auto;
 
-.project-timeline::before {
+    overflow-y: hidden;
 
-    content: "";
+    scroll-behavior: smooth;
 
-    position: absolute;
+    scroll-snap-type: x mandatory;
 
-    left: 3%;
+    padding: .5rem;
 
-    right: 3%;
+    scrollbar-width: none;
 
-    top: 24px;
+    overscroll-behavior-x: contain;
 
-    height: 3px;
-
-    background: rgba(255, 255, 255, .08);
+    overscroll-behavior-y: contain;
 
 }
 
+.project-strip::-webkit-scrollbar {
+
+    display: none;
+
+}
 
 .project-card {
 
-    width: 100%;
+    flex: 0 0 360px;
 
     min-height: 220px;
 
@@ -705,6 +690,26 @@
 
     margin-top: 0;
 
+    scroll-snap-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    opacity: .65;
+
+    transform: scale(.94);
+
+    transition:
+
+        transform .35s,
+
+        opacity .35s,
+
+        box-shadow .35s,
+
+        border-color .35s;
+
 }
 
 .project-card:hover {
@@ -717,15 +722,53 @@
 
 }
 
+.project-card:hover .project-card-image img {
+
+    transform: scale(1.05);
+
+}
+
 .project-card.active {
+
+    opacity: 1;
+
+    transform:
+
+        translateY(-10px) scale(1);
 
     border-color: #00ff88;
 
     box-shadow:
 
-        0 0 0 1px rgba(0, 255, 136, .18),
+        0 20px 60px rgba(0, 255, 136, .12);
 
-        0 15px 35px rgba(0, 255, 136, .08);
+}
+
+.project-card-image {
+
+    width: 100%;
+
+    aspect-ratio: 16/9;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    margin-bottom: 1rem;
+
+    background: #111;
+
+}
+
+.project-card-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .45s;
 
 }
 
@@ -735,7 +778,7 @@
 
     flex-direction: column;
 
-    gap: .9rem;
+    height: 100%;
 
 }
 
@@ -785,7 +828,9 @@
 
     font-family: var(--font-tech);
 
-    font-size: 1.55rem;
+    font-size: 1.35rem;
+
+    margin-top: .25rem;
 
     font-weight: 700;
 
@@ -808,6 +853,64 @@
     font-weight: 600;
 
     letter-spacing: .22rem;
+
+    text-transform: uppercase;
+
+    margin-top: auto;
+
+    padding-top: .75rem;
+
+}
+
+/* ==========================================
+   CAROUSEL
+========================================== */
+
+.carousel-progress {
+
+    position: relative;
+
+    height: 5px;
+
+    margin-bottom: 2rem;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .08);
+
+    overflow: hidden;
+
+}
+
+.carousel-progress-fill {
+
+    width: 30%;
+
+    height: 100%;
+
+    background: #00ff88;
+
+    border-radius: inherit;
+
+    transition: .35s;
+
+}
+
+.carousel-hint {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: .8rem;
+
+    font-family: var(--font-tech);
+
+    font-size: .72rem;
+
+    letter-spacing: .18rem;
+
+    color: #00ff88;
 
     text-transform: uppercase;
 
@@ -970,11 +1073,6 @@
         padding: 1.5rem;
     }
 
-    .project-timeline {
-
-        display: none;
-    }
-
     .project-strip {
 
         grid-template-columns: 1fr;
@@ -987,10 +1085,6 @@
     .project-card {
 
         min-height: auto;
-    }
-
-    .project-timeline {
-        display: none;
     }
 
 }

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { projects } from "../data/projectData";
 import {
   useState,
-  useEffect
+  useEffect,
+  useRef
 }
   from "react";
 
@@ -14,6 +15,10 @@ export default function Projects() {
 
   const [imageIndex, setImageIndex] =
     useState(0);
+
+  const stripRef = useRef(null);
+
+  const cardRefs = useRef([]);
 
   const featuredProject = projects[activeIndex] ?? projects[0];
 
@@ -37,12 +42,57 @@ export default function Projects() {
 
   }, [featuredProject]);
 
-  const nextProjects =
-    projects
-      .filter((_, i) => i !== activeIndex);
+  useEffect(() => {
 
-  const previewProjects =
-    nextProjects;
+    const strip = stripRef.current;
+
+    if (!strip) return;
+
+    const handleWheel = (e) => {
+
+      // Only hijack vertical wheel
+
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX))
+        return;
+
+      e.preventDefault();
+
+      strip.scrollBy({
+
+        left: e.deltaY * 2,
+
+        behavior: "smooth"
+
+      });
+
+    };
+
+    strip.addEventListener(
+
+      "wheel",
+
+      handleWheel,
+
+      { passive: false }
+
+    );
+
+    return () => {
+
+      strip.removeEventListener(
+
+        "wheel",
+
+        handleWheel
+
+      );
+
+    };
+
+  }, []);
+
+
+  const previewProjects = projects;
 
   return (
     <motion.section
@@ -288,79 +338,77 @@ export default function Projects() {
 
         <div className="project-navigation">
 
-          <div className="project-timeline">
+          <div className="carousel-hint">
 
-            {previewProjects.map((project) => (
-
-              <div
-                key={project.title}
-                className="project-timeline-node"
-              >
-
-                <span className="project-timeline-number">
-                  {String(
-                    projects.findIndex(
-                      p => p.title === project.title
-                    ) + 1
-                  ).padStart(2, "0")}
-                </span>
-
-              </div>
-
-            ))}
+            ← Drag or Scroll →
 
           </div>
 
-          <div className="project-strip">
+          <div className="carousel-progress">
 
-            {previewProjects.map((project) => (
+            <div
+              className="carousel-progress-fill"
+            />
 
-              <button
-                key={project.title}
-                className={`project-card ${activeIndex === projects.findIndex(
-                  p => p.title === project.title
-                )
-                  ? "active"
-                  : ""
-                  }`}
-                onClick={() =>
-                  setActiveIndex(
-                    projects.findIndex(
-                      p => p.title === project.title
-                    )
-                  )
-                }
-              >
+          </div>
 
-                <div className="project-card-content">
+          <div
+            className="project-strip"
+            ref={stripRef}
+          >
 
-                  <div className="project-card-header">
+            {previewProjects.map((project) => {
 
-                    <span className="project-card-number">
-                      {String(
-                        projects.findIndex(
-                          p => p.title === project.title
-                        ) + 1
-                      ).padStart(2, "0")}
-                    </span>
+              const projectIndex = projects.findIndex(
+                p => p.title === project.title
+              );
 
-                    <span className="project-card-status">
-                      {project.status}
+              return (
+
+                <button
+                  ref={(el) => (cardRefs.current[projectIndex] = el)}
+                  key={project.title}
+                  className={`project-card ${activeIndex === projectIndex ? "active" : ""
+                    }`}
+                  onClick={() => setActiveIndex(projectIndex)}
+                >
+
+                  <div className="project-card-content">
+
+                    <div className="project-card-image">
+
+                      <img
+                        src={project.images[0]}
+                        alt={project.title}
+                      />
+
+                    </div>
+
+                    <div className="project-card-header">
+
+                      <span className="project-card-number">
+                        {String(projectIndex + 1).padStart(2, "0")}
+                      </span>
+
+                      <span className="project-card-status">
+                        {project.status}
+                      </span>
+
+                    </div>
+
+                    <h4>{project.title}</h4>
+
+                    <span className="project-card-category">
+                      {project.category}
                     </span>
 
                   </div>
 
-                  <h4>{project.title}</h4>
+                </button>
 
-                  <span className="project-card-category">
-                    {project.category}
-                  </span>
+              );
 
-                </div>
-
-              </button>
-
-            ))}
+            })}
 
           </div>
 

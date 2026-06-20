@@ -13,7 +13,7 @@ export const projects = [
     {
         slug: "leadpilot-crm",
 
-        title: "LeadPilot CRM Platform",
+        title: "LeadPilot: CRM & Sales Intelligence Platform",
         status: "DEPLOYED",
 
         category: "BUSINESS INTELLIGENCE",
@@ -166,9 +166,7 @@ export const projects = [
         category: "GEOSPATIAL INTELLIGENCE",
 
         images: [
-            "/projects/ai-automation-1.png",
-            "/projects/ai-automation-2.png",
-            "/projects/ai-automation-3.png"
+            "/projects/geosmith-1.png"
         ],
 
         icons: [
@@ -210,9 +208,7 @@ export const projects = [
         category: "AI EXPERIENCE",
 
         images: [
-            "/projects/ai-automation-1.png",
-            "/projects/ai-automation-2.png",
-            "/projects/ai-automation-3.png"
+            "/projects/mood-flix-1.png"
         ],
 
         icons: [
@@ -254,9 +250,7 @@ export const projects = [
         category: "AI AUTOMATION",
 
         images: [
-            "/projects/ai-automation-1.png",
-            "/projects/ai-automation-2.png",
-            "/projects/ai-automation-3.png"
+            "/projects/ai-workflow-1.png"
         ],
 
         icons: [

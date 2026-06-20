@@ -271,7 +271,7 @@ export default function Projects() {
                 : "status-dev"
                 }`}
             >
-              <div className="status-dot"></div>
+              <div className="project-status-dot"></div>
 
               {featuredProject.status}
             </div>

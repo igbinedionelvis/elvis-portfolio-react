@@ -139,13 +139,13 @@ export const projects = [
 
         validation: [
 
-            "Interactive Charts",
+            "Immersive Storytelling",
 
-            "HR Analytics",
+            "Motion-Driven UX",
 
-            "Responsive Dashboard",
+            "Responsive Experience",
 
-            "Data Visualization"
+            "Personal Brand System"
 
         ],
 
@@ -269,13 +269,13 @@ export const projects = [
 
         validation: [
 
-            "Interactive Charts",
+            "AI-Powered Workflows",
 
-            "HR Analytics",
+            "Intelligent Routing",
 
-            "Responsive Dashboard",
+            "Decision Automation",
 
-            "Data Visualization"
+            "Process Optimization"
 
         ],
 

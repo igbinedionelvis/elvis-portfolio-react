@@ -265,16 +265,37 @@ export default function Projects() {
 
           <div className="project-showcase">
 
-            <div
+            <motion.div
+
+              key={featuredProject.slug}
               className={`project-status ${featuredProject.status === "DEPLOYED"
                 ? "status-live"
                 : "status-dev"
                 }`}
+
+              initial={{
+                opacity: 0,
+                y: -10
+              }}
+
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+
+              exit={{
+                opacity: 0,
+                y: 10
+              }}
+
+              transition={{
+                duration: .35
+              }}
             >
               <div className="project-status-dot"></div>
 
               {featuredProject.status}
-            </div>
+            </motion.div>
 
             <div className="project-number">
               <motion.span
@@ -337,18 +358,37 @@ export default function Projects() {
 
                   <div className="project-validation">
 
-                    {featuredProject.validation.map((item) => (
+                    {featuredProject.validation.map((item, index) => (
 
-                      <div
+                      <motion.div
                         className="validation-item"
                         key={item}
+                        initial={{
+                          opacity: 0,
+                          y: 12
+                        }}
+
+                        animate={{
+                          opacity: 1,
+                          y: 0
+                        }}
+
+                        exit={{
+                          opacity: 0,
+                          y: -12
+                        }}
+
+                        transition={{
+                          duration: .35,
+                          delay: .15 + (index * .08)
+                        }}
                       >
 
                         <span className="validation-dot"></span>
 
                         <span>{item}</span>
 
-                      </div>
+                      </motion.div>
 
                     ))}
 
@@ -370,32 +410,45 @@ export default function Projects() {
 
                     initial={{
                       opacity: 0,
-                      scale: .88,
-                      rotateX: 6
+                      scale: .92,
+                      rotateX: 6,
+                      filter: "blur(10px) brightness(.6)"
                     }}
 
                     animate={{
                       opacity: 1,
                       scale: 1,
-                      rotateX: 0
+                      rotateX: 0,
+                      filter: "blur(0px) brightness(1)"
                     }}
 
                     exit={{
                       opacity: 0,
-                      scale: 1.06,
-                      rotateX: -6
+                      scale: 1.04,
+                      rotateX: -6,
+                      filter: "blur(10px) brightness(.6)"
+                    }}
+
+                    transition={{
+                      duration: .55,
+                      ease: [0.22, 1, 0.36, 1]
                     }}
                   >
 
                     <div className="monitor-image">
 
                       <img
+
+                        key={`${featuredProject.slug}-${imageIndex}`}
+
                         src={
                           featuredProject.images[
                           imageIndex
                           ]
                         }
+
                         alt={featuredProject.title}
+
                       />
 
                     </div>
@@ -431,27 +484,131 @@ export default function Projects() {
 
             <div className="project-right">
 
-              <div className="project-sections">
+              <AnimatePresence mode="wait">
 
-                <motion.div className="project-section">
+                <motion.div
 
-                  <span>OVERVIEW</span>
+                  key={featuredProject.slug}
 
-                  <p>{featuredProject.description}</p>
+                  className="project-sections"
+
+                  initial={{
+                    opacity: 0
+                  }}
+
+                  animate={{
+                    opacity: 1
+                  }}
+
+                  exit={{
+                    opacity: 0
+                  }}
+
+                  transition={{
+                    duration: .25
+                  }}
+
+                >
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .05
+                    }}
+
+                  >
+
+                    <span>OVERVIEW</span>
+
+                    <p>{featuredProject.description}</p>
+
+                  </motion.div>
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .15
+                    }}
+
+                  >
+
+                    <span>MISSION</span>
+
+                    <p>{featuredProject.mission}</p>
+
+                  </motion.div>
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .25
+                    }}
+
+                  >
+
+                    <span>IMPACT</span>
+
+                    <p>{featuredProject.impact}</p>
+
+                  </motion.div>
 
                 </motion.div>
 
-                <motion.div className="project-section">
-                  <span>MISSION</span>
-                  <p>{featuredProject.mission}</p>
-                </motion.div>
-
-                <motion.div className="project-section">
-                  <span>IMPACT</span>
-                  <p>{featuredProject.impact}</p>
-                </motion.div>
-
-              </div>
+              </AnimatePresence>
 
             </div>
 

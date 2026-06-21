@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import { projects } from "../data/projectData";
 import {
   useState,
@@ -471,12 +470,16 @@ export default function Projects() {
 
               <motion.div className="project-footer">
 
-                <Link
-                  to={`/projects/${featuredProject.slug}`}
+                <a
+                  href={featuredProject.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="project-btn"
                 >
-                  Open Experience →
-                </Link>
+                  {featuredProject.status === "DEPLOYED"
+                    ? "Open Experience →"
+                    : "Coming Soon →"}
+                </a>
 
               </motion.div>
 

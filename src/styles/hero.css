@@ -590,3 +590,179 @@
 .profile:not(.active) {
     transform: perspective(1200px) rotateX(0) rotateY(0);
 }
+
+/* =========================
+   SCROLL HINT
+========================= */
+
+.hero-scroll-hint {
+
+    position: absolute;
+
+    right: 2rem;
+
+    bottom: 2rem;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+}
+
+.scroll-text {
+
+    writing-mode: vertical-rl;
+
+    text-transform: uppercase;
+
+    letter-spacing: .15em;
+
+    font-size: .65rem;
+
+    color: var(--accent);
+
+    opacity: .7;
+
+}
+
+.scroll-line {
+
+    width: 1px;
+
+    height: 80px;
+
+    background: rgba(0, 255, 136, .35);
+
+    position: relative;
+
+}
+
+.scroll-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    box-shadow: 0 0 12px #00ff88;
+
+    animation: scrollPulse 2s infinite;
+
+}
+
+
+@keyframes scrollPulse {
+
+    0% {
+
+        top: 0;
+
+        opacity: 0;
+
+    }
+
+    30% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        top: 70px;
+
+        opacity: 0;
+
+    }
+
+}
+
+/* =========================
+   RESPONSIVE REORGANIZING
+========================= */
+
+@media (max-width:992px) {
+
+    .hero-scroll-hint {
+
+        left: 50%;
+
+        right: auto;
+
+        transform: translateX(-50%);
+
+        bottom: 1.5rem;
+
+        flex-direction: column;
+
+    }
+
+    .scroll-text {
+
+        writing-mode: horizontal-tb;
+
+    }
+
+    .scroll-line {
+
+        width: 120px;
+
+        height: 1px;
+
+    }
+
+    .scroll-line::after {
+
+        top: 50%;
+
+        left: 0;
+
+        transform: translateY(-50%);
+
+        animation: scrollPulseHorizontal 2s infinite;
+
+    }
+
+    @keyframes scrollPulseHorizontal {
+
+        0% {
+
+            left: 0;
+
+            opacity: 0;
+
+        }
+
+        30% {
+
+            opacity: 1;
+
+        }
+
+        100% {
+
+            left: calc(100% - 6px);
+
+            opacity: 0;
+
+        }
+
+    }
+}

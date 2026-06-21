@@ -331,9 +331,9 @@ export default function MessageSection() {
                         </div>
 
                         <a
-                            href="/Elvis-Resume.pdf"
+                            href="/Elvis-Igbinedion-CV.pdf"
                             download
-                            className="resume-btn"
+                            className="resume-btn secondary"
                         >
                             <Download size={16} />
                             Download CV

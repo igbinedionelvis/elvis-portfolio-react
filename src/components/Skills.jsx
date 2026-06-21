@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SkillMatrixGraphic from "./SkillMatrixGraphic";
 import {
+    Wrench,
     Code2,
     Server,
     Sparkles,
@@ -226,7 +227,7 @@ export default function Skills() {
                     >
                         <div className="skill-card-header">
                             <div className="skill-icon">
-                                <Bot size={20} />
+                                <Wrench size={20} />
                             </div>
 
                             <h3>Tools & Workflow</h3>

@@ -162,10 +162,11 @@ export default function Hero() {
 
             <a
               href="/Elvis-Igbinedion-CV.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="secondary-btn"
             >
-              Download CV
+              Open CV
             </a>
           </div>
 
@@ -220,6 +221,18 @@ export default function Hero() {
         </div>
 
       </div>
+
+      {/* SCROLL HINT */}
+      <div className="hero-scroll-hint">
+
+        <span className="scroll-line"></span>
+
+        <span className="scroll-text">
+          SCROLL TO EXPLORE
+        </span>
+
+      </div>
+
     </section>
   );
 }

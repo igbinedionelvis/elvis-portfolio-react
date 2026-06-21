@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import {
     UserRound,
     Sparkles,
@@ -37,6 +38,8 @@ const conversations = [
 export default function MessageSection() {
     const [selected, setSelected] = useState("Freelance Project");
     const [activeMessage, setActiveMessage] = useState(0);
+
+    const [state, handleSubmit] = useForm("mkolopnn")
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -88,77 +91,123 @@ export default function MessageSection() {
                         or a new product idea, I'd love to hear about it.
                     </p>
 
-                    <form className="message-form">
-
-                        <div className="input-wrapper">
-                            <User size={18} />
-
-                            <input
-                                type="text"
-                                placeholder="What's your name?"
-                            />
-                        </div>
-
-                        <div className="input-wrapper">
-                            <Mail size={18} />
-
-                            <input
-                                type="email"
-                                placeholder="How can I reach you?"
-                            />
-                        </div>
-
-                        <div className="categories">
-
-                            {categories.map((item) => (
-                                <button
-                                    type="button"
-                                    key={item}
-                                    className={
-                                        selected === item
-                                            ? "category active"
-                                            : "category"
-                                    }
-                                    onClick={() => setSelected(item)}
-                                >
-                                    {selected === item && (
-                                        <motion.span
-                                            layoutId="activeCategory"
-                                            className="category-highlight"
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30
-                                            }}
-                                        />
-                                    )}
-
-                                    <span className="category-label">
-                                        {item}
-                                    </span>
-                                </button>
-                            ))}
-
-                        </div>
-
-                        <div className="textarea-wrapper">
-                            <Pencil size={18} />
-
-                            <textarea
-                                rows="3"
-                                placeholder="Tell me about your idea..."
-                            />
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="send-btn"
+                    {state.succeeded ? (
+                        <motion.div
+                            className="success-card"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
                         >
-                            <Send size={18} />
-                            Send Message
-                        </motion.button>
-                    </form>
+                            <Check size={40} />
+
+                            <h3>Message Sent 🚀</h3>
+
+                            <p>
+                                Thanks for reaching out.
+                                I'll get back to you within 24 hours.
+                            </p>
+                        </motion.div>
+                    ) : (
+                        <form
+                            className="message-form"
+                            onSubmit={handleSubmit}
+                        >
+
+                            <div className="input-wrapper">
+                                <User size={18} />
+
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="What's your name?"
+                                    required
+                                />
+                            </div>
+
+                            <div className="input-wrapper">
+                                <Mail size={18} />
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="How can I reach you?"
+                                    required
+                                />
+                            </div>
+                            <ValidationError
+                                prefix="Email"
+                                field="email"
+                                errors={state.errors}
+                            />
+
+                            <div className="categories">
+
+                                {categories.map((item) => (
+                                    <button
+                                        type="button"
+                                        key={item}
+                                        className={
+                                            selected === item
+                                                ? "category active"
+                                                : "category"
+                                        }
+                                        onClick={() => setSelected(item)}
+                                    >
+                                        {selected === item && (
+                                            <motion.span
+                                                layoutId="activeCategory"
+                                                className="category-highlight"
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 300,
+                                                    damping: 30
+                                                }}
+                                            />
+                                        )}
+
+                                        <span className="category-label">
+                                            {item}
+                                        </span>
+                                    </button>
+                                ))}
+
+                            </div>
+
+                            <input
+                                type="hidden"
+                                name="category"
+                                value={selected}
+                            />
+
+                            <div className="textarea-wrapper">
+                                <Pencil size={18} />
+
+                                <textarea
+                                    rows="3"
+                                    name="message"
+                                    placeholder="Tell me about your idea..."
+                                    required
+                                />
+                            </div>
+                            <ValidationError
+                                prefix="Message"
+                                field="message"
+                                errors={state.errors}
+                            />
+
+                            <motion.button
+                                type="submit"
+                                disabled={state.submitting}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="send-btn"
+                            >
+                                <Send size={18} />
+                                {state.submitting
+                                    ? "Sending..."
+                                    : "Send Message"}
+                            </motion.button>
+                        </form>
+                    )}
 
                 </motion.div>
 

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     fill="none">
+
+  <!-- Top -->
+  <path d="M12 3L18 6L12 9L6 6L12 3Z"
+        fill="#00ff88"/>
+
+  <!-- Middle -->
+  <path d="M12 10L18 13L12 16L6 13L12 10Z"
+        fill="#00ff88"
+        opacity="0.85"/>
+
+  <!-- Bottom -->
+  <path d="M12 17L18 20L12 23L6 20L12 17Z"
+        fill="#00ff88"
+        opacity="0.7"/>
+
+</svg>

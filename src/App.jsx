@@ -1,9 +1,19 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import MessageSection from "./components/MessageSection";
 import Reveal from "./components/Reveal";
 import Cursor from "./components/Cursor";
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+
+import ProjectDetails from "./pages/ProjectDetails";
+
 
 function App() {
   return (
@@ -11,19 +21,46 @@ function App() {
       <Cursor />
       <Navbar />
 
-      <main>
-        <Reveal>
-          <Hero />
-        </Reveal>
+      <Routes>
 
-        <Reveal>
-          <Projects />
-        </Reveal>
+        <Route
+          path="/"
+          element={
+            <>
+              <Reveal>
+                <Hero />
+              </Reveal>
 
-        <Reveal>
-          <Contact />
-        </Reveal>
-      </main>
+              <Reveal>
+                <About />
+              </Reveal>
+
+              <Reveal>
+                <Projects />
+              </Reveal>
+
+              <Reveal>
+                <Skills />
+              </Reveal>
+
+              <Reveal>
+                <MessageSection />
+              </Reveal>
+
+              <Reveal>
+                <Contact />
+              </Reveal>
+            </>
+          }
+        />
+
+        <Route
+          path="/projects/:slug"
+          element={<ProjectDetails />}
+        />
+
+      </Routes>
+
     </>
   );
 }

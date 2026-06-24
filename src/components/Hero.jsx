@@ -13,9 +13,9 @@ export default function Hero() {
 ========================= */
 
   const words = [
-    "dashboards",
     "automation systems",
-    "data intelligence platforms"
+    "analytics platforms",
+    "intelligent workflows"
   ];
 
   const [index, setIndex] = useState(0);
@@ -105,18 +105,26 @@ export default function Hero() {
 
         {/* LEFT */}
         <div className="hero-content">
-          <span className="badge">AVAILABLE FOR WORK</span>
+          <div className="hero-status">
+            <span className="status-dot"></span>
+            Available for freelance • Remote • Full-time
+          </div>
 
           <h1 className="hero-title">
             Hi, I’m <span className="name">Elvis</span><br />
 
             <span className="headline-strong">
-              I build AI-powered{" "}
+              I build AI-powered
+            </span>
+
+            <span className="rotating-word-slot">
               <span
                 className="rotating-word"
                 style={{
                   opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(8px)"
+                  transform: visible
+                    ? "translateY(0)"
+                    : "translateY(8px)"
                 }}
               >
                 {words[index]}
@@ -143,9 +151,25 @@ export default function Hero() {
 
           {/* BUTTONS */}
           <div className="hero-actions">
-            <button className="primary-btn">View Projects</button>
-            <button className="secondary-btn">Contact</button>
+
+            <a href="#projects" className="primary-btn">
+              View Projects
+            </a>
+
+            <a href="#contact" className="secondary-btn">
+              Contact
+            </a>
+
+            <a
+              href="/Elvis-Igbinedion-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="secondary-btn"
+            >
+              Open CV
+            </a>
           </div>
+
         </div>
 
         {/* RIGHT */}
@@ -158,10 +182,24 @@ export default function Hero() {
             transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
           }}
         >
+
           {/* IMAGE */}
           <div className="profile-image">
-            <img src="/me1.jpg" className="img1" />
-            <img src="/me2.jpg" className="img2" />
+
+            <div className="portrait-wrapper">
+              <img src="/me1.jpg" className="img1" alt="" />
+            </div>
+
+            <img src="/me2.jpg" className="img2" alt="" />
+
+          </div>
+
+          <div className="profile-hint">
+            <span className="hint-dot"></span>
+
+            <span className="hint-text">
+              CLICK TO INITIALIZE
+            </span>
           </div>
 
           {/* PANEL */}
@@ -171,13 +209,30 @@ export default function Hero() {
             <div className="terminal">
               {showTerminal &&
                 lines.map((line, i) => (
-                  <Typing key={i} text={line} delay={i * 450} />
+                  <Typing
+                    key={i}
+                    text={line}
+                    delay={i * 450}
+                    isLast={i === lines.length - 1}
+                  />
                 ))}
             </div>
           </div>
         </div>
 
       </div>
+
+      {/* SCROLL HINT */}
+      <div className="hero-scroll-hint">
+
+        <span className="scroll-line"></span>
+
+        <span className="scroll-text">
+          SCROLL TO EXPLORE
+        </span>
+
+      </div>
+
     </section>
   );
 }

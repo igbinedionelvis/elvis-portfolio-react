@@ -1,0 +1,768 @@
+.hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-top: 140px;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* vertical rhythm system */
+.hero-content>*+* {
+    margin-top: var(--space-2);
+}
+
+.hero-title {
+    font-size: clamp(30px, 3.5vw, 44px);
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    max-width: var(--content-sm);
+    margin-top: 16px;
+}
+
+.hero-title span {
+    color: white;
+}
+
+/* gradient ONLY on name */
+.hero-title .name {
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.headline-strong {
+    display: block;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* SUBTEXT IMPROVED */
+.subtext {
+    max-width: 500px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+/* TECH STACK */
+.tech-stack {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tech-stack img {
+    width: 26px;
+    height: 26px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.tech-stack img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* BUTTON SYSTEM */
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.25s ease;
+}
+
+.primary-btn {
+    background: white;
+    color: black;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    background: transparent;
+}
+
+.secondary-btn:hover {
+    border-color: white;
+}
+
+/* GLASS OVERLAY */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 20, 20, 0.25);
+    backdrop-filter: blur(0px);
+    opacity: 0;
+    transition: backdrop-filter 0.5s ease, opacity 0.5s ease;
+    z-index: 1;
+}
+
+.hero.active::before {
+    backdrop-filter: blur(12px);
+    opacity: 1;
+}
+
+.hero-wrapper {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: clamp(10px, 2vw, 24px);
+
+    width: 100%;
+    max-width: var(--content-lg);
+
+    margin: 0 auto;
+
+}
+
+/* Rotating words */
+.rotating-word-slot {
+    display: block;
+
+    height: 1.4em;
+
+    margin-top: 6px;
+
+    color: #00ff88;
+
+    font-weight: 600;
+}
+
+.rotating-word {
+    display: inline-block;
+
+    color: #00ff88;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes portraitFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+    max-width: 650px;
+    min-width: 0;
+    flex-shrink: 1;
+    transform-origin: left center;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.4s ease;
+}
+
+.hero.active .hero-content {
+    opacity: 0;
+    transform: translateX(-120px);
+    filter: blur(6px);
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease 0s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.4s ease 0.05s,
+}
+
+.hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #bdbdbd;
+
+    font-size: 13px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero-status::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, .18),
+            transparent);
+
+    transform: skewX(-25deg);
+
+    animation: pillShimmer 7s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+.status-dot {
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    box-shadow:
+        0 0 8px rgba(0, 255, 136, .8),
+        0 0 18px rgba(0, 255, 136, .5);
+
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* =========================
+   PROFILE SYSTEM
+========================= */
+
+.profile {
+    display: flex;
+    align-items: center;
+    width: 360px;
+    min-width: 360px;
+    overflow: hidden;
+    will-change: transform;
+    position: relative;
+
+    transition:
+        width 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+        transform 0.2s ease-out;
+}
+
+.profile.active {
+    width: clamp(950px, 78vw, 1000px);
+
+    transform: perspective(1200px) rotateY(-4deg);
+}
+
+/* =========================
+   IMAGE CONTAINER
+========================= */
+
+.profile-image {
+    width: 360px;
+    height: 360px;
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 3;
+
+    transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        border-radius 0.5s ease;
+
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+
+    animation: portraitFloat 4s ease-in-out infinite;
+
+}
+
+.profile-image {
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.profile-hint {
+    position: absolute;
+
+    bottom: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+
+    transition: 0.3s ease;
+}
+
+.hint-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    animation: pulse 2s infinite;
+}
+
+.hint-text {
+    text-transform: uppercase;
+}
+
+.profile.active .profile-image {
+    border-radius: 20px;
+    transform: scale(0.92);
+}
+
+.portrait-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.portrait-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    top: -150%;
+    left: -40%;
+
+    width: 40%;
+    height: 400%;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 136, 0.08),
+            transparent);
+
+    transform: rotate(20deg);
+
+    animation: portraitScan 8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+/* =========================
+   IMAGE STACK
+========================= */
+
+.profile-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+
+    transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.5s ease;
+}
+
+.img1 {
+    opacity: 1;
+}
+
+.profile.active .img1 {
+    opacity: 0;
+    transform: scale(0.96) translateX(-20px);
+}
+
+.img2 {
+    opacity: 0;
+    transform: translateX(60px) scale(1.05);
+}
+
+.profile.active .img2 {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition-delay: 0.15s;
+}
+
+/* =========================
+   PANEL
+========================= */
+
+.profile-panel {
+    flex: 1;
+    height: 360px;
+    min-width: 560px;
+    margin-left: 20px;
+    border-radius: 20px;
+    background: rgba(30, 30, 30, 0.55);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateX(40px);
+
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.profile.active .profile-panel {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.25s;
+}
+
+.profile:hover .portrait-wrapper::after {
+    animation-duration: 2.5s;
+}
+
+.profile:hover .profile-image {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 30px rgba(0, 255, 136, .08);
+}
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal {
+    font-family: "Courier New", monospace;
+    color: #00ff88;
+    font-size: clamp(13px, 0.85vw, 15px);
+    padding: 20px;
+
+    letter-spacing: 1px;
+    line-height: 1.8;
+
+    white-space: nowrap;
+    overflow-x: visible;
+    overflow-y: hidden;
+
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition: all 0.4s ease 0.4s;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+
+    animation: terminalFlicker 6s infinite;
+}
+
+.profile.active .terminal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.terminal-line {
+    font-size: clamp(11px, 0.8vw, 13px);
+
+    line-height: 1.7;
+
+    font-family: "Courier New", monospace;
+
+    color: #00ff88;
+
+    white-space: nowrap;
+
+    overflow: visible;
+
+    text-shadow:
+        0 0 4px rgba(0, 255, 136, 0.7),
+        0 0 10px rgba(0, 255, 136, 0.35);
+
+    opacity: 0.92;
+}
+
+.terminal-line.highlight {
+    color: #7dffb3;
+
+    text-shadow:
+        0 0 8px rgba(125, 255, 179, 0.95),
+        0 0 18px rgba(0, 255, 136, 0.5);
+
+    opacity: 1;
+}
+
+/* blinking cursor */
+.terminal-line::after {
+    content: "_";
+    animation: blink 0.8s infinite;
+}
+
+/* =========================
+   GLOW SYSTEM
+========================= */
+
+.profile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+            rgba(0, 255, 136, 0.15),
+            transparent 60%);
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    pointer-events: none;
+}
+
+.profile.active::after {
+    opacity: 1;
+}
+
+/* =========================
+   GLOW PULSE
+========================= */
+
+.profile.active .profile-panel {
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+
+/* =========================
+   SMOOTH EXIT
+========================= */
+
+.profile:not(.active) {
+    transform: perspective(1200px) rotateX(0) rotateY(0);
+}
+
+/* =========================
+   SCROLL HINT
+========================= */
+
+.hero-scroll-hint {
+
+    position: absolute;
+
+    right: 2rem;
+
+    bottom: 2rem;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+}
+
+.scroll-text {
+
+    writing-mode: vertical-rl;
+
+    text-transform: uppercase;
+
+    letter-spacing: .15em;
+
+    font-size: .65rem;
+
+    color: var(--accent);
+
+    opacity: .7;
+
+}
+
+.scroll-line {
+
+    width: 1px;
+
+    height: 80px;
+
+    background: rgba(0, 255, 136, .35);
+
+    position: relative;
+
+}
+
+.scroll-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    box-shadow: 0 0 12px #00ff88;
+
+    animation: scrollPulse 2s infinite;
+
+}
+
+
+@keyframes scrollPulse {
+
+    0% {
+
+        top: 0;
+
+        opacity: 0;
+
+    }
+
+    30% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        top: 70px;
+
+        opacity: 0;
+
+    }
+
+}
+
+/* =========================
+   RESPONSIVE REORGANIZING
+========================= */
+
+@media (max-width:992px) {
+
+    .hero-scroll-hint {
+
+        left: 50%;
+
+        right: auto;
+
+        transform: translateX(-50%);
+
+        bottom: 1.5rem;
+
+        flex-direction: column;
+
+    }
+
+    .scroll-text {
+
+        writing-mode: horizontal-tb;
+
+    }
+
+    .scroll-line {
+
+        width: 120px;
+
+        height: 1px;
+
+    }
+
+    .scroll-line::after {
+
+        top: 50%;
+
+        left: 0;
+
+        transform: translateY(-50%);
+
+        animation: scrollPulseHorizontal 2s infinite;
+
+    }
+
+    @keyframes scrollPulseHorizontal {
+
+        0% {
+
+            left: 0;
+
+            opacity: 0;
+
+        }
+
+        30% {
+
+            opacity: 1;
+
+        }
+
+        100% {
+
+            left: calc(100% - 6px);
+
+            opacity: 0;
+
+        }
+
+    }
+}

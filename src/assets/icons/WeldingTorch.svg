@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none">
+
+    <!-- Handle -->
+    <path
+        d="M6.5 17.5L12 12"
+        stroke="#00ff88"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+
+    <!-- Torch neck -->
+    <path
+        d="M11.5 11.5L14.5 8.5"
+        stroke="#00ff88"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+
+    <!-- Torch head -->
+    <path
+        d="M13.5 7.5L17 11"
+        stroke="#00ff88"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+
+    <!-- Spark center -->
+    <circle
+        cx="18"
+        cy="8"
+        r="1.2"
+        fill="#00ff88" />
+
+    <!-- Top spark -->
+    <path
+        d="M17 5.5V3.5"
+        stroke="#00ff88"
+        stroke-width="2.2"
+        stroke-linecap="round" />
+
+    <!-- Right spark -->
+    <path
+        d="M20 8H22"
+        stroke="#00ff88"
+        stroke-width="2.2"
+        stroke-linecap="round" />
+
+    <!-- Upper-right spark -->
+    <path
+        d="M19.2 5.8L20.8 4.2"
+        stroke="#00ff88"
+        stroke-width="2.2"
+        stroke-linecap="round" />
+
+    <!-- Lower-right spark -->
+    <path
+        d="M19 10.2L20.5 11.7"
+        stroke="#00ff88"
+        stroke-width="2.2"
+        stroke-linecap="round" />
+
+</svg>

@@ -1,141 +1,220 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
+import { motion, AnimatePresence } from "framer-motion";
+import { projects } from "../data/projectData";
+import {
+  useState,
+  useEffect,
+  useRef
+}
+  from "react";
 
 export default function Projects() {
-  const [thinkingMode, setThinkingMode] = useState(false);
-  const [activeProject, setActiveProject] = useState(null);
 
-  const projects = [
-    {
-      title: "Lead Intelligence SaaS Platform",
+  const [activeIndex, setActiveIndex] =
+    useState(0);
 
-      images: [
-        "/projects/lead-1.png",
-        "/projects/lead-2.png",
-        "/projects/lead-3.png"
-      ],
+  const [imageIndex, setImageIndex] =
+    useState(0);
 
-      description:
-        "Modern SaaS platform designed to help startups manage lead intelligence, outreach workflows, and sales pipeline visibility through interactive analytics and scalable dashboard architecture.",
+  const stripRef = useRef(null);
 
-      stack:
-        "React • TypeScript • Supabase • TailwindCSS • Recharts • Framer Motion",
+  const cardRefs = useRef([]);
 
-      github:
-        "https://github.com/igbinedionelvis/leadpilot-saas-dashboard",
+  const isDragging = useRef(false);
 
-      live:
-        "https://leadpilot-saas-dashboard.vercel.app/",
+  const startX = useRef(0);
 
-      thinking: {
-        problem:
-          "Startups often struggle to centralize outreach tracking, lead intelligence, and operational visibility into one scalable workflow system.",
+  const startScrollLeft = useRef(0);
 
-        approach:
-          "Designed a scalable SaaS-style dashboard with lead management workflows, analytics visualization, and modular frontend architecture optimized for growth.",
+  const featuredProject = projects[activeIndex] ?? projects[0];
 
-        tradeoff:
-          "Prioritized frontend scalability, responsiveness, and product architecture before implementing deeper automation layers."
-      }
-    },
+  const [scrollProgress, setScrollProgress] =
 
-    {
-      title: "Workforce Intelligence Dashboard",
+    useState(0);
 
-      images: [
-        "/projects/workforce-1.png",
-        "/projects/workforce-2.png",
-        "/projects/workforce-3.png"
-      ],
+  useEffect(() => {
 
-      description:
-        "AI-powered workforce analytics platform designed to help organizations monitor employee performance, hiring operations, and workforce trends through real-time KPI tracking and interactive data visualization.",
+    setImageIndex(0);
 
-      stack:
-        "React • TailwindCSS • Vite • Recharts",
+    const timer = setInterval(() => {
 
-      github:
-        "https://github.com/igbinedionelvis/workforce-intelligence-dashboard",
+      setImageIndex(prev =>
 
-      live:
-        "https://workforce-intelligence-dashboard.vercel.app/",
+        (prev + 1) %
 
-      thinking: {
-        problem:
-          "Organizations often struggle to centralize workforce metrics, hiring visibility, and operational insights into a single actionable system.",
+        featuredProject.images.length
 
-        approach:
-          "Built a scalable SaaS-inspired analytics dashboard with KPI tracking, interactive charts, hiring pipeline visualization, and AI-driven workforce insights simulation.",
+      );
 
-        tradeoff:
-          "Focused on frontend scalability, responsive UX, and business intelligence workflows before introducing deeper backend automation layers."
-      }
-    },
+    }, 3500);
 
-    {
-      title: "Interactive Portfolio Experience",
+    return () => clearInterval(timer);
 
-      images: [
-        "/projects/portfolio-1.png",
-        "/projects/portfolio-2.png",
-        "/projects/portfolio-3.png"
-      ],
+  }, [featuredProject]);
 
-      description:
-        "Modern developer portfolio focused on immersive UI interactions, motion design, and systems-oriented storytelling to showcase product-focused engineering work.",
+  useEffect(() => {
 
-      stack:
-        "React • CSS • Framer Motion",
+    const strip = stripRef.current;
 
-      github: "#",
+    if (!strip) return;
 
-      live:
-        "https://elvis-portfolio-react.vercel.app/",
+    const handleWheel = (e) => {
 
-      thinking: {
-        problem:
-          "Most developer portfolios feel static, generic, and fail to communicate technical identity effectively.",
+      // Only hijack vertical wheel
 
-        approach:
-          "Focused on cinematic UI interactions, animation systems, and storytelling-driven layout design to create a memorable user experience.",
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX))
+        return;
 
-        tradeoff:
-          "Balanced advanced visual interaction with usability and responsive layout considerations."
-      }
-    },
+      e.preventDefault();
 
-    {
-      title: "AI Automation System (In Progress)",
+      strip.scrollBy({
 
-      images: [
-        "/projects/ai-automation-1.png",
-        "/projects/ai-automation-2.png",
-        "/projects/ai-automation-3.png"
-      ],
+        left: e.deltaY * 2,
 
-      description:
-        "Currently building a scalable automation-focused platform centered around AI workflows, operational efficiency, and intelligent data processing.",
+        behavior: "smooth"
 
-      stack:
-        "React • Node.js • AI APIs",
+      });
 
-      github: "#",
+    };
 
-      live: "#",
+    strip.addEventListener(
 
-      thinking: {
-        problem:
-          "Modern businesses lose significant time through repetitive manual operational processes.",
+      "wheel",
 
-        approach:
-          "Exploring AI-assisted workflow automation systems focused on scalability and operational efficiency.",
+      handleWheel,
 
-        tradeoff:
-          "Prioritizing flexible architecture and experimentation before production-level optimization."
-      }
-    }
-  ];
+      { passive: false }
+
+    );
+
+    return () => {
+
+      strip.removeEventListener(
+
+        "wheel",
+
+        handleWheel
+
+      );
+
+    };
+
+  }, []);
+
+  useEffect(() => {
+
+    const strip = stripRef.current;
+
+    if (!strip) return;
+
+    const handleScroll = () => {
+
+      const cards = cardRefs.current;
+
+      let nearest = 0;
+
+      let closest = Infinity;
+
+      const stripRect = strip.getBoundingClientRect();
+
+      const stripCenter =
+
+        stripRect.left +
+
+        stripRect.width / 2;
+
+      cards.forEach((card, index) => {
+
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+
+        const cardCenter =
+
+          rect.left +
+
+          rect.width / 2;
+
+        const distance = Math.abs(
+
+          stripCenter -
+
+          cardCenter
+
+        );
+
+        if (distance < closest) {
+
+          closest = distance;
+
+          nearest = index;
+
+        }
+
+      });
+
+      setActiveIndex(nearest);
+
+      const progress =
+        strip.scrollLeft /
+        (strip.scrollWidth - strip.clientWidth);
+
+      setScrollProgress(progress);
+
+    };
+
+    strip.addEventListener(
+
+      "scroll",
+
+      handleScroll
+
+    );
+
+    return () => {
+
+      strip.removeEventListener(
+
+        "scroll",
+
+        handleScroll
+
+      );
+
+    };
+
+  }, []);
+
+  const handleMouseDown = (e) => {
+
+    isDragging.current = true;
+
+    startX.current = e.pageX;
+
+    startScrollLeft.current = stripRef.current.scrollLeft;
+
+  };
+
+  const handleMouseMove = (e) => {
+
+    if (!isDragging.current) return;
+
+    e.preventDefault();
+
+    const distance = e.pageX - startX.current;
+
+    stripRef.current.scrollLeft =
+
+      startScrollLeft.current - distance;
+
+  };
+
+  const handleMouseUp = () => {
+
+    isDragging.current = false;
+
+  };
+
+  const previewProjects = projects;
 
   return (
     <motion.section
@@ -151,6 +230,7 @@ export default function Projects() {
     >
 
       <motion.div className="projects-container">
+
 
         {/* 🔥 CINEMATIC HEADING */}
         <motion.div
@@ -180,122 +260,496 @@ export default function Projects() {
 
         </motion.div>
 
-        {/* 🔥 TOGGLE */}
-        <div className="toggle">
+        <div className="project-stage">
 
-          <button
-            onClick={() =>
-              setThinkingMode(prev => !prev)
-            }
-          >
-            {thinkingMode
-              ? "Thinking Mode: ON"
-              : "Thinking Mode: OFF"}
-          </button>
+          <div className="project-showcase">
 
-        </div>
+            <motion.div
 
-        {/* 🔥 GRID */}
-        <motion.div
-          className="grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.12
-              }
-            }
-          }}
-        >
+              key={featuredProject.slug}
+              className={`project-status ${featuredProject.status === "DEPLOYED"
+                ? "status-live"
+                : "status-dev"
+                }`}
 
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              thinkingMode={thinkingMode}
-              onClick={() =>
-                setActiveProject(project)
-              }
-            />
-          ))}
+              initial={{
+                opacity: 0,
+                y: -10
+              }}
 
-        </motion.div>
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
 
-      </motion.div>
+              exit={{
+                opacity: 0,
+                y: 10
+              }}
 
-      {/* 🔥 MODAL OVERLAY */}
-      {activeProject && (
-        <div
-          className="overlay"
-          onClick={() =>
-            setActiveProject(null)
-          }
-        >
+              transition={{
+                duration: .35
+              }}
+            >
+              <div className="project-status-dot"></div>
 
-          <div
-            className="modal"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
+              {featuredProject.status}
+            </motion.div>
 
-            <h2>{activeProject.title}</h2>
+            <div className="project-number">
+              <motion.span
 
-            <p>
-              {activeProject.description}
-            </p>
+                key={activeIndex}
 
-            <span className="stack">
-              {activeProject.stack}
-            </span>
+                initial={{
+                  opacity: 0,
+                  y: 40
+                }}
 
-            <div className="thinking">
+                animate={{
+                  opacity: 1,
+                  y: 0
+                }}
 
-              <p>
-                <strong>Problem:</strong>{" "}
-                {activeProject.thinking.problem}
-              </p>
+                exit={{
+                  opacity: 0,
+                  y: -40
+                }}
 
-              <p>
-                <strong>Approach:</strong>{" "}
-                {activeProject.thinking.approach}
-              </p>
+                transition={{
+                  duration: .35
+                }}
+              >
+                {String(activeIndex + 1).padStart(2, "0")}
+              </motion.span>
+            </div>
 
-              <p>
-                <strong>Trade-off:</strong>{" "}
-                {activeProject.thinking.tradeoff}
-              </p>
+            <div className="project-left">
+
+              <AnimatePresence mode="wait">
+
+                <motion.div
+                  key={featuredProject.slug}
+                  className="project-header"
+
+                  initial={{
+                    opacity: 0,
+                    x: 40
+                  }}
+
+                  animate={{
+                    opacity: 1,
+                    x: 0
+                  }}
+
+                  exit={{
+                    opacity: 0,
+                    x: -40
+                  }}
+
+                  transition={{
+                    duration: .65,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+
+                  <h3>{featuredProject.title}</h3>
+
+                  <div className="project-validation">
+
+                    {featuredProject.validation.map((item, index) => (
+
+                      <motion.div
+                        className="validation-item"
+                        key={item}
+                        initial={{
+                          opacity: 0,
+                          y: 12
+                        }}
+
+                        animate={{
+                          opacity: 1,
+                          y: 0
+                        }}
+
+                        exit={{
+                          opacity: 0,
+                          y: -12
+                        }}
+
+                        transition={{
+                          duration: .35,
+                          delay: .15 + (index * .08)
+                        }}
+                      >
+
+                        <span className="validation-dot"></span>
+
+                        <span>{item}</span>
+
+                      </motion.div>
+
+                    ))}
+
+                  </div>
+
+                </motion.div>
+
+              </AnimatePresence>
+
+              <div className="project-preview">
+
+                <AnimatePresence mode="wait">
+
+                  <motion.div
+
+                    className="monitor-screen"
+
+                    key={featuredProject.slug}
+
+                    initial={{
+                      opacity: 0,
+                      scale: .92,
+                      rotateX: 6,
+                      filter: "blur(10px) brightness(.6)"
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      rotateX: 0,
+                      filter: "blur(0px) brightness(1)"
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      scale: 1.04,
+                      rotateX: -6,
+                      filter: "blur(10px) brightness(.6)"
+                    }}
+
+                    transition={{
+                      duration: .55,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+
+                    <div className="monitor-image">
+
+                      <img
+
+                        key={`${featuredProject.slug}-${imageIndex}`}
+
+                        src={
+                          featuredProject.images[
+                          imageIndex
+                          ]
+                        }
+
+                        alt={featuredProject.title}
+
+                      />
+
+                    </div>
+
+                  </motion.div>
+
+                </AnimatePresence>
+
+                <div className="project-icons">
+
+                  {featuredProject.icons.map((Icon, index) => (
+                    <span key={index}>
+                      <Icon />
+                    </span>
+                  ))}
+
+                </div>
+
+              </div>
+
+              <motion.div className="project-footer">
+
+                <a
+                  href={featuredProject.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-btn"
+                >
+                  {featuredProject.status === "DEPLOYED"
+                    ? "Open Experience →"
+                    : "Coming Soon →"}
+                </a>
+
+              </motion.div>
 
             </div>
 
-            <div className="links">
+            <div className="project-right">
 
-              <a
-                href={activeProject.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
+              <AnimatePresence mode="wait">
 
-              <a
-                href={activeProject.live}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live Demo
-              </a>
+                <motion.div
+
+                  key={featuredProject.slug}
+
+                  className="project-sections"
+
+                  initial={{
+                    opacity: 0
+                  }}
+
+                  animate={{
+                    opacity: 1
+                  }}
+
+                  exit={{
+                    opacity: 0
+                  }}
+
+                  transition={{
+                    duration: .25
+                  }}
+
+                >
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .05
+                    }}
+
+                  >
+
+                    <span>OVERVIEW</span>
+
+                    <p>{featuredProject.description}</p>
+
+                  </motion.div>
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .15
+                    }}
+
+                  >
+
+                    <span>MISSION</span>
+
+                    <p>{featuredProject.mission}</p>
+
+                  </motion.div>
+
+                  <motion.div
+
+                    className="project-section"
+
+                    initial={{
+                      opacity: 0,
+                      y: 10
+                    }}
+
+                    animate={{
+                      opacity: 1,
+                      y: 0
+                    }}
+
+                    exit={{
+                      opacity: 0,
+                      y: -10
+                    }}
+
+                    transition={{
+                      duration: .45,
+                      delay: .25
+                    }}
+
+                  >
+
+                    <span>IMPACT</span>
+
+                    <p>{featuredProject.impact}</p>
+
+                  </motion.div>
+
+                </motion.div>
+
+              </AnimatePresence>
 
             </div>
 
           </div>
 
         </div>
-      )}
 
-    </motion.section>
+        <div className="project-navigation">
+
+          <div className="carousel-hint">
+
+            ← Drag or Scroll →
+
+          </div>
+
+          <div className="carousel-progress">
+
+            <div
+              className="carousel-progress-fill"
+              style={{
+                width: `${scrollProgress * 100}%`
+              }}
+            />
+
+          </div>
+
+          <button
+            className="carousel-arrow left"
+            onClick={() => {
+
+              stripRef.current.scrollBy({
+
+                left: -420,
+
+                behavior: "smooth"
+
+              });
+
+            }}
+          >
+
+            ‹
+
+          </button>
+
+          <div
+
+            className="project-strip"
+
+            ref={stripRef}
+
+            onMouseDown={handleMouseDown}
+
+            onMouseMove={handleMouseMove}
+
+            onMouseUp={handleMouseUp}
+
+            onMouseLeave={handleMouseUp}
+          >
+
+            {previewProjects.map((project) => {
+
+              const projectIndex = projects.findIndex(
+                p => p.title === project.title
+              );
+
+              return (
+
+                <button
+                  ref={(el) => (cardRefs.current[projectIndex] = el)}
+                  key={project.title}
+                  className={`project-card ${activeIndex === projectIndex ? "active" : ""
+                    }`}
+                  onClick={() => setActiveIndex(projectIndex)}
+                >
+
+                  <div className="project-card-content">
+
+                    <div className="project-card-image">
+
+                      <img
+                        src={project.images[0]}
+                        alt={project.title}
+                      />
+
+                    </div>
+
+                    <div className="project-card-header">
+
+                      <span className="project-card-number">
+                        {String(projectIndex + 1).padStart(2, "0")}
+                      </span>
+
+                      <span className="project-card-status">
+                        {project.status}
+                      </span>
+
+                    </div>
+
+                    <h4>{project.title}</h4>
+
+                    <span className="project-card-category">
+                      {project.category}
+                    </span>
+
+                  </div>
+
+                </button>
+
+              );
+
+            })}
+
+          </div>
+
+          <button
+            className="carousel-arrow right"
+            onClick={() => {
+
+              stripRef.current.scrollBy({
+
+                left: 420,
+
+                behavior: "smooth"
+
+              });
+
+            }}
+          >
+
+            ›
+
+          </button>
+
+        </div>
+
+      </motion.div>
+
+    </motion.section >
   );
 }

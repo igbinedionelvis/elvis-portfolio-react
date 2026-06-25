@@ -113,6 +113,12 @@ export default function Hero() {
           <h1 className="hero-title">
             Hi, I’m <span className="name">Elvis</span><br />
 
+            <span className="hero-role">
+              FULL-STACK DEVELOPER
+              <span className="hero-divider">•</span>
+              AI AUTOMATION BUILDER
+            </span>
+
             <span className="headline-strong">
               I build AI-powered
             </span>

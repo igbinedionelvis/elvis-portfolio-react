@@ -33,6 +33,32 @@
     -webkit-text-fill-color: transparent;
 }
 
+.hero-title .hero-role {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    font-family: var(--font-tech);
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    color: #00ff88;
+    line-height: 1.4;
+}
+
+.hero-divider {
+    margin: 0 10px;
+    color: #00ff88;
+    opacity: .65;
+}
+
+.hero-divider {
+    margin: 0 10px;
+    color: rgba(0, 255, 136, .55);
+}
+
 .headline-strong {
     display: block;
     font-weight: 600;
@@ -765,4 +791,23 @@
         }
 
     }
+}
+
+/* =========================
+   RESPONSIVE REORGANIZING FOR ONLY HERO ROLE
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero-role {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .hero-divider {
+        margin: 0 8px;
+    }
+
 }
